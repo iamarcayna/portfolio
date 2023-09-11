@@ -1,0 +1,20 @@
+<button
+  type="button"
+  (click)="backToTop()"
+  [disabled]="scrolling"
+  [ngClass]="buttonClass"
+  class="fixed bottom-0 right-0 p-3 rounded-full md:m-5 m-2 mb-5 text-blue-500 bg-blue-500 backdrop-blur-sm bg-opacity-10 hover:bg-opacity-20"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="w-7 h-7"
+  >
+    <path d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+  </svg>
+</button>

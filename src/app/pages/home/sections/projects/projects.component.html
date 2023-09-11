@@ -1,0 +1,20 @@
+<div id="projects" class="scroll-mt-14">
+  <div
+    class="max-w-5xl mx-auto px-4 md:pb-24 pb-16 md:px-6 h-auto relative overflow-hidden"
+  >
+    <p
+      class="font-extrabold uppercase tracking-widest text-lg flex items-center justify-center mt-2 mb-6 md:mb-10 md:mt-5 md:text-xl"
+    >
+      <span
+        class="text-gray-700 dark:text-gray-200 border-b-orange-400 border-b-4 dark:border-b-transparent p-1"
+        >My Projects
+      </span>
+    </p>
+    <div>
+      <app-project-card
+        [project]="project"
+        *ngFor="let project of projects"
+      ></app-project-card>
+    </div>
+  </div>
+</div>

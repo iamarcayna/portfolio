@@ -1,0 +1,52 @@
+<div
+  class="md:flex-row justify-between items-center md:p-5 flex-col flex md:items-start"
+  [ngClass]="project.id % 2 === 0 ? 'md:flex-row-reverse' : ''"
+>
+  <div>
+    <img
+      src="https://placehold.co/500x300"
+      [alt]="project.thumbnail_desktop"
+      class="object-contain rounded-lg"
+    />
+  </div>
+  <div
+    class="w-80"
+    [ngClass]="project.id % 2 === 0 ? 'text-left' : 'text-right'"
+  >
+    <p>{{ project.title }}</p>
+    <p>
+      {{ project.description }}
+    </p>
+    <div class="flex">
+      <div
+        *ngFor="let stack of project.technologies"
+        class="rounded-full p-1 bg-gray-200"
+      >
+        <img
+          [src]="'../../../../../../assets/images/' + stack"
+          [alt]="stack"
+          class="h-8 w-8"
+        />
+      </div>
+    </div>
+    <button
+      class="px-4 py-2 rounded-full bg-blue-500 flex items-center gap-2 justify-center"
+    >
+      <img
+        src="../../../../../../assets/images/github.svg"
+        alt="github"
+        class="h-6 w-6"
+      />
+      View Code
+    </button>
+    <button
+      class="px-4 py-2 rounded-full bg-blue-500 flex items-center gap-2 justify-center"
+    >
+      <img
+        src="../../../../../../assets/images/open-link.svg"
+        alt="live demo"
+        class="h-6 w-6"
+      />Live Demo
+    </button>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div>
+  <p
+    class="text font-bold text-center dark:text-gray-300 text-gray-700 mx-3 mb-4"
+  >
+    {{ skills.classification }}
+  </p>
+  <div class="flex items-center justify-center gap-6 flex-wrap">
+    <app-skill-card
+      [icon]="skill.icon"
+      [title]="skill.name"
+      *ngFor="let skill of skills.skills"
+    ></app-skill-card>
+  </div>
+</div>

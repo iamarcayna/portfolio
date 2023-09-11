@@ -1,0 +1,19 @@
+<div
+  (click)="ping()"
+  [ngClass]="pingClass"
+  class="min-w-max bg-transparent hover:drop-shadow-lg dark:hover:bg-gradient-to-r dark:hover:from-pink-500 dark:hover:via-red-500 dark:hover:to-yellow-500 p-[1px] rounded-xl cursor-pointer relative transition-all duration-200 ease-in-out"
+>
+  <div class="bg-gray-50 dark:bg-gray-700 px-7 py-3 rounded-xl">
+    <img
+      [src]="'../../../../../../assets/images/' + icon"
+      [alt]="title"
+      class="h-20 w-20"
+      [ngClass]="icon === 'github.svg' ? 'dark:invert' : ''"
+    />
+    <p
+      class="font-semibold dark:text-gray-300 text-gray-600 text-center mt-2 text-sm"
+    >
+      {{ title }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div id="hero" class="scroll-mt-14 mt-14 bg-hero-light dark:bg-hero-dark">
+  <div
+    class="max-w-5xl max-h-[800px] mx-auto flex justify-center items-center px-4 md:px-6 md:h-[90vh] h-[500px]"
+  >
+    <div class="flex flex-col text-center w-full">
+      <p
+        class="font-bold text-sm text-gray-700 dark:text-gray-400 md:text-lg lg:text-xl"
+      >
+        Hi there! <span class="text-xl md:text-2xl lg:text-3xl">👋</span>
+      </p>
+      <p
+        class="font-source-sans text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-700 mt-1 md:mt-2 dark:text-gray-300"
+      >
+        I'm <span> Reymond Arcayna, </span>
+      </p>
+      <p
+        class="font-source-sans text-4xl md:text-6xl lg:text-7xl font-extrabold mt-2 lg:mt-3 tracking-tight"
+      >
+        <span
+          #profession
+          class="bg-gradient-to-r from-blue-600 to-violet-600 dark:from-yellow-500 dark:to-orange-500 text-transparent bg-clip-text capitalize"
+        ></span>
+      </p>
+
+      <button
+        (click)="navigate('home', 'projects')"
+        class="self-center px-5 py-2 md:px-7 mt-5 md:mt-8 md:py-3 rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white dark:from-blue-500 dark:to-violet-500 font-semibold dark:hover:border-gray-100 hover:border-orange-600 border-2 dark:border-blue-400 border-orange-400"
+      >
+        View My Projects
+      </button>
+    </div>
+  </div>
+</div>

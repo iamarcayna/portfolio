@@ -1,0 +1,103 @@
+<div class="bg-gray-800 w-full text-gray-200">
+  <div
+    class="max-w-5xl mx-auto sm:flex items-start justify-between block px-4 pt-20 pb-10"
+  >
+    <div
+      class="mb-8 flex items-center justify-center flex-grow sm:justify-start flex-col sm:block mr-10 w-full sm:w-auto"
+    >
+      <app-logo></app-logo>
+      <p class="text-center sm:text-left mt-3 text-gray-400">
+        I'm a
+        <b
+          class="bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text capitalize"
+          >full-stack web developer</b
+        >.
+      </p>
+      <p class="text-center sm:text-left text-gray-400">
+        I enjoy designing and creating web application.
+      </p>
+      <a
+        class="rounded-full inline-block hover:border-blue-700 border-blue-900 border-2 px-5 py-2 mt-5 font-medium text-blue-600 hover:text-blue-500"
+        routerLink="contact"
+      >
+        <p>Connect with me</p>
+      </a>
+    </div>
+    <div class="flex items-start gap-8 flex-wrap justify-start">
+      <!-- Quick links -->
+      <div>
+        <p class="font-bold">
+          {{ sectionLinks.title }}
+        </p>
+        <div
+          class="flex flex-col items-start gap-2 justify-start text-gray-400 mt-3"
+        >
+          <button
+            class="hover:text-blue-500 flex items-center justify-center gap-2"
+            *ngFor="let section of sectionLinks.links"
+            (click)="navigate(section.page, section.url)"
+          >
+            <img
+              class="h-6 w-6"
+              [src]="'../../../assets/images/' + section.icon"
+              [alt]="section.name"
+            />
+            {{ section.name }}
+          </button>
+        </div>
+      </div>
+
+      <div *ngFor="let item of footerLinks">
+        <p class="font-bold">
+          {{ item.title }}
+        </p>
+        <div
+          class="flex flex-col items-start gap-2 justify-start text-gray-400 mt-3"
+        >
+          <a
+            class="hover:text-blue-500 flex items-center justify-center gap-2"
+            *ngFor="let link of item.links"
+            [href]="link.url"
+            target="_blank"
+          >
+            <img
+              class="h-6 w-6"
+              [src]="'../../../assets/images/' + link.icon"
+              [alt]="link.name"
+            />
+            {{ link.name }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <p class="font-bold">
+          {{ contactInfo.title }}
+        </p>
+        <div
+          class="flex flex-col items-start gap-2 justify-start text-gray-400 mt-3"
+        >
+          <p
+            class="flex items-center justify-center gap-2"
+            *ngFor="let info of contactInfo.infos"
+          >
+            <img
+              class="h-6 w-6"
+              [src]="'../../../assets/images/' + info.icon"
+              [alt]="info.name"
+            />
+            {{ info.name }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="border-gray-700" />
+  <p class="inline-block w-full text-center text-gray-400 px-4 py-6">
+    &copy; Copyright 2023, R.N. Arcayna
+  </p>
+  <div
+    class="bg-[radial-gradient(closest-side,#7c3aed,#2563eb,transparent)] h-1"
+  ></div>
+</div>
