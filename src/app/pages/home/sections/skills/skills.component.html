@@ -1,24 +1,20 @@
 <div id="skills" class="scroll-mt-14 bg-gray-200 dark:bg-gray-800">
   <div
-    class="h-1 dark:bg-[radial-gradient(farthest-side,#7c3aed,#2563eb,transparent)] bg-transparent"
-  ></div>
-  <div
     class="max-w-5xl mx-auto px-4 md:pb-24 pb-16 md:px-6 h-auto relative overflow-hidden"
   >
+    <div
+      class="h-1 dark:bg-[radial-gradient(farthest-side,#7c3aed,#2563eb,transparent)] bg-transparent absolute w-full top-6 md:top-9 left-0"
+    ></div>
     <p
-      class="font-extrabold uppercase tracking-widest text-lg flex items-center justify-center mt-2 mb-6 md:mb-10 md:mt-5 md:text-xl"
+      class="font-extrabold uppercase tracking-widest text-lg flex items-center justify-center mt-2 mb-6 md:mb-10 md:mt-5 md:text-xl relative z-10"
     >
       <span
-        class="text-gray-700 dark:text-gray-200 border-b-orange-400 border-b-4 dark:border-b-transparent p-1"
+        class="text-gray-700 dark:text-gray-200 border-b-orange-400 border-b-4 dark:border-b-transparent p-1 dark:bg-gray-800 px-2 md:px-3"
         >My Skills
       </span>
     </p>
-    <div class="flex flex-wrap items-start justify-center gap-6">
-      <app-skill-container *ngFor="let skills of skillset" [skills]="skills">
-      </app-skill-container>
+    <div class="min-h-[568.5px]">
+      <app-skill-container></app-skill-container>
     </div>
   </div>
-  <div
-    class="h-1 dark:bg-[radial-gradient(closest-side,#7c3aed,#2563eb,transparent)] bg-transparent"
-  ></div>
 </div>

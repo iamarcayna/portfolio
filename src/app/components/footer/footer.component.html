@@ -64,6 +64,7 @@
               class="h-6 w-6"
               [src]="'../../../assets/images/' + link.icon"
               [alt]="link.name"
+              [ngClass]="link.icon === 'github.svg' ? 'invert' : ''"
             />
             {{ link.name }}
           </a>

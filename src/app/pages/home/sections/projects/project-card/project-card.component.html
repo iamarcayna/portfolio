@@ -1,52 +1,60 @@
 <div
-  class="md:flex-row justify-between items-center md:p-5 flex-col flex md:items-start"
+  class="md:flex-row md:justify-between md:p-5 md:flex md:items-start mb-10 shadow-md md:shadow-none rounded-2xl md:rounded-none overflow-hidden"
   [ngClass]="project.id % 2 === 0 ? 'md:flex-row-reverse' : ''"
 >
-  <div>
-    <img
-      src="https://placehold.co/500x300"
-      [alt]="project.thumbnail_desktop"
-      class="object-contain rounded-lg"
-    />
-  </div>
+  <div class="flex-1 h-72 bg-gray-100 dark:bg-gray-600"></div>
   <div
-    class="w-80"
-    [ngClass]="project.id % 2 === 0 ? 'text-left' : 'text-right'"
+    class="p-5 flex-1 md:p-0"
+    [ngClass]="project.id % 2 === 0 ? 'md:pr-8' : 'md:pl-8'"
   >
-    <p>{{ project.title }}</p>
-    <p>
+    <p class="font-bold text-lg tracking-wider dark:text-gray-200">
+      {{ project.title }}
+    </p>
+    <p class="dark:text-gray-300 leading-8 text-justify">
       {{ project.description }}
     </p>
-    <div class="flex">
-      <div
-        *ngFor="let stack of project.technologies"
-        class="rounded-full p-1 bg-gray-200"
-      >
-        <img
-          [src]="'../../../../../../assets/images/' + stack"
-          [alt]="stack"
-          class="h-8 w-8"
-        />
+    <div class="mt-5">
+      <p class="font-semibold dark:text-gray-200">Tech-Stack</p>
+      <div class="flex items-center gap-4 mt-5 flex-wrap">
+        <div
+          *ngFor="let stack of project.technologies"
+          class="rounded-full p-2 bg-gray-100 dark:bg-gray-700"
+        >
+          <img
+            [src]="'../../../../../../assets/images/' + stack"
+            [alt]="stack"
+            class="h-8 w-8"
+          />
+        </div>
       </div>
     </div>
-    <button
-      class="px-4 py-2 rounded-full bg-blue-500 flex items-center gap-2 justify-center"
+
+    <div
+      class="flex items-center gap-4 justify-between sm:justify-start mt-8 flex-wrap"
     >
-      <img
-        src="../../../../../../assets/images/github.svg"
-        alt="github"
-        class="h-6 w-6"
-      />
-      View Code
-    </button>
-    <button
-      class="px-4 py-2 rounded-full bg-blue-500 flex items-center gap-2 justify-center"
-    >
-      <img
-        src="../../../../../../assets/images/open-link.svg"
-        alt="live demo"
-        class="h-6 w-6"
-      />Live Demo
-    </button>
+      <a
+        [href]="project.github_link"
+        target="_blank"
+        class="px-4 py-2 border dark:border-blue-700 hover:border-blue-500 rounded-full flex dark:hover:bg-blue-700 items-center dark:text-gray-200 gap-2 justify-center cursor-pointer transition-colors"
+      >
+        <img
+          src="../../../../../../assets/images/github.svg"
+          alt="github"
+          class="h-6 w-6 dark:invert"
+        />
+        View Code
+      </a>
+      <a
+        [href]="project.demo_link"
+        target="_blank"
+        class="px-4 py-2 border dark:border-blue-700 hover:border-blue-500 rounded-full flex dark:hover:bg-blue-700 items-center dark:text-gray-200 gap-2 justify-center cursor-pointer transition-colors"
+      >
+        <img
+          src="../../../../../../assets/images/open-link.svg"
+          alt="live demo"
+          class="h-6 w-6 dark:invert"
+        />Live Demo
+      </a>
+    </div>
   </div>
 </div>

@@ -15,8 +15,6 @@ import { LogoComponent } from './components/header/components/logo/logo.componen
 import { NavigationsComponent } from './components/header/components/navigations/navigations.component';
 import { ThemeSelectorComponent } from './components/header/components/theme-selector/theme-selector.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { MyServicesComponent } from './pages/my-services/my-services.component';
-import { EducationComponent } from './pages/about-me/sections/education/education.component';
 import { ExperienceComponent } from './pages/about-me/sections/experience/experience.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { VerticalNavigationsComponent } from './components/drawer/vertical-navigations/vertical-navigations.component';
@@ -32,7 +30,6 @@ import { ProjectCardComponent } from './pages/home/sections/projects/project-car
     AboutMeComponent,
     HeroComponent,
     AboutComponent,
-    EducationComponent,
     ExperienceComponent,
     ProjectsComponent,
     SkillsComponent,
@@ -42,7 +39,6 @@ import { ProjectCardComponent } from './pages/home/sections/projects/project-car
     NavigationsComponent,
     ThemeSelectorComponent,
     ContactComponent,
-    MyServicesComponent,
     DrawerComponent,
     VerticalNavigationsComponent,
     BackToTopComponent,

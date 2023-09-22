@@ -10,11 +10,6 @@ export const navigationMenu = [
     section: 'about',
   },
   {
-    menu: 'Services',
-    url: 'my-services',
-    section: 'services',
-  },
-  {
     menu: 'Contact',
     url: 'contact',
     section: 'contact',
@@ -48,24 +43,6 @@ export const sectionLinks = {
       page: 'home',
     },
     {
-      name: 'About',
-      url: 'about',
-      icon: 'about.svg',
-      page: 'about-me',
-    },
-    {
-      name: 'Education',
-      url: 'education',
-      icon: 'education.svg',
-      page: 'about-me',
-    },
-    {
-      name: 'Experience',
-      url: 'experience',
-      icon: 'work.svg',
-      page: 'about-me',
-    },
-    {
       name: 'Skills',
       url: 'skills',
       icon: 'skill.svg',
@@ -76,6 +53,18 @@ export const sectionLinks = {
       url: 'projects',
       icon: 'project.svg',
       page: 'home',
+    },
+    {
+      name: 'About',
+      url: 'about',
+      icon: 'about.svg',
+      page: 'about-me',
+    },
+    {
+      name: 'Experience',
+      url: 'experience',
+      icon: 'work.svg',
+      page: 'about-me',
     },
   ],
 };
@@ -101,53 +90,45 @@ export const contactInfo = {
   ],
 };
 
-export const profile = {
-  personal_info: {
-    name: 'Jane Smith',
-    email: 'janesmith@example.com',
-    phone: '555-123-4567',
-    website: 'www.janesmithportfolio.com',
-    location: 'Los Angeles, USA',
-  },
+export const aboutMe = {
+  about:
+    " I'm Reymond, I'm a self-taught developer. I started my career as a Electrical Design Engineer. During that period, I develop an interest in creating software. After 3 years of being a Design Enginner. I decide to take the leap and pursue my passion for software. Now, I'm a pasionate Full-stack Web Developer. I've gain new skills working in the industry and also by studying in my free time. I believe that everything can be learned, as long as you enjoy what you are doing.",
+  socials: ['linkedin.svg', 'github.svg'],
+  hobbies: ['Singing', 'Gaming', 'Hanging-out with friends', 'Cooking'],
 };
-
-export const education = [
-  {
-    degree: 'Master of Science in Human-Computer Interaction',
-    school: 'Stanford University',
-    year: '2022',
-  },
-  {
-    degree: 'Bachelor of Arts in Graphic Design',
-    school: 'New York University',
-    year: '2017',
-  },
-];
 
 export const experience = [
   {
-    title: 'UX Designer',
-    company: 'Design Dynamics',
-    location: 'San Francisco, USA',
-    start_date: '2022-01-15',
-    end_date: '2023-08-15',
-    description: 'Led design projects from concept to execution...',
+    title: 'Full-stack Web Developer',
+    company: 'Edlution Pte Ltd.',
+    location: 'Mandaue, Cebu, Philippines',
+    start_date: '2023-07-03',
+    end_date: '',
+    description:
+      'As a Fullstack Web Developer at [Company Name], my role is pivotal in crafting dynamic and user-centric web applications that align with the company mission and values.',
+    key_achievement: [
+      ' Successfully led the development and launch of a sophisticated e-commerce platform, resulting in a 150% increase in online sales within the first six months of deployment.',
+    ],
   },
   {
-    title: 'UI/UX Intern',
-    company: 'Pixel Perfect',
-    location: 'Los Angeles, USA',
-    start_date: '2021-06-01',
-    end_date: '2021-08-31',
+    title: 'Design Engineer I',
+    company: 'Tsuneishi Technical Services (Phils)., Inc.',
+    location: 'Balamban, Cebu, Philippines',
+    start_date: '2019-10-15',
+    end_date: '2023-05-12',
     description: 'Collaborated with the design team on user interface...',
+    key_achievement: [
+      'Created desktop application using VB.NET for the company that automates repetitive tasks resulting in a significant increase in productivity and efficiency.',
+    ],
   },
 ];
 
 export const projects = [
   {
     id: 1,
-    title: 'Mobile App Redesign',
-    description: 'Revamped the user interface of a travel app...',
+    title: 'Portfolio Profile for a Company',
+    description:
+      'My personal website serves as a comprehensive showcase of my skills and achievements throughout my career. Visitors can explore the projects, view the source code on GitHub, and even try out live demos.',
     technologies: ['angular.svg', 'laravel.svg', 'tailwind.svg', 'mysql.svg'],
     thumbnail_mobile: '',
     thumbnail_desktop: '',
@@ -156,9 +137,9 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'Website Accessibility Toolkit',
+    title: 'E-Commerce for Dota Items',
     description:
-      'Created a toolkit to help developers ensure website accessibility...',
+      'The e-commerce web application I developed offers a seamless online shopping experience. Users can browse a wide range of electronic products, add items to their shopping cart, and securely complete their purchases.',
     technologies: ['react.svg', 'spring.svg', 'material.svg', 'mongo.svg'],
     thumbnail_mobile: '',
     thumbnail_desktop: '',
@@ -167,10 +148,18 @@ export const projects = [
   },
 ];
 
-export const skillset = [
+export const skillsets = [
   {
-    classification: 'General Skills',
+    classification: 'Frontend',
     skills: [
+      {
+        name: 'Angular',
+        icon: 'angular.svg',
+      },
+      {
+        name: 'React',
+        icon: 'react.svg',
+      },
       {
         name: 'HTML',
         icon: 'html.svg',
@@ -188,6 +177,31 @@ export const skillset = [
         icon: 'ts.svg',
       },
       {
+        name: 'Tailwind',
+        icon: 'tailwind.svg',
+      },
+      {
+        name: 'Material UI',
+        icon: 'material.svg',
+      },
+      {
+        name: 'Figma',
+        icon: 'figma.svg',
+      },
+    ],
+  },
+  {
+    classification: 'Backend',
+    skills: [
+      {
+        name: 'Laravel',
+        icon: 'laravel.svg',
+      },
+      {
+        name: 'Spring Boot',
+        icon: 'spring.svg',
+      },
+      {
         name: 'PHP',
         icon: 'php.svg',
       },
@@ -195,11 +209,6 @@ export const skillset = [
         name: 'Java',
         icon: 'java.svg',
       },
-    ],
-  },
-  {
-    classification: 'Database',
-    skills: [
       {
         name: 'MongoDb',
         icon: 'mongo.svg',
@@ -211,50 +220,7 @@ export const skillset = [
     ],
   },
   {
-    classification: 'Frontend Framework',
-    skills: [
-      {
-        name: 'Angular',
-        icon: 'angular.svg',
-      },
-      {
-        name: 'React',
-        icon: 'react.svg',
-      },
-    ],
-  },
-  {
-    classification: 'Backend Framework',
-    skills: [
-      {
-        name: 'Laravel',
-        icon: 'laravel.svg',
-      },
-      {
-        name: 'Spring Boot',
-        icon: 'spring.svg',
-      },
-    ],
-  },
-  {
-    classification: 'CSS Framework',
-    skills: [
-      {
-        name: 'Tailwind',
-        icon: 'tailwind.svg',
-      },
-      {
-        name: 'Bootstrap',
-        icon: 'bootstrap.svg',
-      },
-      {
-        name: 'Material UI',
-        icon: 'material.svg',
-      },
-    ],
-  },
-  {
-    classification: 'Code Versioning',
+    classification: 'Versioning',
     skills: [
       {
         name: 'Git',
@@ -263,15 +229,6 @@ export const skillset = [
       {
         name: 'GitHub',
         icon: 'github.svg',
-      },
-    ],
-  },
-  {
-    classification: 'Design',
-    skills: [
-      {
-        name: 'Figma',
-        icon: 'figma.svg',
       },
     ],
   },

@@ -8,10 +8,16 @@ export class SkillCardComponent {
   @Input('title') title!: string;
   @Input('icon') icon!: string;
   pingClass: string = '';
+  pingActive: boolean = false;
 
   ping() {
+    if (this.pingActive) {
+      return;
+    }
+    this.pingActive = true;
     this.pingClass = 'animate-heartbeat';
     setTimeout(() => {
+      this.pingActive = false;
       this.pingClass = '';
     }, 1000);
   }
