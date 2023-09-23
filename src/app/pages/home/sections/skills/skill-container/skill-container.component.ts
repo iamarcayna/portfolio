@@ -1,45 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { Skill, SkillSet } from 'src/app/constants/models';
-import { skillsets } from 'src/app/constants/portfolio-content';
+import { Skill } from 'src/app/constants/models';
+import { skills } from 'src/app/constants/portfolio-content';
 
 @Component({
   selector: 'app-skill-container',
   templateUrl: './skill-container.component.html',
 })
 export class SkillContainerComponent implements OnInit {
-  skills: Array<Skill> = [];
+  skills!: Array<Skill>;
   filterMode: string = 'All';
-  classifications!: Array<string>;
+  classifications: Array<string> = [];
 
   ngOnInit(): void {
-    skillsets.map((skillset: SkillSet) => {
-      this.skills.push(...skillset.skills);
+    this.skills = skills;
+    this.skills.map((skill: Skill) => {
+      if (!this.classifications.includes(skill.classification)) {
+        this.classifications.push(skill.classification);
+      }
+      return skill;
     });
-    this.classifications = skillsets.map((skillsets) => {
-      return skillsets.classification;
-    });
+
     this.classifications.unshift(this.filterMode);
   }
 
   filter(classification: string) {
-    this.skills = [];
-    if (classification === 'All') {
-      skillsets.map((skillset: SkillSet) => {
-        this.skills.push(...skillset.skills);
-      });
-    } else {
-      skillsets
-        .filter(
-          (skillset: SkillSet) => skillset.classification === classification
-        )
-        .map((skillset: SkillSet) => {
-          this.skills.push(...skillset.skills);
-        });
-    }
+    this.skills =
+      classification === 'All'
+        ? skills
+        : skills.filter(
+            (skill: Skill) => skill.classification === classification
+          );
     this.filterMode = classification;
-  }
-
-  trackBySkillName(_index: number, item: Skill) {
-    return item.name;
   }
 }

@@ -1,11 +1,7 @@
 export interface Skill {
   name: string;
   icon: string;
-}
-
-export interface SkillSet {
   classification: string;
-  skills: Array<Skill>;
 }
 
 export interface Project {

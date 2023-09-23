@@ -129,7 +129,7 @@ export const projects = [
     title: 'Portfolio Profile for a Company',
     description:
       'My personal website serves as a comprehensive showcase of my skills and achievements throughout my career. Visitors can explore the projects, view the source code on GitHub, and even try out live demos.',
-    technologies: ['angular.svg', 'laravel.svg', 'tailwind.svg', 'mysql.svg'],
+    technologies: ['Angular', 'Laravel', 'Tailwind', 'MySql'],
     thumbnail_mobile: '',
     thumbnail_desktop: '',
     github_link: '',
@@ -140,7 +140,7 @@ export const projects = [
     title: 'E-Commerce for Dota Items',
     description:
       'The e-commerce web application I developed offers a seamless online shopping experience. Users can browse a wide range of electronic products, add items to their shopping cart, and securely complete their purchases.',
-    technologies: ['react.svg', 'spring.svg', 'material.svg', 'mongo.svg'],
+    technologies: ['React', 'Spring Boot', 'Material UI', 'MongoDB'],
     thumbnail_mobile: '',
     thumbnail_desktop: '',
     github_link: '',
@@ -148,88 +148,90 @@ export const projects = [
   },
 ];
 
-export const skillsets = [
+export const skills = [
   {
+    name: 'HTML',
+    icon: 'html.svg',
     classification: 'Frontend',
-    skills: [
-      {
-        name: 'Angular',
-        icon: 'angular.svg',
-      },
-      {
-        name: 'React',
-        icon: 'react.svg',
-      },
-      {
-        name: 'HTML',
-        icon: 'html.svg',
-      },
-      {
-        name: 'CSS',
-        icon: 'css.svg',
-      },
-      {
-        name: 'Javascript',
-        icon: 'js.svg',
-      },
-      {
-        name: 'Typescript',
-        icon: 'ts.svg',
-      },
-      {
-        name: 'Tailwind',
-        icon: 'tailwind.svg',
-      },
-      {
-        name: 'Material UI',
-        icon: 'material.svg',
-      },
-      {
-        name: 'Figma',
-        icon: 'figma.svg',
-      },
-    ],
   },
   {
+    name: 'CSS',
+    icon: 'css.svg',
+    classification: 'Frontend',
+  },
+  {
+    name: 'Javascript',
+    icon: 'js.svg',
+    classification: 'Frontend',
+  },
+  {
+    name: 'Typescript',
+    icon: 'ts.svg',
+    classification: 'Frontend',
+  },
+  {
+    name: 'PHP',
+    icon: 'php.svg',
     classification: 'Backend',
-    skills: [
-      {
-        name: 'Laravel',
-        icon: 'laravel.svg',
-      },
-      {
-        name: 'Spring Boot',
-        icon: 'spring.svg',
-      },
-      {
-        name: 'PHP',
-        icon: 'php.svg',
-      },
-      {
-        name: 'Java',
-        icon: 'java.svg',
-      },
-      {
-        name: 'MongoDb',
-        icon: 'mongo.svg',
-      },
-      {
-        name: 'MySql',
-        icon: 'mysql.svg',
-      },
-    ],
   },
   {
+    name: 'Java',
+    icon: 'java.svg',
+    classification: 'Backend',
+  },
+  {
+    name: 'React',
+    icon: 'react.svg',
+    classification: 'Frontend',
+  },
+  {
+    name: 'Spring Boot',
+    icon: 'spring.svg',
+    classification: 'Backend',
+  },
+  {
+    name: 'MongoDB',
+    icon: 'mongo.svg',
+    classification: 'Backend',
+  },
+  {
+    name: 'Angular',
+    icon: 'angular.svg',
+    classification: 'Frontend',
+  },
+  {
+    name: 'Laravel',
+    icon: 'laravel.svg',
+    classification: 'Backend',
+  },
+  {
+    name: 'MySql',
+    icon: 'mysql.svg',
+    classification: 'Backend',
+  },
+  {
+    name: 'Tailwind',
+    icon: 'tailwind.svg',
+    classification: 'Frontend',
+  },
+  {
+    name: 'Material UI',
+    icon: 'material.svg',
+    classification: 'Frontend',
+  },
+  {
+    name: 'Figma',
+    icon: 'figma.svg',
+    classification: 'Frontend',
+  },
+  {
+    name: 'Git',
+    icon: 'git.svg',
     classification: 'Versioning',
-    skills: [
-      {
-        name: 'Git',
-        icon: 'git.svg',
-      },
-      {
-        name: 'GitHub',
-        icon: 'github.svg',
-      },
-    ],
+  },
+  {
+    name: 'GitHub',
+    icon: 'github.svg',
+    classification: 'Versioning',
   },
 ];
