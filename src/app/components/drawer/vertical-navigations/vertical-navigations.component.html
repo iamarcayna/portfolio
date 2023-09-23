@@ -1,7 +1,7 @@
 <div class="flex flex-col items-center gap-5 mt-10">
   <app-logo></app-logo>
   <a
-    class="text-gray-500 cursor-pointer font-semibold hover:text-blue-600 px-2 text-xl text-start w-24"
+    class="text-gray-500 cursor-pointer font-semibold hover:text-blue-600 dark:hover:text-yellow-600 px-2 text-xl text-start w-24"
     [routerLink]="menu.url"
     (click)="closeDrawer()"
     *ngFor="let menu of navigationMenus"

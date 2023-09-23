@@ -2,7 +2,7 @@
   class="flex items-center justify-end gap-5 pr-5 border-r-2 dark:border-gray-500 border-gray-300"
 >
   <a
-    class="text-gray-500 cursor-pointer font-semibold hover:text-blue-600 group px-2"
+    class="text-gray-500 cursor-pointer font-semibold dark:hover:text-gray-400 hover:text-gray-600 group px-2"
     [routerLink]="menu.url"
     *ngFor="let menu of navigationMenus"
     ><span routerLinkActive="dark:text-gray-200 text-gray-900">{{
@@ -10,7 +10,7 @@
     }}</span>
     <div
       routerLinkActive="w-full"
-      class="border-b-blue-600 border-b-4 w-0 group-hover:w-full transition-all duration-200 rounded-full"
+      class="border-b-blue-600 dark:border-b-yellow-600 border-b-4 w-0 group-hover:w-full transition-all duration-200 rounded-full"
     ></div>
   </a>
 </div>

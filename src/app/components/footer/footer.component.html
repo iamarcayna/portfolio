@@ -9,7 +9,7 @@
       <p class="text-center sm:text-left mt-3 text-gray-400">
         I'm a
         <b
-          class="bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text capitalize"
+          class="bg-gradient-to-r from-yellow-500 to-orange-500 dark:from-blue-500 dark:to-violet-500 text-transparent bg-clip-text capitalize"
           >full-stack web developer</b
         >.
       </p>
@@ -33,7 +33,7 @@
           class="flex flex-col items-start gap-2 justify-start text-gray-400 mt-3"
         >
           <button
-            class="hover:text-blue-500 flex items-center justify-center gap-2"
+            class="hover:text-blue-500 dark:hover:text-yellow-500 flex items-center justify-center gap-2"
             *ngFor="let section of sectionLinks.links"
             (click)="navigate(section.page, section.url)"
           >
@@ -55,7 +55,7 @@
           class="flex flex-col items-start gap-2 justify-start text-gray-400 mt-3"
         >
           <a
-            class="hover:text-blue-500 flex items-center justify-center gap-2"
+            class="hover:text-blue-500 dark:hover:text-yellow-500 flex items-center justify-center gap-2"
             *ngFor="let link of item.links"
             [href]="link.url"
             target="_blank"
