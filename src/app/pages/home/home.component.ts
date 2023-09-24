@@ -1,18 +1,17 @@
-import { AfterViewInit, Component, inject } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, inject } from '@angular/core';
 import { ScrollService } from 'src/app/services/scroll.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements AfterViewInit {
-  private route = inject(ActivatedRoute);
+export class HomeComponent {
   private scrollService = inject(ScrollService);
 
-  ngAfterViewInit(): void {
-    this.route.queryParams.subscribe((params: Params) => {
-      this.scrollService.scrollIntoView(params['section']);
-    });
+  onIntersect(status: boolean, section: string) {
+    if (status) {
+      console.log(section);
+      this.scrollService.activeSection.next(section);
+    }
   }
 }

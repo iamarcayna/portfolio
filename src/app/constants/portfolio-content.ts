@@ -1,18 +1,23 @@
 export const navigationMenu = [
   {
     menu: 'Home',
-    url: 'home',
-    section: 'hero',
+    url: 'hero',
   },
   {
     menu: 'About',
-    url: 'about-me',
-    section: 'about',
+    url: 'about',
+  },
+  {
+    menu: 'Skills',
+    url: 'skills',
+  },
+  {
+    menu: 'Projects',
+    url: 'projects',
   },
   {
     menu: 'Contact',
     url: 'contact',
-    section: 'contact',
   },
 ];
 export const footerLinks = [
@@ -40,31 +45,21 @@ export const sectionLinks = {
       name: 'Home',
       url: 'hero',
       icon: 'home.svg',
-      page: 'home',
-    },
-    {
-      name: 'Skills',
-      url: 'skills',
-      icon: 'skill.svg',
-      page: 'home',
-    },
-    {
-      name: 'Projects',
-      url: 'projects',
-      icon: 'project.svg',
-      page: 'home',
     },
     {
       name: 'About',
       url: 'about',
       icon: 'about.svg',
-      page: 'about-me',
     },
     {
-      name: 'Experience',
-      url: 'experience',
-      icon: 'work.svg',
-      page: 'about-me',
+      name: 'Skills',
+      url: 'skills',
+      icon: 'skill.svg',
+    },
+    {
+      name: 'Projects',
+      url: 'projects',
+      icon: 'project.svg',
     },
   ],
 };
@@ -137,6 +132,28 @@ export const projects = [
   },
   {
     id: 2,
+    title: 'E-Commerce for Dota Items',
+    description:
+      'The e-commerce web application I developed offers a seamless online shopping experience. Users can browse a wide range of electronic products, add items to their shopping cart, and securely complete their purchases.',
+    technologies: ['React', 'Spring Boot', 'Material UI', 'MongoDB'],
+    thumbnail_mobile: '',
+    thumbnail_desktop: '',
+    github_link: '',
+    demo_link: '',
+  },
+  {
+    id: 3,
+    title: 'Portfolio Profile for a Company',
+    description:
+      'My personal website serves as a comprehensive showcase of my skills and achievements throughout my career. Visitors can explore the projects, view the source code on GitHub, and even try out live demos.',
+    technologies: ['Angular', 'Laravel', 'Tailwind', 'MySql'],
+    thumbnail_mobile: '',
+    thumbnail_desktop: '',
+    github_link: '',
+    demo_link: '',
+  },
+  {
+    id: 4,
     title: 'E-Commerce for Dota Items',
     description:
       'The e-commerce web application I developed offers a seamless online shopping experience. Users can browse a wide range of electronic products, add items to their shopping cart, and securely complete their purchases.',

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ScrollService {
+  activeSection: BehaviorSubject<string> = new BehaviorSubject('hero');
+
   scrollIntoView(section: string) {
-    if (section) {
-      const sectionToScroll = document.getElementById(section);
-      sectionToScroll?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      this.scrollToTop();
-    }
+    const sectionToScroll = document.getElementById(section);
+    sectionToScroll?.scrollIntoView({ behavior: 'smooth' });
+    this.activeSection.next(section);
   }
 
   scrollToTop() {

@@ -1,3 +1,26 @@
-<app-hero></app-hero>
-<app-skills></app-skills>
-<app-projects></app-projects>
+<app-hero
+  appIntersecting
+  [isContinuous]="true"
+  (isIntersecting)="onIntersect($event, 'hero')"
+></app-hero>
+<app-about
+  appIntersecting
+  [isContinuous]="true"
+  (isIntersecting)="onIntersect($event, 'about')"
+></app-about>
+<app-experience></app-experience>
+<app-skills
+  appIntersecting
+  [isContinuous]="true"
+  (isIntersecting)="onIntersect($event, 'skills')"
+></app-skills>
+<app-projects
+  appIntersecting
+  [isContinuous]="true"
+  (isIntersecting)="onIntersect($event, 'projects')"
+></app-projects>
+<app-contact
+  appIntersecting
+  [isContinuous]="true"
+  (isIntersecting)="onIntersect($event, 'contact')"
+></app-contact>

@@ -1,16 +1,22 @@
 <div
   class="flex items-center justify-end gap-5 pr-5 border-r-2 dark:border-gray-500 border-gray-300"
 >
-  <a
-    class="text-gray-500 cursor-pointer font-semibold dark:hover:text-gray-400 hover:text-gray-600 group px-2"
-    [routerLink]="menu.url"
+  <button
+    class="text-gray-400 dark:text-gray-500 cursor-pointer font-semibold dark:hover:text-gray-400 hover:text-gray-500 group px-2"
+    (click)="scrollIntoView(menu.url)"
     *ngFor="let menu of navigationMenus"
-    ><span routerLinkActive="dark:text-gray-200 text-gray-900">{{
-      menu.menu
-    }}</span>
+  >
+    <span
+      *ngIf="activeSection | async as active"
+      [ngClass]="{
+        'dark:text-gray-200 text-gray-950': active === menu.url
+      }"
+      >{{ menu.menu }}</span
+    >
     <div
-      routerLinkActive="w-full"
+      *ngIf="activeSection | async as active"
+      [ngClass]="{ 'w-full': active === menu.url }"
       class="border-b-blue-600 dark:border-b-yellow-600 border-b-4 w-0 group-hover:w-full transition-all duration-200 rounded-full"
     ></div>
-  </a>
+  </button>
 </div>

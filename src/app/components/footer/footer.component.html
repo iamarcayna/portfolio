@@ -13,15 +13,9 @@
           >full-stack web developer</b
         >.
       </p>
-      <p class="text-center sm:text-left text-gray-400">
+      <p class="text-center sm:text-left text-gray-400 mb-5">
         I enjoy designing and creating web application.
       </p>
-      <a
-        class="rounded-full inline-block hover:border-blue-700 border-blue-900 border px-5 py-2 mt-5 font-medium text-blue-600 hover:text-blue-500"
-        routerLink="contact"
-      >
-        <p>Connect with me</p>
-      </a>
     </div>
     <div class="flex items-start gap-8 flex-wrap justify-start">
       <!-- Quick links -->
@@ -35,7 +29,7 @@
           <button
             class="hover:text-blue-500 dark:hover:text-yellow-500 flex items-center justify-center gap-2"
             *ngFor="let section of sectionLinks.links"
-            (click)="navigate(section.page, section.url)"
+            (click)="scrollIntoView(section.url)"
           >
             <img
               class="h-6 w-6"

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild, inject } from '@angular/core';
-import { NavigationService } from 'src/app/services/navigation.service';
+import { ScrollService } from 'src/app/services/scroll.service';
 import Typewriter from 't-writer.js';
 
 @Component({
@@ -7,7 +7,7 @@ import Typewriter from 't-writer.js';
   templateUrl: './hero.component.html',
 })
 export class HeroComponent implements AfterViewInit {
-  private navigationService = inject(NavigationService);
+  private scrollService = inject(ScrollService);
   @ViewChild('profession') profession!: any;
 
   ngAfterViewInit(): void {
@@ -31,7 +31,7 @@ export class HeroComponent implements AfterViewInit {
       .start();
   }
 
-  navigate(page: string, section: string) {
-    this.navigationService.navigate(page, section);
+  scrollIntoView(section: string) {
+    this.scrollService.scrollIntoView(section);
   }
 }

@@ -4,20 +4,20 @@ import {
   footerLinks,
   sectionLinks,
 } from 'src/app/constants/portfolio-content';
-import { NavigationService } from 'src/app/services/navigation.service';
+import { ScrollService } from 'src/app/services/scroll.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
 })
 export class FooterComponent {
-  private navigationService = inject(NavigationService);
+  private scrollService = inject(ScrollService);
 
   footerLinks = footerLinks;
   contactInfo = contactInfo;
   sectionLinks = sectionLinks;
 
-  navigate(page: string, section: string) {
-    this.navigationService.navigate(page, section);
+  scrollIntoView(section: string) {
+    this.scrollService.scrollIntoView(section);
   }
 }
