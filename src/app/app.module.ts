@@ -20,7 +20,6 @@ import { BackToTopComponent } from './components/back-to-top/back-to-top.compone
 import { SkillCardComponent } from './pages/home/sections/skills/skill-card/skill-card.component';
 import { SkillContainerComponent } from './pages/home/sections/skills/skill-container/skill-container.component';
 import { ProjectCardComponent } from './pages/home/sections/projects/project-card/project-card.component';
-import { ExperienceComponent } from './pages/home/sections/experience/experience.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { IntersectingDirective } from './directives/intersecting.directive';
 
@@ -30,7 +29,6 @@ import { IntersectingDirective } from './directives/intersecting.directive';
     HomeComponent,
     HeroComponent,
     AboutComponent,
-    ExperienceComponent,
     ProjectsComponent,
     SkillsComponent,
     HeaderComponent,

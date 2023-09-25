@@ -1,26 +1,30 @@
 <app-hero
   appIntersecting
   [isContinuous]="true"
+  [threshold]="smallScreen ? 0.05 : 0.15"
   (isIntersecting)="onIntersect($event, 'hero')"
 ></app-hero>
 <app-about
   appIntersecting
   [isContinuous]="true"
+  [threshold]="smallScreen ? 0.05 : 0.25"
   (isIntersecting)="onIntersect($event, 'about')"
 ></app-about>
-<app-experience></app-experience>
 <app-skills
   appIntersecting
   [isContinuous]="true"
+  [threshold]="smallScreen ? 0.05 : 0.15"
   (isIntersecting)="onIntersect($event, 'skills')"
 ></app-skills>
 <app-projects
   appIntersecting
   [isContinuous]="true"
+  [threshold]="smallScreen ? 0.05 : 0.25"
   (isIntersecting)="onIntersect($event, 'projects')"
 ></app-projects>
 <app-contact
   appIntersecting
   [isContinuous]="true"
+  [threshold]="smallScreen ? 0.05 : 0.15"
   (isIntersecting)="onIntersect($event, 'contact')"
 ></app-contact>
