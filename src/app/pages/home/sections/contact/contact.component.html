@@ -1,10 +1,151 @@
-<div id="contact" class="scroll-mt-14 bg-red-500">
-  <div
-    class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center h-auto px-4"
-  >
-    <div class="h-full w-full flex items-center justify-center">
-      <form class="h-full w-[96] bg-blue-500">
-        <div class="h-[500px]"></div>
+<div id="contact" class="scroll-mt-14">
+  <div class="max-w-5xl mx-auto px-4 pt-5 pb-10 md:px-6 h-auto">
+    <div class="mb-10 mt-5 py-1">
+      <p
+        class="font-bold uppercase tracking-widest text-sm text-blue-500 dark:text-yellow-500"
+      >
+        Contact me
+      </p>
+      <p class="font-bold text-gray-700 text-2xl mt-1 dark:text-gray-200">
+        Like what you're seeing? Hit me up!
+      </p>
+      <p class="mt-2 text-gray-700 leading-7 dark:text-gray-300 max-w-2xl">
+        Whether you want to discuss potential opportunities, or simply want to
+        say hello, feel free to reach out. I'm eager to hear from you and
+        explore how we can work together to bring your ideas to life.
+      </p>
+      <form
+        class="mt-2 w-full max-w-2xl"
+        [formGroup]="contactForm"
+        (ngSubmit)="sendMessage()"
+      >
+        <div class="relative my-10">
+          <input
+            class="py-3 px-4 block w-full peer outline-none text-base border-2 rounded-md placeholder-transparent text-gray-700 dark:text-gray-300"
+            autocomplete="off"
+            type="text"
+            id="name"
+            formControlName="name"
+            placeholder="Name"
+            [ngClass]="
+              contactForm.get('name')?.getError('required') && formSubmited
+                ? 'border-red-300 hover:border-red-300 focus:border-red-300 bg-red-50 dark:border-red-500 dark:hover:border-red-500 dark:focus:border-red-500 dark:bg-slate-900'
+                : 'bg-blue-50 border-blue-200 hover:border-blue-300 focus:border-blue-500 focus:ring-blue-500 dark:hover:border-gray-600 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:focus:border-yellow-500 dark:focus:ring-yellow-500'
+            "
+          />
+          <label
+            for="name"
+            class="text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
+            >Name</label
+          >
+          <span
+            class="absolute -top-4 right-0 -translate-y-1/2 text-xs font-semibold text-red-500"
+            *ngIf="
+              contactForm.get('name')?.getError('required') && formSubmited
+            "
+            >Required*</span
+          >
+        </div>
+        <div class="relative my-10">
+          <input
+            class="py-3 px-4 block w-full peer outline-none text-base border-2 rounded-md placeholder-transparent text-gray-700 dark:text-gray-300"
+            autocomplete="off"
+            type="text"
+            id="email"
+            formControlName="email"
+            placeholder="Email Address"
+            [ngClass]="
+              (contactForm.get('email')?.getError('required') ||
+                contactForm.get('email')?.getError('email')) &&
+              formSubmited
+                ? 'border-red-300 hover:border-red-300 focus:border-red-300 bg-red-50 dark:border-red-500 dark:hover:border-red-500 dark:focus:border-red-500 dark:bg-slate-900'
+                : 'bg-blue-50 border-blue-200 hover:border-blue-300 focus:border-blue-500 focus:ring-blue-500 dark:hover:border-gray-600 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:focus:border-yellow-500 dark:focus:ring-yellow-500'
+            "
+          />
+          <label
+            for="email"
+            class="text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
+            >Email Address</label
+          >
+          <span
+            class="absolute -top-4 right-0 -translate-y-1/2 text-xs font-semibold text-red-500"
+            *ngIf="
+              contactForm.get('email')?.getError('required') && formSubmited
+            "
+            >Required*</span
+          >
+          <span
+            class="absolute -top-4 right-0 -translate-y-1/2 text-xs font-semibold text-red-500"
+            *ngIf="
+              contactForm.get('email')?.getError('email') &&
+              !contactForm.get('email')?.getError('required') &&
+              formSubmited
+            "
+            >Please enter a valid email.</span
+          >
+        </div>
+        <div class="relative my-10">
+          <textarea
+            id="message"
+            formControlName="message"
+            placeholder="Message"
+            class="min-h-[100px] py-3 px-4 block w-full peer outline-none text-base border-2 rounded-md placeholder-transparent text-gray-700 dark:text-gray-300"
+            rows="5"
+            [ngClass]="
+              contactForm.get('message')?.getError('required') && formSubmited
+                ? 'border-red-300 hover:border-red-300 focus:border-red-300 bg-red-50 dark:border-red-500 dark:hover:border-red-500 dark:focus:border-red-500 dark:bg-slate-900'
+                : 'bg-blue-50 border-blue-200 hover:border-blue-300 focus:border-blue-500 focus:ring-blue-500 dark:hover:border-gray-600 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:focus:border-yellow-500 dark:focus:ring-yellow-500'
+            "
+          ></textarea>
+          <label
+            for="message"
+            class="text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-6 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
+            >Message</label
+          >
+          <span
+            class="absolute -top-4 right-0 -translate-y-1/2 text-xs font-semibold text-red-500"
+            *ngIf="
+              contactForm.get('message')?.getError('required') && formSubmited
+            "
+            >Required*</span
+          >
+        </div>
+        <button
+          type="submit"
+          class="flex items-center justify-center ml-auto group relative bg-blue-100 dark:bg-yellow-200 dark:bg-opacity-20 overflow-hidden rounded-lg shadow-sm"
+        >
+          <span
+            [ngClass]="sendingMessage ? 'w-full' : 'w-12'"
+            class="bg-blue-500 dark:bg-yellow-500 absolute h-full -z-0 top-0 left-0 group-hover:w-full transition-all"
+          ></span>
+          <span
+            class="bg-blue-500 dark:bg-yellow-500 p-3 rounded-tl-lg rounded-bl-lg z-0 flex items-center justify-center"
+          >
+            <img
+              *ngIf="!sendingMessage"
+              src="../../../../../assets/images/send.svg"
+              alt="send message"
+              class="h-6 w-6 invert dark:invert-0 pointer-events-none"
+            />
+            <span
+              *ngIf="sendingMessage"
+              class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-yellow-500 dark:text-blue-600 rounded-full"
+              role="status"
+              aria-label="sending"
+            >
+              <span class="sr-only">...</span>
+            </span>
+          </span>
+          <span
+            [ngClass]="
+              sendingMessage
+                ? 'dark:text-gray-950 text-white'
+                : 'text-gray-400 dark:text-gray-400'
+            "
+            class="text-start w-32 pl-2 pr-4 py-3 bg-transparent rounded-tr-lg rounded-br-lg z-0 group-hover:text-white transition-all dark:group-hover:text-gray-950"
+            >{{ sendingMessage ? "Sending..." : "Send message" }}</span
+          >
+        </button>
       </form>
     </div>
   </div>

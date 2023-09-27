@@ -1,4 +1,5 @@
 <div class="bg-gray-800 w-full text-gray-200">
+  <hr class="border-gray-700" />
   <div
     class="max-w-5xl mx-auto sm:flex items-start justify-between block px-4 pt-20 pb-10"
   >
@@ -32,7 +33,7 @@
             (click)="scrollIntoView(section.url)"
           >
             <img
-              class="h-6 w-6"
+              class="h-6 w-6 pointer-events-none"
               [src]="'../../../assets/images/' + section.icon"
               [alt]="section.name"
             />
@@ -55,7 +56,7 @@
             target="_blank"
           >
             <img
-              class="h-6 w-6"
+              class="h-6 w-6 pointer-events-none"
               [src]="'../../../assets/images/' + link.icon"
               [alt]="link.name"
               [ngClass]="link.icon === 'github.svg' ? 'invert' : ''"
@@ -78,7 +79,7 @@
             *ngFor="let info of contactInfo.infos"
           >
             <img
-              class="h-6 w-6"
+              class="h-6 w-6 pointer-events-none"
               [src]="'../../../assets/images/' + info.icon"
               [alt]="info.name"
             />

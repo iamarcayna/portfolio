@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,8 @@ import { SkillContainerComponent } from './pages/home/sections/skills/skill-cont
 import { ProjectCardComponent } from './pages/home/sections/projects/project-card/project-card.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { IntersectingDirective } from './directives/intersecting.directive';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { SnackbarContainerDirective } from './directives/container.directive';
 
 @NgModule({
   declarations: [
@@ -45,8 +48,10 @@ import { IntersectingDirective } from './directives/intersecting.directive';
     ProjectCardComponent,
     NotFoundComponent,
     IntersectingDirective,
+    SnackbarContainerDirective,
+    SnackbarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

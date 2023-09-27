@@ -1,6 +1,6 @@
 <div
-  class="md:flex-row md:justify-between md:py-5 md:flex md:items-start mb-10 shadow-md md:shadow-none rounded-2xl md:rounded-none overflow-hidden"
-  [ngClass]="project.id % 2 === 0 ? 'md:flex-row-reverse' : ''"
+  class="md:justify-between md:py-5 md:flex md:items-start mb-10 shadow-md md:shadow-none rounded-2xl md:rounded-none overflow-hidden"
+  [ngClass]="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
 >
   <div class="flex-1 h-72 bg-gray-100 dark:bg-gray-600"></div>
   <div
@@ -34,7 +34,7 @@
         <img
           src="../../../../../../assets/images/github.svg"
           alt="github"
-          class="h-6 w-6 dark:invert"
+          class="h-6 w-6 dark:invert pointer-events-none"
         />
         View Code
       </a>
