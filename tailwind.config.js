@@ -16,12 +16,27 @@ module.exports = {
       },
       animation: {
         heartbeat: "beat 1s cubic-bezier(0, 0, 0.2, 1) infinite",
+        showIn: "showIn 200ms cubic-bezier(0, 0, 0.2, 1) forwards",
       },
       keyframes: {
         beat: {
           "75%, 100%": {
             transform: "scale(1.2)",
             opacity: "0",
+          },
+        },
+        showIn: {
+          "0%": {
+            transform: "scale(0)",
+            opacity: "0",
+          },
+          "20%": {
+            transform: "scale(0.2)",
+            opacity: "0.2",
+          },
+          "100%": {
+            transform: "scale(1)",
+            opacity: "1",
           },
         },
       },

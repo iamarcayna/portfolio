@@ -1,8 +1,8 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[snackbarContainer]',
+  selector: '[viewContainer]',
 })
-export class SnackbarContainerDirective {
+export class ContainerDirective {
   constructor(public viewContainerRef: ViewContainerRef) {}
 }

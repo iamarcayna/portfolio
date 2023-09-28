@@ -24,7 +24,7 @@ import { ProjectCardComponent } from './pages/home/sections/projects/project-car
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { IntersectingDirective } from './directives/intersecting.directive';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
-import { SnackbarContainerDirective } from './directives/container.directive';
+import { ContainerDirective } from './directives/container.directive';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { SnackbarContainerDirective } from './directives/container.directive';
     ProjectCardComponent,
     NotFoundComponent,
     IntersectingDirective,
-    SnackbarContainerDirective,
+    ContainerDirective,
     SnackbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],

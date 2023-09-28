@@ -1,13 +1,5 @@
-import {
-  Component,
-  ComponentRef,
-  OnInit,
-  ViewChild,
-  inject,
-} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SnackbarComponent } from 'src/app/components/snackbar/snackbar.component';
-import { SnackbarContainerDirective } from 'src/app/directives/container.directive';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
@@ -50,8 +42,10 @@ export class ContactComponent implements OnInit {
     this.sendingMessage = true;
     this.sendingTimeout = setTimeout(() => {
       this.sendingMessage = false;
-      this.snackBarService.showSnackbar.next(true);
-    }, 3_000);
+      this.snackBarService.showSnackbar({
+        message: 'Message sent successfully.',
+      });
+    }, 1_000);
     this.contactForm.reset();
     this.formSubmited = false;
   }

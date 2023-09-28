@@ -1,6 +1,5 @@
 import {
   Component,
-  ComponentRef,
   HostListener,
   OnInit,
   ViewChild,
@@ -8,8 +7,7 @@ import {
 } from '@angular/core';
 import { ThemeSelectorService } from './services/theme.service';
 import { SnackbarService } from './services/snackbar.service';
-import { SnackbarComponent } from './components/snackbar/snackbar.component';
-import { SnackbarContainerDirective } from './directives/container.directive';
+import { ContainerDirective } from './directives/container.directive';
 
 @Component({
   selector: 'app-root',
@@ -20,9 +18,8 @@ export class AppComponent implements OnInit {
   private snackBarService = inject(SnackbarService);
   open: boolean = false;
 
-  @ViewChild(SnackbarContainerDirective, { static: true })
-  snackbarContainer!: SnackbarContainerDirective;
-  snackbarRef!: ComponentRef<SnackbarComponent>;
+  @ViewChild(ContainerDirective, { static: true })
+  snackbarContainer!: ContainerDirective;
 
   @HostListener('window:resize', ['$event'])
   onWindowResize(event: Event) {
@@ -39,11 +36,7 @@ export class AppComponent implements OnInit {
     if (theme) {
       this.themeService.setTheme(theme);
     }
-    this.snackBarService.showSnackbar.subscribe((show) => {
-      if (show) {
-        this.showSnackbar();
-      }
-    });
+    this.snackBarService.setContainer(this.snackbarContainer);
   }
 
   drawerOpen() {
@@ -56,19 +49,5 @@ export class AppComponent implements OnInit {
     this.open = false;
     document.body.classList.remove('overflow-y-hidden');
     document.body.classList.add('overflow-y-auto');
-  }
-
-  showSnackbar() {
-    this.snackbarRef =
-      this.snackbarContainer.viewContainerRef.createComponent<SnackbarComponent>(
-        SnackbarComponent
-      );
-    this.snackbarRef.instance.message = 'Message sent successfully.';
-    this.snackbarRef.instance.onClose.subscribe((close) => {
-      if (close) {
-        this.snackbarRef.destroy();
-        this.snackBarService.showSnackbar.next(false);
-      }
-    });
   }
 }

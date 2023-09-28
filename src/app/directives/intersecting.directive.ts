@@ -11,6 +11,7 @@ import { debounceTime, Observable, Subscription } from 'rxjs';
 
 @Directive({
   selector: '[appIntersecting]',
+  exportAs: 'intersectDirective',
 })
 export class IntersectingDirective implements OnInit, OnDestroy {
   @Input() root: HTMLElement | null = null;

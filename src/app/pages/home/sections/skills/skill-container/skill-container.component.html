@@ -1,8 +1,8 @@
 <div class="p-2 rounded-lg bg-white dark:bg-gray-900 drop-shadow-sm">
-  <div class="flex items-center justify-evenly gap-2 flex-wrap">
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
     <button
       type="button"
-      class="flex-1 rounded-lg py-3 px-7 sm:px-3 transition-colors"
+      class="rounded-lg py-3 px-7 sm:px-3 transition-colors"
       *ngFor="let classification of classifications"
       (click)="filter(classification)"
       [ngClass]="
@@ -16,11 +16,7 @@
   </div>
 </div>
 <div
-  class="flex items-center justify-evenly sm:justify-start gap-7 flex-wrap pt-10"
+  class="grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 grid gap-7 pt-10 transition-all duration-1000"
 >
-  <app-skill-card
-    *ngFor="let skill of skills"
-    [title]="skill.name"
-    [icon]="skill.icon"
-  ></app-skill-card>
+  <ng-template viewContainer></ng-template>
 </div>
