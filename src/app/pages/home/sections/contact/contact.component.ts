@@ -49,4 +49,14 @@ export class ContactComponent implements OnInit {
     this.contactForm.reset();
     this.formSubmited = false;
   }
+
+  copyEmail() {
+    const email = document.getElementById('email_address_copy');
+    if (email?.innerText) {
+      navigator.clipboard.writeText(email.innerHTML);
+      this.snackBarService.showSnackbar({
+        message: 'Copied to clipboard.',
+      });
+    }
+  }
 }
