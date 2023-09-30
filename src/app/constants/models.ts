@@ -14,3 +14,13 @@ export interface Project {
   github_link: string;
   demo_link: string;
 }
+
+export interface Experience {
+  title: string;
+  company: string;
+  location: string;
+  start_date: string;
+  end_date: string;
+  description: string;
+  key_achievement: Array<string>;
+}

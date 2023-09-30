@@ -1,4 +1,4 @@
-<div id="contact" class="scroll-mt-14">
+<div id="contact" class="scroll-mt-14 bg-slate-100 dark:bg-gray-800">
   <div class="max-w-screen-2xl mx-auto px-4 pt-5 pb-10 md:px-6 h-auto lg:px-10">
     <div class="mb-10 mt-5 py-1">
       <p
@@ -36,7 +36,7 @@
             />
             <label
               for="name"
-              class="text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
+              class="peer-autofill:-top-4 peer-autofill:left-0 text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
               >Name</label
             >
             <span
@@ -65,7 +65,7 @@
             />
             <label
               for="email"
-              class="text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
+              class="peer-autofill:-top-4 peer-autofill:left-0 text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
               >Email Address</label
             >
             <span
@@ -100,7 +100,7 @@
             ></textarea>
             <label
               for="message"
-              class="text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-6 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
+              class="peer-autofill:-top-4 peer-autofill:left-0 text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-6 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
               >Message</label
             >
             <span
@@ -148,7 +148,9 @@
             >
           </button>
         </form>
-        <div class="mt-12 col-span-12 md:col-span-5 md:col-start-8">
+        <div
+          class="mt-12 col-span-12 md:col-span-5 md:col-start-8 h-min p-5 rounded-xl bg-white dark:bg-gray-700 shadow-sm dark:shadow-none"
+        >
           <p class="font-semibold text-gray-600 text-lg dark:text-gray-300">
             You can also contact me through my social account.
           </p>
@@ -171,7 +173,7 @@
             ></span>
             <p class="text-center relative z-0 bg-transparent">
               <span
-                class="font-bold text-blue-600 text-lg p-3 rounded-full bg-white dark:bg-gray-800 dark:text-yellow-600"
+                class="font-bold text-blue-600 text-lg p-3 rounded-full bg-white dark:bg-gray-700 dark:text-yellow-600"
               >
                 OR
               </span>
@@ -181,7 +183,7 @@
             Directly message me through email.
           </p>
           <div
-            class="flex items-center justify-between bg-blue-50 dark:bg-slate-900 border-2 border-blue-200 dark:border-gray-700 rounded-md text-gray-500 dark:text-gray-400 tracking-wider mt-3"
+            class="flex items-center justify-between bg-blue-50 dark:bg-slate-900 border-2 border-blue-200 dark:border-gray-600 overflow-hidden rounded-md text-gray-500 dark:text-gray-400 tracking-wider mt-3"
           >
             <a
               href="mailto:i.am.arcayna@gmail.com"
@@ -191,7 +193,7 @@
             >
             <button
               (click)="copyEmail()"
-              class="rounded-tr-md rounded-br-md flex-shrink-0 bg-blue-500 dark:bg-yellow-500 py-3 px-4 hover:bg-opacity-90 dark:hover:bg-opacity-95"
+              class="flex-shrink-0 bg-blue-500 dark:bg-yellow-500 py-3 px-4 hover:bg-opacity-90 dark:hover:bg-opacity-95"
             >
               <img
                 src="../../../../../assets/images/copy.svg"

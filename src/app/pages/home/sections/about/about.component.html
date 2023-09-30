@@ -1,7 +1,7 @@
-<div id="about" class="scroll-mt-14 bg-slate-100 dark:bg-gray-800">
+<div id="about" class="scroll-mt-14">
   <div class="max-w-screen-2xl mx-auto h-auto pt-5 pb-6 px-4 md:px-6 lg:px-10">
-    <div class="flex gap-10">
-      <div class="mb-10 mt-5 py-1 flex-auto basis-3/5 mr-28">
+    <div class="flex flex-col md:flex-row gap-10">
+      <div class="mb-10 mt-5 py-1 flex-auto basis-3/5 md:mr-28">
         <p
           class="font-bold uppercase tracking-widest text-sm text-blue-500 dark:text-yellow-500"
         >
@@ -11,34 +11,57 @@
           Wanna know something interesting about me?
         </p>
         <p class="mt-2 text-gray-700 leading-7 dark:text-gray-300">
-          I'm Reymond, I started my career as a Electrical Design Engineer.
-          During that period, I develop an interest in creating software. After
-          3 years of being a Design Enginner. I decide to take the leap and
-          pursue my passion for software. Now, I'm a pasionate Full-stack Web
-          Developer. I've gain new skills working in the industry and also by
-          studying in my free time.
+          {{ aboutMe.about }}
+        </p>
+        <p class="mt-3 text-gray-700 leading-7 dark:text-gray-300">
+          {{ aboutMe.about }}
         </p>
       </div>
       <div class="flex items-center justify-center flex-auto basis-2/5">
         <img
           src="../../../../../assets/images/hero-image.svg"
           alt="profile picture"
-          class="h-52 w-52"
+          class="h-52 w-52 pointer-events-none"
         />
-        <p
-          class="mt-3 text-gray-700 leading-7 dark:text-gray-300 text-xl font-semibold"
-        >
-          Everything can be learned, as long as you enjoy what you are doing.
-        </p>
       </div>
     </div>
-  </div>
-</div>
-<!-- Experiences -->
-<div class="max-w-screen-2xl mx-auto h-auto pt-5 pb-6 px-4 md:px-6 lg:px-10">
-  <div class="flex gap-5 items-center justify-start">
-    <div *ngFor="let company of [1, 2, 3, 4, 5]">
-      <div class="h-52 w-52 bg-red-200 rounded-lg"></div>
+    <!-- Experiences -->
+    <div class="mb-10">
+      <span
+        class="w-10 h-2 bg-blue-500 dark:bg-yellow-500 rounded-full block"
+      ></span>
+      <p class="font-bold text-gray-700 text-lg dark:text-gray-200 mt-1">
+        See my work experiences.
+      </p>
+      <p class="mt-2 text-gray-700 leading-7 dark:text-gray-300">My work is</p>
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div
+          class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg"
+          *ngFor="let experience of aboutMe.experiences"
+        >
+          <p class="text-gray-800 dark:text-gray-300 font-semibold text-lg">
+            {{ experience.title }}
+          </p>
+          <p class="text-blue-500 dark:text-yellow-500">
+            {{ experience.company }}
+          </p>
+          <p class="text-gray-700 dark:text-gray-400">
+            {{ experience.location }}
+          </p>
+          <p class="text-gray-700 dark:text-gray-400">
+            {{ experience.start_date }}
+          </p>
+          <p class="text-gray-700 dark:text-gray-400">
+            {{ experience.end_date }}
+          </p>
+          <p class="text-gray-700 dark:text-gray-400">
+            {{ experience.description }}
+          </p>
+          <p class="text-gray-700 dark:text-gray-400">
+            {{ experience.key_achievement }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

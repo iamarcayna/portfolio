@@ -87,36 +87,34 @@ export const contactInfo = {
 
 export const aboutMe = {
   about:
-    " I'm Reymond, I'm a self-taught developer. I started my career as a Electrical Design Engineer. During that period, I develop an interest in creating software. After 3 years of being a Design Enginner. I decide to take the leap and pursue my passion for software. Now, I'm a pasionate Full-stack Web Developer. I've gain new skills working in the industry and also by studying in my free time. I believe that everything can be learned, as long as you enjoy what you are doing.",
-  socials: ['linkedin.svg', 'github.svg'],
+    "I'm Reymond, I started my career as a Electrical Design Engineer. During that period, I develop an interest in creating software. After 3 years of being a Design Enginner. I decide to take the leap and pursue my passion for software. Now, I'm a pasionate Full-stack Web Developer. I've gain new skills working in the industry and also by studying in my free time.",
   hobbies: ['Singing', 'Gaming', 'Hanging-out with friends', 'Cooking'],
+  experiences: [
+    {
+      title: 'Full-stack Web Developer',
+      company: 'Edlution Pte Ltd.',
+      location: 'Mandaue, Cebu, Philippines',
+      start_date: '2023-07-03',
+      end_date: 'Present',
+      description:
+        'As a Fullstack Web Developer at [Company Name], my role is pivotal in crafting dynamic and user-centric web applications that align with the company mission and values.',
+      key_achievement: [
+        ' Successfully led the development and launch of a sophisticated e-commerce platform, resulting in a 150% increase in online sales within the first six months of deployment.',
+      ],
+    },
+    {
+      title: 'Design Engineer I',
+      company: 'Tsuneishi Technical Services (Phils)., Inc.',
+      location: 'Balamban, Cebu, Philippines',
+      start_date: '2019-10-15',
+      end_date: '2023-05-12',
+      description: 'Collaborated with the design team on user interface...',
+      key_achievement: [
+        'Created desktop application using VB.NET for the company that automates repetitive tasks resulting in a significant increase in productivity and efficiency.',
+      ],
+    },
+  ],
 };
-
-export const experience = [
-  {
-    title: 'Full-stack Web Developer',
-    company: 'Edlution Pte Ltd.',
-    location: 'Mandaue, Cebu, Philippines',
-    start_date: '2023-07-03',
-    end_date: '',
-    description:
-      'As a Fullstack Web Developer at [Company Name], my role is pivotal in crafting dynamic and user-centric web applications that align with the company mission and values.',
-    key_achievement: [
-      ' Successfully led the development and launch of a sophisticated e-commerce platform, resulting in a 150% increase in online sales within the first six months of deployment.',
-    ],
-  },
-  {
-    title: 'Design Engineer I',
-    company: 'Tsuneishi Technical Services (Phils)., Inc.',
-    location: 'Balamban, Cebu, Philippines',
-    start_date: '2019-10-15',
-    end_date: '2023-05-12',
-    description: 'Collaborated with the design team on user interface...',
-    key_achievement: [
-      'Created desktop application using VB.NET for the company that automates repetitive tasks resulting in a significant increase in productivity and efficiency.',
-    ],
-  },
-];
 
 export const projects = [
   {
@@ -132,28 +130,6 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'E-Commerce for Dota Items',
-    description:
-      'The e-commerce web application I developed offers a seamless online shopping experience. Users can browse a wide range of electronic products, add items to their shopping cart, and securely complete their purchases.',
-    technologies: ['React', 'Spring Boot', 'Material UI', 'MongoDB'],
-    thumbnail_mobile: '',
-    thumbnail_desktop: '',
-    github_link: '',
-    demo_link: '',
-  },
-  {
-    id: 3,
-    title: 'Portfolio Profile for a Company',
-    description:
-      'My personal website serves as a comprehensive showcase of my skills and achievements throughout my career. Visitors can explore the projects, view the source code on GitHub, and even try out live demos.',
-    technologies: ['Angular', 'Laravel', 'Tailwind', 'MySql'],
-    thumbnail_mobile: '',
-    thumbnail_desktop: '',
-    github_link: '',
-    demo_link: '',
-  },
-  {
-    id: 4,
     title: 'E-Commerce for Dota Items',
     description:
       'The e-commerce web application I developed offers a seamless online shopping experience. Users can browse a wide range of electronic products, add items to their shopping cart, and securely complete their purchases.',

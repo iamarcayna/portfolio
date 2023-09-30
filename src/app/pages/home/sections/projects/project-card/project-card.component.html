@@ -1,5 +1,5 @@
 <div
-  class="md:justify-between md:py-5 md:flex md:items-start mb-36 shadow-md md:shadow-none rounded-2xl md:rounded-none overflow-hidden"
+  class="md:justify-between md:py-5 md:flex md:items-start mb-10 md:mb-36 shadow-md md:shadow-none rounded-2xl md:rounded-none overflow-hidden"
   [ngClass]="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
 >
   <div class="flex-1 aspect-video bg-gray-100 dark:bg-gray-600"></div>
@@ -20,9 +20,23 @@
     >
       {{ project.title }}
     </p>
-    <p class="dark:text-gray-300 text-gray-700 leading-8 text-justify">
+    <p
+      (click)="project_description.classList.add('line-clamp-3')"
+      #project_description
+      class="dark:text-gray-300 text-gray-700 leading-7 text-justify line-clamp-3 mt-2 md:line-clamp-none"
+    >
       {{ project.description }}
     </p>
+    <button
+      (click)="project_description.classList.remove('line-clamp-3')"
+      class="text-blue-500 dark:text-yellow-500 mt-1"
+      *ngIf="
+        project_description.offsetHeight < project_description.scrollHeight
+      "
+    >
+      Read more
+    </button>
+
     <div
       class="flex items-center gap-4 justify-between sm:justify-start mt-8 flex-wrap"
     >
