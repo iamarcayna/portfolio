@@ -35,6 +35,8 @@ export class AppComponent implements OnInit {
     const theme = this.themeService.getTheme();
     if (theme) {
       this.themeService.setTheme(theme);
+    } else {
+      this.themeService.setTheme('dark');
     }
     this.snackBarService.setContainer(this.snackbarContainer);
   }

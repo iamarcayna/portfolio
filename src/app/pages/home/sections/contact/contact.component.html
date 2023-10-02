@@ -2,12 +2,14 @@
   <div class="max-w-screen-2xl mx-auto px-4 pt-5 pb-10 md:px-6 h-auto lg:px-10">
     <div class="mb-10 mt-5 py-1">
       <p
-        class="font-bold uppercase tracking-widest text-sm text-blue-500 dark:text-yellow-500"
+        class="font-bold uppercase tracking-widest text-sm text-blue-600 dark:text-yellow-500"
       >
         Contact me
       </p>
-      <p class="font-bold text-gray-700 text-2xl mt-1 dark:text-gray-200">
-        Like what you're seeing? Hit me up!
+      <p
+        class="font-bold text-gray-700 text-2xl mt-1 dark:text-gray-200 md:text-3xl"
+      >
+        Hey? Like what you're seeing? Hit me up!
       </p>
       <p class="mt-2 text-gray-700 leading-7 dark:text-gray-300 max-w-2xl">
         Whether you want to discuss potential opportunities, or simply want to
@@ -31,12 +33,12 @@
               [ngClass]="
                 contactForm.get('name')?.getError('required') && formSubmited
                   ? 'border-red-300 hover:border-red-300 focus:border-red-300 bg-red-50 dark:border-red-500 dark:hover:border-red-500 dark:focus:border-red-500 dark:bg-slate-900'
-                  : 'bg-blue-50 border-blue-200 hover:border-blue-300 focus:border-blue-500 focus:ring-blue-500 dark:hover:border-gray-600 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:focus:border-yellow-500 dark:focus:ring-yellow-500'
+                  : 'bg-white border-blue-200 hover:border-blue-300 focus:border-blue-500 focus:ring-blue-500 dark:hover:border-gray-600 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:focus:border-yellow-500 dark:focus:ring-yellow-500'
               "
             />
             <label
               for="name"
-              class="peer-autofill:-top-4 peer-autofill:left-0 text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
+              class="peer-autofill:-top-4 peer-autofill:left-0 text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-500 dark:peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
               >Name</label
             >
             <span
@@ -60,12 +62,12 @@
                   contactForm.get('email')?.getError('email')) &&
                 formSubmited
                   ? 'border-red-300 hover:border-red-300 focus:border-red-300 bg-red-50 dark:border-red-500 dark:hover:border-red-500 dark:focus:border-red-500 dark:bg-slate-900'
-                  : 'bg-blue-50 border-blue-200 hover:border-blue-300 focus:border-blue-500 focus:ring-blue-500 dark:hover:border-gray-600 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:focus:border-yellow-500 dark:focus:ring-yellow-500'
+                  : 'bg-white border-blue-200 hover:border-blue-300 focus:border-blue-500 focus:ring-blue-500 dark:hover:border-gray-600 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:focus:border-yellow-500 dark:focus:ring-yellow-500'
               "
             />
             <label
               for="email"
-              class="peer-autofill:-top-4 peer-autofill:left-0 text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
+              class="peer-autofill:-top-4 peer-autofill:left-0 text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-500 dark:peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
               >Email Address</label
             >
             <span
@@ -95,12 +97,12 @@
               [ngClass]="
                 contactForm.get('message')?.getError('required') && formSubmited
                   ? 'border-red-300 hover:border-red-300 focus:border-red-300 bg-red-50 dark:border-red-500 dark:hover:border-red-500 dark:focus:border-red-500 dark:bg-slate-900'
-                  : 'bg-blue-50 border-blue-200 hover:border-blue-300 focus:border-blue-500 focus:ring-blue-500 dark:hover:border-gray-600 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:focus:border-yellow-500 dark:focus:ring-yellow-500'
+                  : 'bg-white border-blue-200 hover:border-blue-300 focus:border-blue-500 focus:ring-blue-500 dark:hover:border-gray-600 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-300 dark:focus:border-yellow-500 dark:focus:ring-yellow-500'
               "
             ></textarea>
             <label
               for="message"
-              class="peer-autofill:-top-4 peer-autofill:left-0 text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-6 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
+              class="peer-autofill:-top-4 peer-autofill:left-0 text-gray-800 font-semibold absolute -top-4 left-0 -translate-y-1/2 text-sm peer-placeholder-shown:top-6 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-500 dark:peer-placeholder-shown:text-gray-400 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base transition-all peer-focus:-top-4 peer-focus:left-0 pointer-events-none peer-focus:font-semibold peer-focus:text-gray-800 peer-focus:text-sm dark:peer-focus:text-gray-200 dark:text-gray-200"
               >Message</label
             >
             <span
@@ -141,7 +143,7 @@
               [ngClass]="
                 sendingMessage
                   ? 'dark:text-gray-950 text-white'
-                  : 'text-gray-400 dark:text-gray-400'
+                  : 'text-gray-600 dark:text-gray-200'
               "
               class="text-start w-32 pl-2 pr-4 py-3 bg-transparent rounded-tr-lg rounded-br-lg z-0 group-hover:text-white transition-all dark:group-hover:text-gray-950"
               >{{ sendingMessage ? "Sending..." : "Send message" }}</span
@@ -149,12 +151,14 @@
           </button>
         </form>
         <div
-          class="mt-12 col-span-12 md:col-span-5 md:col-start-8 h-min p-5 rounded-xl bg-white dark:bg-gray-700 shadow-sm dark:shadow-none"
+          class="mt-12 col-span-12 md:col-span-5 md:col-start-8 h-min p-5 rounded-xl dark:bg-gradient-to-tr dark:bg-blue-600/10 shadow-sm dark:shadow-none relative bg-white"
         >
           <p class="font-semibold text-gray-600 text-lg dark:text-gray-300">
             You can also contact me through my social account.
           </p>
-          <div class="flex items-center justify-start mt-3 text-blue-500">
+          <div
+            class="flex items-center justify-start mt-3 text-blue-600 dark:text-yellow-500"
+          >
             <img
               class="w-12 h-12 pointer-events-none"
               src="../../../../../assets/images/linkedin.svg"
@@ -173,7 +177,7 @@
             ></span>
             <p class="text-center relative z-0 bg-transparent">
               <span
-                class="font-bold text-blue-600 text-lg p-3 rounded-full bg-white dark:bg-gray-700 dark:text-yellow-600"
+                class="font-bold text-blue-600 text-lg p-3 rounded-full bg-white dark:bg-[#202f49] dark:text-yellow-600"
               >
                 OR
               </span>
@@ -183,7 +187,7 @@
             Directly message me through email.
           </p>
           <div
-            class="flex items-center justify-between bg-blue-50 dark:bg-slate-900 border-2 border-blue-200 dark:border-gray-600 overflow-hidden rounded-md text-gray-500 dark:text-gray-400 tracking-wider mt-3"
+            class="flex items-center justify-between bg-blue-50 dark:bg-slate-900 border-2 border-blue-200 dark:border-gray-600 overflow-hidden rounded-md text-gray-600 dark:text-gray-400 tracking-wider mt-3"
           >
             <a
               href="mailto:i.am.arcayna@gmail.com"

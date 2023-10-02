@@ -2,14 +2,14 @@
   class="flex items-center justify-end gap-5 pr-5 border-r-2 dark:border-gray-500 border-gray-300"
 >
   <button
-    class="text-gray-400 dark:text-gray-500 cursor-pointer font-semibold dark:hover:text-gray-400 hover:text-gray-500 group px-2"
+    class="text-gray-500 dark:text-gray-400 cursor-pointer font-semibold dark:hover:text-gray-300 hover:text-gray-600 group px-2"
     (click)="scrollIntoView(menu.url)"
     *ngFor="let menu of navigationMenus"
   >
     <span
       *ngIf="activeSection | async as active"
       [ngClass]="{
-        'dark:text-gray-200 text-gray-950': active === menu.url
+        'dark:text-gray-200 text-blue-700': active === menu.url
       }"
       >{{ menu.menu }}</span
     >

@@ -1,19 +1,21 @@
 <div id="about" class="scroll-mt-14">
   <div class="max-w-screen-2xl mx-auto h-auto pt-5 pb-6 px-4 md:px-6 lg:px-10">
-    <div class="flex flex-col md:flex-row gap-10">
-      <div class="mb-10 mt-5 py-1 flex-auto basis-3/5 md:mr-28">
+    <div class="flex flex-col md:flex-row md:gap-10">
+      <div class="mb-10 mt-5 py-1 flex-auto basis-3/5">
         <p
           class="font-bold uppercase tracking-widest text-sm text-blue-500 dark:text-yellow-500"
         >
           About me
         </p>
-        <p class="font-bold text-gray-700 text-2xl mt-1 dark:text-gray-200">
+        <p
+          class="font-bold text-gray-700 text-2xl mt-1 dark:text-gray-200 md:text-3xl"
+        >
           Wanna know something interesting about me?
         </p>
-        <p class="mt-2 text-gray-700 leading-7 dark:text-gray-300">
+        <p class="mt-2 text-gray-700 leading-8 dark:text-gray-300">
           {{ aboutMe.about }}
         </p>
-        <p class="mt-3 text-gray-700 leading-7 dark:text-gray-300">
+        <p class="mt-4 text-gray-700 leading-8 dark:text-gray-300">
           {{ aboutMe.about }}
         </p>
       </div>
@@ -26,40 +28,65 @@
       </div>
     </div>
     <!-- Experiences -->
-    <div class="mb-10">
+    <div class="md:mx-5 my-10">
       <span
         class="w-10 h-2 bg-blue-500 dark:bg-yellow-500 rounded-full block"
       ></span>
-      <p class="font-bold text-gray-700 text-lg dark:text-gray-200 mt-1">
+      <p class="font-bold text-gray-700 text-xl dark:text-gray-200 mt-1">
         See my work experiences.
       </p>
-      <p class="mt-2 text-gray-700 leading-7 dark:text-gray-300">My work is</p>
-      <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
         <div
-          class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg"
+          class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg relative overflow-hidden dark:bg-gradient-to-b dark:from-blue-600/10"
           *ngFor="let experience of aboutMe.experiences"
         >
-          <p class="text-gray-800 dark:text-gray-300 font-semibold text-lg">
+          <p class="text-gray-800 dark:text-gray-200 font-semibold text-lg">
             {{ experience.title }}
           </p>
           <p class="text-blue-500 dark:text-yellow-500">
             {{ experience.company }}
           </p>
-          <p class="text-gray-700 dark:text-gray-400">
+          <p class="text-gray-700 dark:text-gray-300">
             {{ experience.location }}
           </p>
-          <p class="text-gray-700 dark:text-gray-400">
-            {{ experience.start_date }}
+          <p class="text-gray-700 dark:text-gray-300">
+            <span>
+              {{ experience.start_date | date : "MMMM, yyyy" }}
+            </span>
+            <span class="font-bold"> - </span>
+            <span>
+              {{
+                experience.end_date === "Present"
+                  ? "Present"
+                  : (experience.end_date | date : "MMMM, yyyy")
+              }}
+            </span>
+            <span> • </span>
+            <span>{{ experience.duration }}</span>
           </p>
-          <p class="text-gray-700 dark:text-gray-400">
-            {{ experience.end_date }}
-          </p>
-          <p class="text-gray-700 dark:text-gray-400">
+          <p class="text-gray-700 dark:text-gray-300 mt-5 leading-7">
             {{ experience.description }}
           </p>
-          <p class="text-gray-700 dark:text-gray-400">
-            {{ experience.key_achievement }}
-          </p>
+          <div
+            class="mt-5 p-3 bg-yellow-400/70 rounded-lg relative shadow-md dark:bg-blue-600/30"
+          >
+            <p class="font-semibold text-gray-800 dark:text-gray-100">
+              Key Achievement
+            </p>
+            <img
+              src="../../../../../assets/images/pin.svg"
+              alt="Pin icon"
+              class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75"
+            />
+            <img
+              src="../../../../../assets/images/pin.svg"
+              alt="Pin icon"
+              class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75 rotate-[15deg] opacity-30 origin-bottom-left"
+            />
+            <p class="text-gray-700 dark:text-gray-200 mt-2 leading-7">
+              {{ experience.key_achievement }}
+            </p>
+          </div>
         </div>
       </div>
     </div>

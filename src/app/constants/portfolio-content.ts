@@ -101,6 +101,7 @@ export const aboutMe = {
       key_achievement: [
         ' Successfully led the development and launch of a sophisticated e-commerce platform, resulting in a 150% increase in online sales within the first six months of deployment.',
       ],
+      duration: '6 mos',
     },
     {
       title: 'Design Engineer I',
@@ -108,10 +109,12 @@ export const aboutMe = {
       location: 'Balamban, Cebu, Philippines',
       start_date: '2019-10-15',
       end_date: '2023-05-12',
-      description: 'Collaborated with the design team on user interface...',
+      description:
+        'As a Electrical Design Engineer, my main role is to design/create detailed plans that will be used by the installation team to implement the designs. This also involves, working with other engineering teams to ensure that designs are optimized and error prone.',
       key_achievement: [
-        'Created desktop application using VB.NET for the company that automates repetitive tasks resulting in a significant increase in productivity and efficiency.',
+        'Created several custom applications using VB.net that automate repetitive task in our team, resulting in a significant increase of productivity and efficiency.',
       ],
+      duration: '3 yrs 8 mos',
     },
   ],
 };
@@ -124,9 +127,9 @@ export const projects = [
       'My personal website serves as a comprehensive showcase of my skills and achievements throughout my career. Visitors can explore the projects, view the source code on GitHub, and even try out live demos.',
     technologies: ['Angular', 'Laravel', 'Tailwind', 'MySql'],
     thumbnail_mobile: '',
-    thumbnail_desktop: '',
-    github_link: '',
-    demo_link: '',
+    thumbnail_desktop: 'project_1.jpg',
+    github_link: 'https://github.com/iamarcayna',
+    demo_link: 'https://github.com/iamarcayna',
   },
   {
     id: 2,
@@ -135,9 +138,9 @@ export const projects = [
       'The e-commerce web application I developed offers a seamless online shopping experience. Users can browse a wide range of electronic products, add items to their shopping cart, and securely complete their purchases.',
     technologies: ['React', 'Spring Boot', 'Material UI', 'MongoDB'],
     thumbnail_mobile: '',
-    thumbnail_desktop: '',
-    github_link: '',
-    demo_link: '',
+    thumbnail_desktop: 'project_2.jpg',
+    github_link: 'https://github.com/iamarcayna',
+    demo_link: 'https://github.com/iamarcayna',
   },
 ];
 

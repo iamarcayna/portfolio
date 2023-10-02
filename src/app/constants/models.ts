@@ -23,4 +23,5 @@ export interface Experience {
   end_date: string;
   description: string;
   key_achievement: Array<string>;
+  duration: string;
 }

@@ -2,7 +2,13 @@
   class="md:justify-between md:py-5 md:flex md:items-start mb-10 md:mb-36 shadow-md md:shadow-none rounded-2xl md:rounded-none overflow-hidden"
   [ngClass]="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
 >
-  <div class="flex-1 aspect-video bg-gray-100 dark:bg-gray-600"></div>
+  <div class="flex-1 aspect-video">
+    <img
+      [src]="'../../../../../../assets/images/' + project.thumbnail_desktop"
+      [alt]="project.thumbnail_desktop"
+      class="w-full aspect-video md:rounded-lg"
+    />
+  </div>
   <div
     class="p-5 flex-1 md:p-0"
     [ngClass]="project.id % 2 === 0 ? 'md:pr-8' : 'md:pl-8'"
@@ -23,7 +29,7 @@
     <p
       (click)="project_description.classList.add('line-clamp-3')"
       #project_description
-      class="dark:text-gray-300 text-gray-700 leading-7 text-justify line-clamp-3 mt-2 md:line-clamp-none"
+      class="dark:text-gray-300 text-gray-700 leading-7 text-left line-clamp-3 mt-2 md:line-clamp-none"
     >
       {{ project.description }}
     </p>
@@ -55,7 +61,7 @@
       <a
         [href]="project.demo_link"
         target="_blank"
-        class="hover:bg-opacity-90 dark:hover:bg-opacity-95 px-4 py-2 border dark:border-yellow-500 dark:bg-yellow-500 bg-blue-500 border-blue-500 rounded-lg flex items-center text-white dark:text-gray-950 gap-2 justify-center cursor-pointer transition-colors"
+        class="hover:bg-opacity-90 dark:hover:bg-opacity-95 px-4 py-2 border dark:border-yellow-500 dark:bg-yellow-500 bg-blue-600 border-blue-600 rounded-lg flex items-center text-white dark:text-gray-950 gap-2 justify-center cursor-pointer transition-colors"
       >
         <img
           src="../../../../../../assets/images/open-link.svg"
