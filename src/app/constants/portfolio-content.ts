@@ -86,8 +86,9 @@ export const contactInfo = {
 };
 
 export const aboutMe = {
-  about:
-    "I'm Reymond, I started my career as a Electrical Design Engineer. During that period, I develop an interest in creating software. After 3 years of being a Design Enginner. I decide to take the leap and pursue my passion for software. Now, I'm a pasionate Full-stack Web Developer. I've gain new skills working in the industry and also by studying in my free time.",
+  about_first:
+    "Hi, I'm Reymond, I started my career as a Electrical Design Engineer. I worked in a Japanese Ship-building company where I practice my electrical design skills. In this company they have a 'Kaizen Culture' where employees take initiative to improve the proccess of the company. I found it interesting so I used my small background on programming to automate several process in my team. During this period, I develop an interest in creating softwares. After 3 years, I decide to pursue my interest and took several short courses to significantly improve my programming skills.",
+  about_second: 'Now, I completely shifted into software engineering',
   hobbies: ['Singing', 'Gaming', 'Hanging-out with friends', 'Cooking'],
   experiences: [
     {
@@ -97,7 +98,7 @@ export const aboutMe = {
       start_date: '2023-07-03',
       end_date: 'Present',
       description:
-        'As a Fullstack Web Developer at [Company Name], my role is pivotal in crafting dynamic and user-centric web applications that align with the company mission and values.',
+        'As a Fullstack Web Developer, my primary responsibility is to design, develop, and maintain web applications that are both dynamic and user-centric. I also collaborate closely with cross-functional teams, including fellow developers, to ensure that our web applications meet technical requirements.',
       key_achievement: [
         ' Successfully led the development and launch of a sophisticated e-commerce platform, resulting in a 150% increase in online sales within the first six months of deployment.',
       ],
@@ -110,7 +111,7 @@ export const aboutMe = {
       start_date: '2019-10-15',
       end_date: '2023-05-12',
       description:
-        'As a Electrical Design Engineer, my main role is to design/create detailed plans that will be used by the installation team to implement the designs. This also involves, working with other engineering teams to ensure that designs are optimized and error prone.',
+        'As a Electrical Design Engineer, my primary responsibility is to design and create detailed plans that will be used by the installation team to implement the designs. This also involves collaborating closely with cross-functional teams to ensure that our designs are optimized and error prone.',
       key_achievement: [
         'Created several custom applications using VB.net that automate repetitive task in our team, resulting in a significant increase of productivity and efficiency.',
       ],

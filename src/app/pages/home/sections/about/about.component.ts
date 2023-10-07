@@ -3,7 +3,8 @@ import { Experience } from 'src/app/constants/models';
 import { aboutMe } from 'src/app/constants/portfolio-content';
 
 interface AboutMe {
-  about: string;
+  about_first: string;
+  about_second: string;
   hobbies: Array<string>;
   experiences: Array<Experience>;
 }
