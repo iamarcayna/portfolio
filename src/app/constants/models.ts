@@ -25,3 +25,10 @@ export interface Experience {
   key_achievement: Array<string>;
   duration: string;
 }
+
+export interface Certificate {
+  title: string;
+  link: string;
+  platform: string;
+  logo: string;
+}

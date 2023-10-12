@@ -118,6 +118,32 @@ export const aboutMe = {
       duration: '3 yrs 8 mos',
     },
   ],
+  certificates: [
+    {
+      title: 'Java Programming: Principles of Software Design',
+      link: 'https://coursera.org/verify/MLD25Y7NGERV',
+      platform: 'Coursera',
+      logo: 'coursera.svg',
+    },
+    {
+      title: 'Java Programming: Arrays, Lists, and Structured Data',
+      link: 'https://coursera.org/verify/HM94FM7ATF9V',
+      platform: 'Coursera',
+      logo: 'coursera.svg',
+    },
+    {
+      title: 'Java Programming: Solving Problems with Software',
+      link: 'https://coursera.org/verify/DWPNLNHBP5Q3',
+      platform: 'Coursera',
+      logo: 'coursera.svg',
+    },
+    {
+      title: 'Programming Foundations with Javascript, HTML and CSS',
+      link: 'https://coursera.org/verify/3BQDSVAW5CQU',
+      platform: 'Coursera',
+      logo: 'coursera.svg',
+    },
+  ],
 };
 
 export const projects = [

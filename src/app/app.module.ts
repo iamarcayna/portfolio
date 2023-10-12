@@ -25,6 +25,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { IntersectingDirective } from './directives/intersecting.directive';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { ContainerDirective } from './directives/container.directive';
+import { ExperienceComponent } from './pages/home/sections/about/experience/experience.component';
+import { CertificatesComponent } from './pages/home/sections/about/certificates/certificates.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { ContainerDirective } from './directives/container.directive';
     IntersectingDirective,
     ContainerDirective,
     SnackbarComponent,
+    ExperienceComponent,
+    CertificatesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

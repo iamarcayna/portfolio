@@ -27,68 +27,7 @@
         />
       </div>
     </div>
-    <!-- Experiences -->
-    <div class="md:mx-5 my-10">
-      <span
-        class="w-10 h-2 bg-blue-500 dark:bg-yellow-500 rounded-full block"
-      ></span>
-      <p class="font-bold text-gray-700 text-xl dark:text-gray-200 mt-1">
-        See my work experiences.
-      </p>
-      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
-        <div
-          class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg relative overflow-hidden dark:bg-gradient-to-b dark:from-blue-600/10"
-          *ngFor="let experience of aboutMe.experiences"
-        >
-          <p class="text-gray-800 dark:text-gray-200 font-semibold text-lg">
-            {{ experience.title }}
-          </p>
-          <p class="text-blue-500 dark:text-yellow-500">
-            {{ experience.company }}
-          </p>
-          <p class="text-gray-700 dark:text-gray-300">
-            {{ experience.location }}
-          </p>
-          <p class="text-gray-700 dark:text-gray-300">
-            <span>
-              {{ experience.start_date | date : "MMMM, yyyy" }}
-            </span>
-            <span class="font-bold"> - </span>
-            <span>
-              {{
-                experience.end_date === "Present"
-                  ? "Present"
-                  : (experience.end_date | date : "MMMM, yyyy")
-              }}
-            </span>
-            <span> • </span>
-            <span>{{ experience.duration }}</span>
-          </p>
-          <p class="text-gray-700 dark:text-gray-300 mt-5 leading-7">
-            {{ experience.description }}
-          </p>
-          <div
-            class="mt-5 p-3 bg-yellow-400/70 rounded-lg relative shadow-md dark:bg-blue-600/30"
-          >
-            <p class="font-semibold text-gray-800 dark:text-gray-100">
-              Key Achievement
-            </p>
-            <img
-              src="../../../../../assets/images/pin.svg"
-              alt="Pin icon"
-              class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75"
-            />
-            <img
-              src="../../../../../assets/images/pin.svg"
-              alt="Pin icon"
-              class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75 rotate-[15deg] opacity-30 origin-bottom-left"
-            />
-            <p class="text-gray-700 dark:text-gray-200 mt-2 leading-7">
-              {{ experience.key_achievement }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-experience [experiences]="aboutMe.experiences"></app-experience>
+    <app-certificates [certificates]="aboutMe.certificates"></app-certificates>
   </div>
 </div>

@@ -1,0 +1,102 @@
+<div class="md:mx-5 my-10">
+  <span
+    class="w-10 h-2 bg-blue-500 dark:bg-yellow-500 rounded-full block"
+  ></span>
+  <p class="font-bold text-gray-700 text-xl dark:text-gray-200 mt-1">
+    See my work experiences.
+  </p>
+  <div
+    class="grid grid-cols-1 gap-24 lg:gap-5 lg:grid-cols-2 mt-5 pt-16 lg:pt-20 relative pl-16 lg:pl-0"
+  >
+    <!-- Start decorative -->
+    <div
+      class="bg-violet-600 dark:bg-violet-500 absolute lg:h-1 lg:w-full h-full w-1 rounded-full top-5 left-4 -translate-x-1/2 lg:-translate-x-0 lg:top-12 lg:left-0 -z-10 flex-col lg:flex-row flex items-center justify-between"
+    >
+      <span
+        class="block h-4 w-4 rounded-full bg-slate-100 dark:bg-gray-800"
+      ></span>
+      <span
+        class="block h-4 w-4 rounded-full bg-violet-600 dark:bg-violet-500"
+      ></span>
+    </div>
+    <!-- End decorative -->
+    <div
+      class="p-4 border border-gray-300 dark:border-gray-700 rounded-lg relative dark:bg-gradient-to-b dark:from-blue-600/10 lg:mt-6"
+      *ngFor="let experience of experiences"
+    >
+      <!-- Start decorative -->
+      <div
+        class="bg-slate-100 dark:bg-gray-800 border-4 border-violet-600 dark:border-violet-500 absolute h-8 aspect-square rounded-full -top-8 lg:-top-14 -left-16 lg:left-2 -translate-y-1/2 z-0"
+      ></div>
+      <div
+        class="bg-violet-600 dark:bg-violet-500 absolute h-10 w-1 rounded-full -left-1 -top-8 lg:-top-12 lg:left-5 lg:translate-x-1/2 -z-10 rotate-90 origin-top lg:rotate-0"
+      ></div>
+      <!-- End decorative -->
+      <p class="text-gray-800 dark:text-gray-200 font-semibold text-lg">
+        {{ experience.title }}
+      </p>
+      <p
+        class="text-gray-700 dark:text-gray-300 italic underline underline-offset-2"
+      >
+        {{ experience.company }}
+      </p>
+      <p class="text-gray-700 dark:text-gray-300">
+        {{ experience.location }}
+      </p>
+      <p
+        class="text-gray-800 text-lg font-semibold dark:text-gray-200 absolute -top-8 lg:-top-20 left-2 lg:left-14 -translate-y-1/2 z-10"
+      >
+        <span>
+          {{ experience.start_date | date : "MMMM, yyyy" }}
+        </span>
+        <span class="font-bold"> - </span>
+        <span>
+          {{
+            experience.end_date === "Present"
+              ? "Present"
+              : (experience.end_date | date : "MMMM, yyyy")
+          }}
+        </span>
+        <span> • </span>
+        <span>{{ experience.duration }}</span>
+      </p>
+      <p
+        (click)="experience_description.classList.add('line-clamp-2')"
+        #experience_description
+        class="text-gray-700 dark:text-gray-300 mt-5 leading-7 line-clamp-2"
+      >
+        {{ experience.description }}
+      </p>
+      <button
+        (click)="experience_description.classList.remove('line-clamp-2')"
+        class="text-blue-500 dark:text-yellow-500 mt-1"
+        *ngIf="
+          experience_description.offsetHeight <
+          experience_description.scrollHeight
+        "
+      >
+        Read more
+      </button>
+      <div
+        class="mt-5 p-3 bg-yellow-400/70 rounded-lg relative shadow-md dark:bg-blue-600/30"
+      >
+        <p class="font-semibold text-gray-800 dark:text-gray-100">
+          Key Achievement
+        </p>
+        <img
+          src="../../../../../assets/images/pin.svg"
+          alt="Pin icon"
+          class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75"
+        />
+        <img
+          src="../../../../../assets/images/pin.svg"
+          alt="Pin icon"
+          class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75 rotate-[15deg] opacity-30 origin-bottom-left"
+        />
+        <p class="text-gray-700 dark:text-gray-200 mt-2 leading-7">
+          {{ experience.key_achievement }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
