@@ -87,8 +87,9 @@ export const contactInfo = {
 
 export const aboutMe = {
   about_first:
-    "Hi, I'm Reymond, I started my career as a Electrical Design Engineer. I worked in a Japanese Ship-building company where I practice my electrical design skills. In this company they have a 'Kaizen Culture' where employees take initiative to improve the proccess of the company. I found it interesting so I used my small background on programming to automate several process in my team. During this period, I develop an interest in creating softwares. After 3 years, I decide to pursue my interest and took several short courses to significantly improve my programming skills.",
-  about_second: 'Now, I completely shifted into software engineering',
+    "Hi, I'm Reymond, My journey began in the challenging environment of a shipbuilding company, where I honed my programming skills to enhance automation processes and optimize electrical systems. This hands-on experience instilled in me a deep appreciation for the importance of efficient, user-friendly solutions.",
+  about_second:
+    "With a strong foundation in coding and a passion for crafting innovative digital experiences, I've seamlessly transitioned into the role of a full-stack web developer. Drawing from my engineering background, I approach web development projects with a meticulous eye for detail and a commitment to creating robust, scalable solutions. My career shift embodies my unwavering dedication to learning, growth, and the pursuit of excellence in the ever-evolving landscape of technology.",
   hobbies: ['Singing', 'Gaming', 'Hanging-out with friends', 'Cooking'],
   experiences: [
     {

@@ -1,6 +1,6 @@
 <div id="about" class="scroll-mt-14">
   <div class="max-w-screen-2xl mx-auto h-auto pt-5 pb-6 px-4 md:px-6 lg:px-10">
-    <div class="flex flex-col md:flex-row md:gap-10">
+    <div class="flex flex-col lg:flex-row lg:gap-10">
       <div class="mb-10 mt-5 py-1 flex-auto basis-3/5">
         <p
           class="font-bold uppercase tracking-widest text-sm text-blue-500 dark:text-yellow-500"
@@ -12,12 +12,23 @@
         >
           Wanna know something interesting about me?
         </p>
-        <p class="mt-2 text-gray-700 leading-8 dark:text-gray-300">
+        <p class="mt-3 text-gray-700 leading-8 text-justify dark:text-gray-300">
           {{ aboutMe.about_first }}
         </p>
-        <p class="mt-4 text-gray-700 leading-8 dark:text-gray-300">
+        <p
+          (click)="about_me_second.classList.add('line-clamp-3')"
+          #about_me_second
+          class="mt-4 text-gray-700 leading-8 text-justify dark:text-gray-300 line-clamp-3 lg:line-clamp-none"
+        >
           {{ aboutMe.about_second }}
         </p>
+        <button
+          (click)="about_me_second.classList.remove('line-clamp-3')"
+          class="text-blue-500 dark:text-yellow-500 mt-1"
+          *ngIf="about_me_second.offsetHeight < about_me_second.scrollHeight"
+        >
+          Read more
+        </button>
       </div>
       <div class="flex items-center justify-center flex-auto basis-2/5">
         <img
