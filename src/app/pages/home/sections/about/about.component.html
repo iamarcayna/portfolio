@@ -31,11 +31,9 @@
         </button>
       </div>
       <div class="flex items-center justify-center flex-auto basis-2/5">
-        <img
-          src="../../../../../assets/images/hero-image.svg"
-          alt="profile picture"
-          class="h-52 w-52 pointer-events-none"
-        />
+        <div
+          class="h-52 w-52 pointer-events-none bg-[url('./assets/images/hero-image.webp')] bg-no-repeat bg-cover bg-top"
+        ></div>
       </div>
     </div>
     <app-experience [experiences]="aboutMe.experiences"></app-experience>
