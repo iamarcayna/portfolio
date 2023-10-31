@@ -8,6 +8,7 @@ import {
 import { ThemeSelectorService } from './services/theme.service';
 import { SnackbarService } from './services/snackbar.service';
 import { ContainerDirective } from './directives/container.directive';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    AOS.init({
+      easing: 'ease-in-out-cubic',
+      delay: 150,
+      offset: 250,
+      duration: 1000,
+      once: true,
+    });
+    setTimeout(() => {
+      AOS.refresh();
+    });
     const theme = this.themeService.getTheme();
     if (theme) {
       this.themeService.setTheme(theme);
