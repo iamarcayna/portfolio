@@ -99,11 +99,11 @@ export const aboutMe = {
       start_date: '2023-07-03',
       end_date: 'Present',
       description:
-        'As a Fullstack Web Developer, my primary responsibility is to design, develop, and maintain web applications that are both dynamic and user-centric. I also collaborate closely with cross-functional teams, including fellow developers, to ensure that our web applications meet technical requirements.',
+        'As a Fullstack Web Developer, my primary responsibility is to translate designs and wireframes into high-quality code using current technologies, manage software updates, patches, and bug fixes to enhance overall performance, and collaborate with cross-functional teams to define, design, and implement new features.',
       key_achievement: [
-        ' Successfully led the development and launch of a sophisticated e-commerce platform, resulting in a 150% increase in online sales within the first six months of deployment.',
+        'Quickly adapted to a time-sensitive project with numerous pending tasks and effectively prioritize them, resulting in on-time project delivery.',
       ],
-      duration: '6 mos',
+      duration: '4 mos',
     },
     {
       title: 'Design Engineer I',
@@ -114,7 +114,7 @@ export const aboutMe = {
       description:
         'As a Electrical Design Engineer, my primary responsibility is to design and create detailed plans that will be used by the installation team to implement the designs. This also involves collaborating closely with cross-functional teams to ensure that our designs are optimized and error prone.',
       key_achievement: [
-        'Created several custom applications using VB.net that automate repetitive task in our team, resulting in a significant increase of productivity and efficiency.',
+        'Created several custom applications using VB.net that automate repetitive task, resulting in a significant increase of productivity and efficiency.',
       ],
       duration: '3 yrs 8 mos',
     },

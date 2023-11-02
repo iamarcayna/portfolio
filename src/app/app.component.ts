@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
       easing: 'ease-in-out-cubic',
       delay: 50,
       offset: 250,
-      duration: 1000,
+      duration: 500,
       once: true,
       debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
       throttleDelay: 100, // the delay on throttle used while scrolling the page (advanced)

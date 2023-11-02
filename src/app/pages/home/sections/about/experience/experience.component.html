@@ -7,99 +7,93 @@
       See my work experiences.
     </p>
   </div>
-  <div class="grid grid-cols-4 gap-24 mt-5 pt-16 relative pl-16">
-    <!-- Start decorative -->
+  <div class="grid grid-cols-12 mt-6">
     <div
-      data-aos="fade-up"
-      class="bg-blue-500 dark:bg-yellow-500 absolute h-full w-1 rounded-full top-5 left-4 -translate-x-1/ -z-10 flex-col flex items-center justify-between"
-    >
-      <span class="block h-4 w-4 rounded-full bg-white dark:bg-gray-800"></span>
-      <span
-        class="block h-4 w-4 rounded-full bg-blue-500 dark:bg-yellow-500"
-      ></span>
-    </div>
-    <!-- End decorative -->
-    <div
-      data-aos="fade-up"
-      class="p-4 col-span-4 lg:col-span-3 border shadow-md dark:shadow-none border-gray-300 dark:border-gray-700 rounded-lg relative dark:bg-gradient-to-b dark:from-blue-600/10"
       *ngFor="let experience of experiences"
+      class="col-span-12 lg:col-span-10"
     >
-      <!-- Start decorative -->
-      <div
-        class="flex items-center justify-center bg-slate-100 dark:bg-gray-800 border-4 border-blue-500 dark:border-yellow-500 absolute h-8 aspect-square rounded-full -top-8 -left-16 -translate-y-1/2 z-0"
-      >
+      <div data-aos="fade-right" class="flex items-center justify-start my-5">
+        <!-- Start decorative -->
+        <div
+          class="flex items-center justify-center bg-slate-100 dark:bg-gray-800 border-4 border-blue-500 dark:border-yellow-500 h-8 aspect-square rounded-full"
+        >
+          <span
+            class="block h-3 aspect-square rounded-full bg-blue-500 dark:bg-yellow-500"
+          ></span>
+        </div>
         <span
-          class="block h-3 aspect-square rounded-full bg-blue-500 dark:bg-yellow-500"
+          class="bg-blue-500 dark:bg-yellow-500 h-1 w-10 rounded-full mr-2 -translate-x-1"
         ></span>
+        <!-- End decorative -->
+        <p class="text-gray-800 text-lg font-semibold dark:text-gray-200">
+          <span>
+            {{ experience.start_date | date : "MMMM, yyyy" }}
+          </span>
+          <span class="font-bold"> - </span>
+          <span>
+            {{
+              experience.end_date === "Present"
+                ? "Present"
+                : (experience.end_date | date : "MMMM, yyyy")
+            }}
+          </span>
+          <span> • </span>
+          <span>{{ experience.duration }}</span>
+        </p>
       </div>
       <div
-        class="bg-blue-500 dark:bg-yellow-500 absolute h-10 w-1 rounded-full -left-1 -top-8 -z-10 rotate-90 origin-top"
-      ></div>
-      <!-- End decorative -->
-      <p class="text-gray-800 dark:text-gray-200 font-semibold text-lg">
-        {{ experience.title }}
-      </p>
-      <p
-        class="text-gray-700 dark:text-gray-300 italic underline underline-offset-2"
+        data-aos="fade-up"
+        class="p-4 mb-5 ml-10 border shadow-md dark:shadow-none border-gray-300 dark:border-gray-700 rounded-lg dark:bg-gradient-to-b dark:from-blue-600/10"
       >
-        {{ experience.company }}
-      </p>
-      <p class="text-gray-700 dark:text-gray-300">
-        {{ experience.location }}
-      </p>
-      <p
-        class="text-gray-800 text-lg font-semibold dark:text-gray-200 absolute -top-8 left-2 -translate-y-1/2 z-10"
-      >
-        <span>
-          {{ experience.start_date | date : "MMMM, yyyy" }}
-        </span>
-        <span class="font-bold"> - </span>
-        <span>
-          {{
-            experience.end_date === "Present"
-              ? "Present"
-              : (experience.end_date | date : "MMMM, yyyy")
-          }}
-        </span>
-        <span> • </span>
-        <span>{{ experience.duration }}</span>
-      </p>
-      <p
-        (click)="experience_description.classList.add('line-clamp-2')"
-        #experience_description
-        class="text-gray-700 dark:text-gray-300 mt-5 leading-7 line-clamp-2"
-      >
-        {{ experience.description }}
-      </p>
-      <button
-        (click)="experience_description.classList.remove('line-clamp-2')"
-        class="text-blue-500 dark:text-yellow-500 mt-1"
-        *ngIf="
-          experience_description.offsetHeight <
-          experience_description.scrollHeight
-        "
-      >
-        Read more
-      </button>
-      <div
-        class="mt-5 p-3 bg-yellow-400/60 rounded-lg relative shadow-md dark:bg-blue-600/30"
-      >
-        <p class="font-semibold text-gray-800 dark:text-gray-100">
-          Key Achievement
+        <p class="text-gray-800 dark:text-gray-200 font-semibold text-lg">
+          {{ experience.title }}
         </p>
-        <img
-          src="../../../../../assets/images/pin.svg"
-          alt="Pin icon"
-          class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75"
-        />
-        <img
-          src="../../../../../assets/images/pin.svg"
-          alt="Pin icon"
-          class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75 rotate-[15deg] opacity-30 origin-bottom-left"
-        />
-        <p class="text-gray-700 dark:text-gray-200 mt-2 leading-7">
-          {{ experience.key_achievement }}
+        <p
+          class="text-gray-700 dark:text-gray-300 italic underline underline-offset-2"
+        >
+          {{ experience.company }}
         </p>
+        <p class="text-gray-700 dark:text-gray-300">
+          {{ experience.location }}
+        </p>
+
+        <p
+          (click)="experience_description.classList.add('line-clamp-2')"
+          #experience_description
+          class="text-gray-700 dark:text-gray-300 mt-5 leading-7 line-clamp-2"
+        >
+          {{ experience.description }}
+        </p>
+        <button
+          (click)="experience_description.classList.remove('line-clamp-2')"
+          class="text-blue-500 dark:text-yellow-500 mt-1"
+          *ngIf="
+            experience_description.offsetHeight <
+            experience_description.scrollHeight
+          "
+        >
+          Read more
+        </button>
+        <div
+          class="mt-5 p-3 bg-blue-600/20 rounded-lg relative shadow-md dark:bg-blue-600/30"
+        >
+          <p class="font-semibold text-gray-800 dark:text-gray-100">
+            Key Achievement
+          </p>
+          <img
+            src="../../../../../assets/images/pin.svg"
+            alt="Pin icon"
+            class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75"
+          />
+          <img
+            src="../../../../../assets/images/pin.svg"
+            alt="Pin icon"
+            class="h-10 w-10 pointer-events-none absolute -top-3 -right-1 dark:invert dark:brightness-75 rotate-[15deg] opacity-30 origin-bottom-left"
+          />
+          <p class="text-gray-700 dark:text-gray-200 mt-2 leading-7">
+            {{ experience.key_achievement }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
