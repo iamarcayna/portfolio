@@ -87,9 +87,9 @@ export const contactInfo = {
 
 export const aboutMe = {
   about_first:
-    "Hi, I'm Reymond, My journey began in the challenging environment of a shipbuilding company, where I honed my programming skills to enhance automation processes and optimize electrical systems. This hands-on experience instilled in me a deep appreciation for the importance of efficient, user-friendly solutions.",
+    "Hello, I'm Reymond. I began my journey in the shipbuilding industry, where I had the opportunity to refine my programming skills. While there, I have managed to make automation processes better and improve team performance. This hands-on experience taught me the value of creating efficient and user-friendly solutions.",
   about_second:
-    "With a strong foundation in coding and a passion for crafting innovative digital experiences, I've seamlessly transitioned into the role of a full-stack web developer. Drawing from my engineering background, I approach web development projects with a meticulous eye for detail and a commitment to creating robust, scalable solutions. My career shift embodies my unwavering dedication to learning, growth, and the pursuit of excellence in the ever-evolving landscape of technology.",
+    'Now, as a full-stack web developer, I combine my coding knowledge and passion for crafting innovative digital experiences. I bring a keen attention to detail and a commitment to building reliable and scalable solutions, drawing from my engineering background. My career transition reflects my dedication to continuous learning, growth, and the pursuit of excellence in the ever-changing world of technology.',
   hobbies: ['Singing', 'Gaming', 'Hanging-out with friends', 'Cooking'],
   experiences: [
     {
@@ -150,23 +150,23 @@ export const aboutMe = {
 export const projects = [
   {
     id: 1,
+    title: 'Simple Movie App Clone',
+    description:
+      'A simple movie app that allows user to browse movies, watch movie trailers and add comments.',
+    technologies: ['React', 'Spring Boot', 'Material UI', 'MongoDB'],
+    thumbnail_mobile: '',
+    thumbnail_desktop: 'project_2.jpg',
+    github_link: 'https://github.com/iamarcayna/movie-app',
+    demo_link: 'https://movie-app-iamarcayna.vercel.app/',
+  },
+  {
+    id: 2,
     title: 'Portfolio Profile for a Company',
     description:
       'My personal website serves as a comprehensive showcase of my skills and achievements throughout my career. Visitors can explore the projects, view the source code on GitHub, and even try out live demos.',
     technologies: ['Angular', 'Laravel', 'Tailwind', 'MySql'],
     thumbnail_mobile: '',
     thumbnail_desktop: 'project_1.jpg',
-    github_link: 'https://github.com/iamarcayna',
-    demo_link: 'https://github.com/iamarcayna',
-  },
-  {
-    id: 2,
-    title: 'E-Commerce for Dota Items',
-    description:
-      'The e-commerce web application I developed offers a seamless online shopping experience. Users can browse a wide range of electronic products, add items to their shopping cart, and securely complete their purchases.',
-    technologies: ['React', 'Spring Boot', 'Material UI', 'MongoDB'],
-    thumbnail_mobile: '',
-    thumbnail_desktop: 'project_2.jpg',
     github_link: 'https://github.com/iamarcayna',
     demo_link: 'https://github.com/iamarcayna',
   },
