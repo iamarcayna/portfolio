@@ -103,7 +103,7 @@ export const aboutMe = {
       key_achievement: [
         'Quickly adapted to a time-sensitive project with numerous pending tasks and effectively prioritize them, resulting in on-time project delivery.',
       ],
-      duration: '4 mos',
+      duration: '',
     },
     {
       title: 'Design Engineer I',
@@ -116,7 +116,7 @@ export const aboutMe = {
       key_achievement: [
         'Created several custom applications using VB.net that automate repetitive task, resulting in a significant increase of productivity and efficiency.',
       ],
-      duration: '3 yrs 8 mos',
+      duration: '',
     },
   ],
   certificates: [
