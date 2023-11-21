@@ -1,17 +1,17 @@
 <div
   data-aos="fade-up"
-  class="md:justify-between md:py-5 md:flex md:items-start mb-10 md:mb-36 shadow-md md:shadow-none rounded-2xl md:rounded-none overflow-hidden"
+  class="md:justify-between md:py-5 md:flex md:items-start mb-10 md:mb-36 rounded-2xl md:rounded-none overflow-hidden"
   [ngClass]="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
 >
   <div class="flex-1 aspect-video">
     <img
       [src]="'../../../../../../assets/images/' + project.thumbnail_desktop"
       [alt]="project.thumbnail_desktop"
-      class="w-full aspect-video md:rounded-lg"
+      class="w-full aspect-video"
     />
   </div>
   <div
-    class="p-5 flex-1 md:p-0"
+    class="flex-1 py-5 md:py-0"
     [ngClass]="project.id % 2 === 0 ? 'md:pr-8' : 'md:pl-8'"
   >
     <div class="flex items-center gap-3 flex-wrap">
