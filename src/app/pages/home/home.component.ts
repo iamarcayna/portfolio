@@ -1,10 +1,4 @@
-import {
-  Component,
-  HostListener,
-  OnDestroy,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { navigationMenu } from 'src/app/constants/portfolio-content';
 import { ScrollService } from 'src/app/services/scroll.service';
@@ -23,16 +17,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   activeSection!: string;
   sections!: Array<SectionStatus>;
   sectionSubscription!: Subscription;
-  smallScreen: boolean = false;
-
-  @HostListener('window:resize', [])
-  windowResize() {
-    if (window.innerWidth < 640) {
-      this.smallScreen = true;
-    } else {
-      this.smallScreen = false;
-    }
-  }
 
   ngOnInit(): void {
     this.sectionSubscription = this.scrollService.activeSection.subscribe(

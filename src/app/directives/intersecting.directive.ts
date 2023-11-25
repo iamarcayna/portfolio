@@ -15,7 +15,7 @@ import { debounceTime, Observable, Subscription } from 'rxjs';
 })
 export class IntersectingDirective implements OnInit, OnDestroy {
   @Input() root: HTMLElement | null = null;
-  @Input() rootMargin = '0px 0px 0px 0px';
+  @Input() rootMargin = '-30% 0px -65% 0px';
   @Input() threshold = 0;
   @Input() debounceTime = 0;
   @Input() isContinuous = false;

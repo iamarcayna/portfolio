@@ -17,6 +17,7 @@ module.exports = {
       animation: {
         heartbeat: "beat 1s cubic-bezier(0, 0, 0.2, 1) infinite",
         showIn: "showIn 200ms cubic-bezier(0, 0, 0.2, 1) forwards",
+        blob: "blob 7s infinite",
       },
       keyframes: {
         beat: {
@@ -37,6 +38,20 @@ module.exports = {
           "100%": {
             transform: "scale(1)",
             opacity: "1",
+          },
+        },
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(10%, -10%) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-15%, 15%) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
           },
         },
       },

@@ -150,23 +150,31 @@ export const aboutMe = {
 export const projects = [
   {
     id: 1,
-    title: 'Simple Movie App Clone',
+    title: '[Gallery] - Simple Movie App Clone',
     description:
-      'A simple movie app that allows user to browse movies, watch movie trailers and add comments.',
+      'Gallery allow users to browse movies, watch movie trailers and add comments. This app utilizes the Material UI library which provides a user-friendly interface while React takes care of the smooth browsing and keeping things organized. Try out the live demo and see for yourself.',
     technologies: ['React', 'Spring Boot', 'Material UI', 'MongoDB'],
-    thumbnail_mobile: '',
+    thumbnail_mobile: [
+      'project_2-mobile-1.jpg',
+      'project_2-mobile-2.jpg',
+      'project_2-mobile-3.jpg',
+    ],
     thumbnail_desktop: 'project_2.jpg',
     github_link: 'https://github.com/iamarcayna/movie-app',
     demo_link: 'https://movie-app-iamarcayna.vercel.app/',
   },
   {
     id: 2,
-    title: 'Portfolio Profile for a Company',
+    title: '[Shoppers]- E-Commerse App',
     description:
-      'My personal website serves as a comprehensive showcase of my skills and achievements throughout my career. Visitors can explore the projects, view the source code on GitHub, and even try out live demos.',
+      'Shoppers let users add or remove items to their cart and checkout their cart.',
     technologies: ['Angular', 'Laravel', 'Tailwind', 'MySql'],
-    thumbnail_mobile: '',
-    thumbnail_desktop: 'project_1.jpg',
+    thumbnail_mobile: [
+      'project_2-mobile-1.jpg',
+      'project_2-mobile-2.jpg',
+      'project_2-mobile-3.jpg',
+    ],
+    thumbnail_desktop: 'project_2.jpg',
     github_link: 'https://github.com/iamarcayna',
     demo_link: 'https://github.com/iamarcayna',
   },

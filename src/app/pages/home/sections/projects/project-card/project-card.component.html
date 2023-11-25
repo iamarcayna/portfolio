@@ -1,14 +1,16 @@
 <div
   data-aos="fade-up"
-  class="md:justify-between md:py-5 md:flex md:items-start mb-10 md:mb-36 rounded-2xl md:rounded-none overflow-hidden"
+  class="md:justify-between md:py-5 md:flex md:items-start mb-36 rounded-2xl md:rounded-none"
   [ngClass]="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
 >
-  <div class="flex-1 aspect-video">
-    <img
-      [src]="'../../../../../../assets/images/' + project.thumbnail_desktop"
-      [alt]="project.thumbnail_desktop"
-      class="w-full aspect-video"
-    />
+  <div class="flex-1 px-2 pt-2 pb-8 bg-black rounded-lg">
+    <div>
+      <img
+        [src]="'../../../../../../assets/images/' + project.thumbnail_desktop"
+        [alt]="project.thumbnail_desktop"
+        class="w-full aspect-auto rounded-t-md border-[1px] border-gray-800"
+      />
+    </div>
   </div>
   <div
     class="flex-1 py-5 md:py-0"
@@ -23,14 +25,14 @@
       </div>
     </div>
     <p
-      class="font-bold text-lg tracking-wider mt-2 dark:text-gray-200 text-gray-700"
+      class="font-bold text-lg tracking-wider mt-3 dark:text-gray-200 text-gray-700"
     >
       {{ project.title }}
     </p>
     <p
       (click)="project_description.classList.add('line-clamp-3')"
       #project_description
-      class="dark:text-gray-300 text-gray-700 leading-7 text-left line-clamp-3 mt-2 md:line-clamp-none"
+      class="dark:text-gray-300 text-gray-700 text-justify leading-7 line-clamp-3 mt-2 md:line-clamp-none"
     >
       {{ project.description }}
     </p>
@@ -43,9 +45,22 @@
     >
       Read more
     </button>
-
+    <div class="flex items-center justify-start gap-6 mt-4">
+      <div
+        *ngFor="let thumbnail of project.thumbnail_mobile"
+        class="p-2 rounded-2xl bg-black"
+      >
+        <div class="border-[1px] border-gray-800 rounded-xl">
+          <img
+            [src]="'../../../../../../assets/images/' + thumbnail"
+            [alt]="thumbnail"
+            class="w-full aspect-auto rounded-xl"
+          />
+        </div>
+      </div>
+    </div>
     <div
-      class="flex items-center gap-4 justify-between sm:justify-start mt-8 flex-wrap"
+      class="flex items-center gap-4 justify-between sm:justify-start mt-4 flex-wrap"
     >
       <a
         [href]="project.github_link"

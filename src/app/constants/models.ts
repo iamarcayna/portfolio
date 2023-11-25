@@ -9,7 +9,7 @@ export interface Project {
   title: string;
   description: string;
   technologies: string[];
-  thumbnail_mobile: string;
+  thumbnail_mobile: string[];
   thumbnail_desktop: string;
   github_link: string;
   demo_link: string;
