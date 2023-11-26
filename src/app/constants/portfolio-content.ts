@@ -163,21 +163,21 @@ export const projects = [
     github_link: 'https://github.com/iamarcayna/movie-app',
     demo_link: 'https://movie-app-iamarcayna.vercel.app/',
   },
-  {
-    id: 2,
-    title: '[Shoppers]- E-Commerse App',
-    description:
-      'Shoppers let users add or remove items to their cart and checkout their cart.',
-    technologies: ['Angular', 'Laravel', 'Tailwind', 'MySql'],
-    thumbnail_mobile: [
-      'project_2-mobile-1.jpg',
-      'project_2-mobile-2.jpg',
-      'project_2-mobile-3.jpg',
-    ],
-    thumbnail_desktop: 'project_2.jpg',
-    github_link: 'https://github.com/iamarcayna',
-    demo_link: 'https://github.com/iamarcayna',
-  },
+  // {
+  //   id: 2,
+  //   title: '[Shoppers]- E-Commerse App',
+  //   description:
+  //     'Shoppers let users add or remove items to their cart and checkout their cart.',
+  //   technologies: ['Angular', 'Laravel', 'Tailwind', 'MySql'],
+  //   thumbnail_mobile: [
+  //     'project_2-mobile-1.jpg',
+  //     'project_2-mobile-2.jpg',
+  //     'project_2-mobile-3.jpg',
+  //   ],
+  //   thumbnail_desktop: 'project_2.jpg',
+  //   github_link: 'https://github.com/iamarcayna',
+  //   demo_link: 'https://github.com/iamarcayna',
+  // },
 ];
 
 export const skills = [

@@ -48,7 +48,7 @@
     <div class="flex items-center justify-start gap-6 mt-4">
       <div
         *ngFor="let thumbnail of project.thumbnail_mobile"
-        class="p-2 rounded-2xl bg-black"
+        class="p-[1%] rounded-2xl bg-black"
       >
         <div class="border-[1px] border-gray-800 rounded-xl">
           <img
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div
-      class="flex items-center gap-4 justify-between sm:justify-start mt-4 flex-wrap"
+      class="flex items-center gap-4 justify-between sm:justify-start mt-6 flex-wrap"
     >
       <a
         [href]="project.github_link"
