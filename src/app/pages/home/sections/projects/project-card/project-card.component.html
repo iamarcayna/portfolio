@@ -3,12 +3,12 @@
   class="md:justify-between md:py-5 md:flex md:items-start mb-36 rounded-2xl md:rounded-none"
   [ngClass]="project.id % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'"
 >
-  <div class="flex-1 px-2 pt-2 pb-8 bg-black rounded-lg">
+  <div class="flex-1 p-2 bg-black rounded-lg">
     <div>
       <img
         [src]="'../../../../../../assets/images/' + project.thumbnail_desktop"
         [alt]="project.thumbnail_desktop"
-        class="w-full aspect-auto rounded-t-md border-[1px] border-gray-800"
+        class="w-full aspect-auto rounded-md border-[1px] border-gray-800"
       />
     </div>
   </div>

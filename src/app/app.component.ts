@@ -34,13 +34,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     AOS.init({
-      easing: 'ease-in-out-cubic',
-      delay: 50,
-      offset: 250,
-      duration: 500,
+      easing: 'ease-in-out',
+      delay: 0,
+      offset: 150,
+      duration: 400,
       once: true,
-      debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-      throttleDelay: 100, // the delay on throttle used while scrolling the page (advanced)
     });
     setTimeout(() => {
       AOS.refresh();
@@ -49,7 +47,7 @@ export class AppComponent implements OnInit {
     if (theme) {
       this.themeService.setTheme(theme);
     } else {
-      this.themeService.setTheme('dark');
+      this.themeService.setTheme('light');
     }
     this.snackBarService.setContainer(this.snackbarContainer);
   }
