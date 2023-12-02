@@ -163,21 +163,21 @@ export const projects = [
     github_link: 'https://github.com/iamarcayna/movie-app',
     demo_link: 'https://movie-app-iamarcayna.vercel.app/',
   },
-  // {
-  //   id: 2,
-  //   title: '[Shoppers]- E-Commerse App',
-  //   description:
-  //     'Shoppers let users add or remove items to their cart and checkout their cart.',
-  //   technologies: ['Angular', 'Laravel', 'Tailwind', 'MySql'],
-  //   thumbnail_mobile: [
-  //     'project_2-mobile-1.jpg',
-  //     'project_2-mobile-2.jpg',
-  //     'project_2-mobile-3.jpg',
-  //   ],
-  //   thumbnail_desktop: 'project_2.jpg',
-  //   github_link: 'https://github.com/iamarcayna',
-  //   demo_link: 'https://github.com/iamarcayna',
-  // },
+  {
+    id: 2,
+    title: '[Shoppers]- E-Commerse App',
+    description:
+      'Shoppers integrates FakeStoreAPI for a complete shopping experience. Users can browse diverse products, categorically organized, add items to a cart, and simulate a checkout process. Features include product browsing, cart management, and simulating a checkout without actual transactions, providing a feel for the process. Try out the live demo and see for yourself.',
+    technologies: ['Angular', 'FakeStoreApi', 'Tailwind'],
+    thumbnail_mobile: [
+      'project_1-mobile-1.jpg',
+      'project_1-mobile-2.jpg',
+      'project_1-mobile-3.jpg',
+    ],
+    thumbnail_desktop: 'project_1.jpg',
+    github_link: 'https://github.com/iamarcayna/e-commerce',
+    demo_link: 'https://e-commerce-iamarcayna.vercel.app/',
+  },
 ];
 
 export const skills = [

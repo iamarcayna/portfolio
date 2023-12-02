@@ -9,6 +9,7 @@ export class SkillCardComponent {
   @Input('icon') icon!: string;
   pingClass: string = '';
   pingActive: boolean = false;
+  loading: boolean = true;
 
   ping() {
     if (this.pingActive) {
@@ -20,5 +21,9 @@ export class SkillCardComponent {
       this.pingActive = false;
       this.pingClass = '';
     }, 1000);
+  }
+
+  onLoad() {
+    this.loading = false;
   }
 }

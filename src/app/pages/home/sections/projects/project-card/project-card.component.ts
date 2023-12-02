@@ -7,4 +7,10 @@ import { Project } from 'src/app/constants/models';
 })
 export class ProjectCardComponent {
   @Input('project') project!: Project;
+
+  loading: boolean = true;
+
+  onLoad() {
+    this.loading = false;
+  }
 }

@@ -7,11 +7,22 @@
     class="bg-white dark:bg-gray-900 px-7 py-3 rounded-xl flex items-center flex-col justify-center h-full"
   >
     <img
+      [hidden]="loading"
+      (load)="onLoad()"
       [src]="'../../../../../../assets/images/' + icon"
       [alt]="title"
       class="h-full aspect-square pointer-events-none"
       [ngClass]="icon === 'github.svg' ? 'dark:invert' : ''"
     />
+    <div *ngIf="loading" class="h-full w-full flex items-center justify-center">
+      <div
+        class="animate-spin inline-block w-4 h-4 border-2 border-current border-t-transparent text-blue-600 dark:text-yellow-600 rounded-full"
+        role="status"
+        aria-label="loading"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
     <p
       class="font-semibold dark:text-gray-300 text-gray-600 text-center mt-2 text-sm"
     >

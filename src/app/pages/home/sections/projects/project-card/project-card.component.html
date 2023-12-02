@@ -6,6 +6,8 @@
   <div class="flex-1 p-2 bg-black rounded-lg">
     <div>
       <img
+        [hidden]="loading"
+        (load)="onLoad()"
         [src]="'../../../../../../assets/images/' + project.thumbnail_desktop"
         [alt]="project.thumbnail_desktop"
         class="w-full aspect-auto rounded-md border-[1px] border-gray-800"
@@ -19,7 +21,7 @@
     <div class="flex items-center gap-3 flex-wrap">
       <div
         *ngFor="let stack of project.technologies"
-        class="rounded-md py-1 px-4 border border-yellow-500 dark:border-blue-600 dark:bg-blue-600 bg-yellow-400 text-sm dark:text-blue-500 text-yellow-600 bg-opacity-10 dark:bg-opacity-10"
+        class="text-xs rounded-md py-1 px-4 border border-yellow-500 dark:border-blue-600 dark:bg-blue-600 bg-yellow-400 dark:text-blue-500 text-yellow-600 bg-opacity-10 dark:bg-opacity-10"
       >
         {{ stack }}
       </div>
@@ -52,6 +54,8 @@
       >
         <div class="border-[1px] border-gray-800 rounded-xl">
           <img
+            [hidden]="loading"
+            (load)="onLoad()"
             [src]="'../../../../../../assets/images/' + thumbnail"
             [alt]="thumbnail"
             class="w-full aspect-auto rounded-xl"
