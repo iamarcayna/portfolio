@@ -114,8 +114,7 @@ export const aboutMe = {
       description:
         'Created automated Excel reports and data calculation tools using VB.NET, incorporating macros to streamline repetitive tasks and enhance workflow efficiency.',
       key_achievement: [
-        'Developed a Job load management application to track jobs, monitor man-hour consumption, and ensure timely delivery of deliverables, improving team efficiency and reducing delays.
-Education',
+        'Developed a Job load management application to track jobs, monitor man-hour consumption, and ensure timely delivery of deliverables, improving team efficiency and reducing delays.'
       ],
       duration: '',
     },
