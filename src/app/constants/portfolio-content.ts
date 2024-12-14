@@ -87,9 +87,9 @@ export const contactInfo = {
 
 export const aboutMe = {
   about_first:
-    "Hello, I'm Reymond. I began my journey in the shipbuilding industry, where I had the opportunity to refine my programming skills. While there, I have managed to make automation processes better and improve team performance. This hands-on experience taught me the value of creating efficient and user-friendly solutions.",
+    "I am an experienced Software Engineer specializing in creating high-quality applications that enhance user experience and improve project efficiency. With expertise in Node.js, Java, and Scala, I bring full-stack development proficiency to deliver robust front-end and back-end solutions. My strong foundation in Agile methodologies ensures adaptability and efficiency, while my ability to optimize code quality and streamline workflows significantly reduces development time and effort.",
   about_second:
-    'Now, as a full-stack web developer, I combine my coding knowledge and passion for crafting innovative digital experiences. I bring a keen attention to detail and a commitment to building reliable and scalable solutions, drawing from my engineering background. My career transition reflects my dedication to continuous learning, growth, and the pursuit of excellence in the ever-changing world of technology.',
+    'Throughout my career, I have demonstrated a proven track record of solving complex problems and driving technical innovations. My collaborative mindset fosters effective teamwork, enabling seamless communication across project teams. By focusing on improving web functionalities and delivering impactful solutions, I consistently contribute to the success of development projects, meeting both business objectives and user needs.',
   hobbies: ['Singing', 'Gaming', 'Hanging-out with friends', 'Cooking'],
   experiences: [
     {
@@ -97,24 +97,26 @@ export const aboutMe = {
       company: 'Edlution Pte Ltd.',
       location: 'Mandaue, Cebu, Philippines',
       start_date: '2023-07-03',
-      end_date: 'Present',
+      end_date: '2024-02-02',
       description:
-        'As a Fullstack Web Developer, my primary responsibility is to translate designs and wireframes into high-quality code using current technologies, manage software updates, patches, and bug fixes to enhance overall performance, and collaborate with cross-functional teams to define, design, and implement new features.',
+        '- Transformed wireframes and Figma designs into visually stunning, responsive web applications, ensuring optimal performance across all screen sizes and devices.
+- Collaborated closely with application testers to identify and resolve bugs and issues, ensuring a smooth and stable release before deployment to production.',
       key_achievement: [
-        'Quickly adapted to a time-sensitive project with numerous pending tasks and effectively prioritize them, resulting in on-time project delivery.',
+        'Implemented Google Maps API with advanced geofencing features, allowing precise location tracking, boundary detection, and improved location-based user interactions.',
       ],
       duration: '',
     },
     {
-      title: 'Design Engineer I',
+      title: 'Design Engineer',
       company: 'Tsuneishi Technical Services (Phils)., Inc.',
       location: 'Balamban, Cebu, Philippines',
       start_date: '2019-10-15',
       end_date: '2023-05-12',
       description:
-        'As a Electrical Design Engineer, my primary responsibility is to design and create detailed plans that will be used by the installation team to implement the designs. This also involves collaborating closely with cross-functional teams to ensure that our designs are optimized and error prone.',
+        'Created automated Excel reports and data calculation tools using VB.NET, incorporating macros to streamline repetitive tasks and enhance workflow efficiency.',
       key_achievement: [
-        'Created several custom applications using VB.net that automate repetitive task, resulting in a significant increase of productivity and efficiency.',
+        'Developed a Job load management application to track jobs, monitor man-hour consumption, and ensure timely delivery of deliverables, improving team efficiency and reducing delays.
+Education',
       ],
       duration: '',
     },
