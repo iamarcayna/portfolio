@@ -99,8 +99,7 @@ export const aboutMe = {
       start_date: '2023-07-03',
       end_date: '2024-02-02',
       description:
-        '- Transformed wireframes and Figma designs into visually stunning, responsive web applications, ensuring optimal performance across all screen sizes and devices.
-- Collaborated closely with application testers to identify and resolve bugs and issues, ensuring a smooth and stable release before deployment to production.',
+        '- Transformed wireframes and Figma designs into visually stunning, responsive web applications, ensuring optimal performance across all screen sizes and devices.- Collaborated closely with application testers to identify and resolve bugs and issues, ensuring a smooth and stable release before deployment to production.',
       key_achievement: [
         'Implemented Google Maps API with advanced geofencing features, allowing precise location tracking, boundary detection, and improved location-based user interactions.',
       ],
