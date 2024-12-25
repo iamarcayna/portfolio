@@ -87,11 +87,24 @@ export const contactInfo = {
 
 export const aboutMe = {
   about_first:
-    "I am an experienced Software Engineer specializing in creating high-quality applications that enhance user experience and improve project efficiency. With expertise in Node.js, Java, and Scala, I bring full-stack development proficiency to deliver robust front-end and back-end solutions. My strong foundation in Agile methodologies ensures adaptability and efficiency, while my ability to optimize code quality and streamline workflows significantly reduces development time and effort.",
+    'I am an experienced Software Engineer specializing in creating high-quality applications that enhance user experience and improve project efficiency. With expertise in Node.js, Java, and Scala, I bring full-stack development proficiency to deliver robust front-end and back-end solutions. My strong foundation in Agile methodologies ensures adaptability and efficiency, while my ability to optimize code quality and streamline workflows significantly reduces development time and effort.',
   about_second:
     'Throughout my career, I have demonstrated a proven track record of solving complex problems and driving technical innovations. My collaborative mindset fosters effective teamwork, enabling seamless communication across project teams. By focusing on improving web functionalities and delivering impactful solutions, I consistently contribute to the success of development projects, meeting both business objectives and user needs.',
   hobbies: ['Singing', 'Gaming', 'Hanging-out with friends', 'Cooking'],
   experiences: [
+    {
+      title: 'Software Engineer',
+      company: 'Vauldex Technologies',
+      location: 'Cebu, Cebu, Philippines',
+      start_date: '2024-02-05',
+      end_date: 'Present',
+      description:
+        'Mentored other developers and help conduct thorough code reviews to ensure high-quality code that adheres to company coding standards and best practices. Implemented unit and component test using modern testing tools, ensuring code reliability, functionality, and performance throughout development.',
+      key_achievement: [
+        `Redesigned the company's old corporate website into a modern site, utilizing technologies like GSAP and Tailwind to create a visually engaging, and high-performance site.`,
+      ],
+      duration: '',
+    },
     {
       title: 'Full-stack Web Developer',
       company: 'Edlution Pte Ltd.',
@@ -99,7 +112,7 @@ export const aboutMe = {
       start_date: '2023-07-03',
       end_date: '2024-02-02',
       description:
-        '- Transformed wireframes and Figma designs into visually stunning, responsive web applications, ensuring optimal performance across all screen sizes and devices.- Collaborated closely with application testers to identify and resolve bugs and issues, ensuring a smooth and stable release before deployment to production.',
+        'Transformed wireframes and Figma designs into visually stunning, responsive web applications, ensuring optimal performance across all screen sizes and devices. Collaborated closely with application testers to identify and resolve bugs and issues, ensuring a smooth and stable release before deployment to production.',
       key_achievement: [
         'Implemented Google Maps API with advanced geofencing features, allowing precise location tracking, boundary detection, and improved location-based user interactions.',
       ],
@@ -114,7 +127,7 @@ export const aboutMe = {
       description:
         'Created automated Excel reports and data calculation tools using VB.NET, incorporating macros to streamline repetitive tasks and enhance workflow efficiency.',
       key_achievement: [
-        'Developed a Job load management application to track jobs, monitor man-hour consumption, and ensure timely delivery of deliverables, improving team efficiency and reducing delays.'
+        'Developed a Job load management application to track jobs, monitor man-hour consumption, and ensure timely delivery of deliverables, improving team efficiency and reducing delays.',
       ],
       duration: '',
     },
@@ -229,6 +242,16 @@ export const skills = [
   {
     name: 'Angular',
     icon: 'angular.svg',
+    classification: 'Frontend',
+  },
+  {
+    name: 'Scala',
+    icon: 'scala.svg',
+    classification: 'Backend',
+  },
+  {
+    name: 'Vue',
+    icon: 'vue.svg',
     classification: 'Frontend',
   },
   {
