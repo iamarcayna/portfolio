@@ -10,6 +10,12 @@ export class HeroComponent implements AfterViewInit {
   private scrollService = inject(ScrollService);
   @ViewChild('profession') profession!: any;
 
+  private headings = [
+    'Software Engineer',
+    'Frontend Developer',
+    'Backend Developer',
+  ]
+
   ngAfterViewInit(): void {
     const writer = new Typewriter(this.profession.nativeElement, {
       loop: true,
@@ -17,18 +23,15 @@ export class HeroComponent implements AfterViewInit {
       cursorColor: 'transparent',
     });
 
-    writer
-      .type('Full-stack Developer.')
+    this.headings.forEach(h => {
+      writer
+      .type(h)
       .rest(2500)
-      .remove(21)
+      .remove(h.length)
       .rest(1000)
-      .type('Angular Developer.')
-      .rest(2500)
-      .remove(18)
-      .rest(1000)
-      .type('Laravel Developer.')
-      .rest(2500)
-      .start();
+    })
+
+    writer.start();
   }
 
   scrollIntoView(section: string) {
