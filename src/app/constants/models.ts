@@ -15,6 +15,19 @@ export interface Project {
   demo_link: string;
 }
 
+export interface FeaturedProject {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  tags: string[];
+  thumbnail_mobile: string[];
+  thumbnail_desktop: string[];
+  thumbnail_gif_large: string;
+  thumbnail_gif_small: string;
+  link?: string;
+}
+
 export interface Experience {
   title: string;
   company: string;

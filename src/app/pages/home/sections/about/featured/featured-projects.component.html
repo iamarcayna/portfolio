@@ -1,0 +1,26 @@
+<section id="featured-projects" class="my-10">
+  <div data-aos="fade-right">
+    <p
+      class="font-bold uppercase tracking-widest text-sm text-blue-500 dark:text-yellow-500 mt-5"
+    >
+      Featured Projects
+    </p>
+    <p
+      class="font-bold text-gray-700 text-2xl mt-1 dark:text-gray-200 md:text-3xl"
+    >
+      Real-world projects demonstrating my skills.
+    </p>
+  </div>
+  <div data-aos="fade-up" class="mb-10 py-1 max-w-3xl">
+    <p class="mt-3 text-gray-700 leading-8 dark:text-gray-300">
+      {{ aboutMe.featuredHeader }}
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:mx-5 mt-10">
+    <div *ngFor="let project of aboutMe.featuredProjects">
+      <app-featured-project-card
+        [project]="project"
+      ></app-featured-project-card>
+    </div>
+  </div>
+</section>

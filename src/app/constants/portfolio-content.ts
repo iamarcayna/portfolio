@@ -86,6 +86,8 @@ export const contactInfo = {
 };
 
 export const aboutMe = {
+  featuredHeader:
+    'These real-world projects showcase my expertise in both frontend and backend development. Each one reflects my passion for creating efficient, user-friendly, and scalable solutions.',
   about_first:
     'I am an experienced Software Engineer specializing in creating high-quality applications that enhance user experience and improve project efficiency. With expertise in Node.js, Java, and Scala, I bring full-stack development proficiency to deliver robust front-end and back-end solutions. My strong foundation in Agile methodologies ensures adaptability and efficiency, while my ability to optimize code quality and streamline workflows significantly reduces development time and effort.',
   about_second:
@@ -156,6 +158,30 @@ export const aboutMe = {
       link: 'https://coursera.org/verify/3BQDSVAW5CQU',
       platform: 'Coursera',
       logo: 'coursera.svg',
+    },
+  ],
+  featuredProjects: [
+    {
+      id: 1,
+      title: '[Vauldex] - Corporate Portfolio Website',
+      description:
+        "A modernized portfolio website designed to enhance brand identity, showcase expertise, and align with current industry trends. The redesign improves user experience, visual appeal, and engagement while effectively highlighting the company's strengths.",
+      technologies: ['Vue', 'Nuxt', 'TailwindCSS', 'SendGrid', 'GSAP'],
+      tags: [
+        'UI/UX Design',
+        'Responsive Design',
+        'SEO Optimization',
+        'Web Development',
+      ],
+      thumbnail_mobile: [
+        'vauldex_mobile_1.png',
+        'vauldex_mobile_2.png',
+        'vauldex_mobile_3.png',
+      ],
+      thumbnail_desktop: ['vauldex_1.png, vauldex_2.png, vauldex_3.png'],
+      thumbnail_gif_large: 'vauldex_1.png',
+      thumbnail_gif_small: 'vauldex_2.png',
+      link: 'https://vauldex.com/',
     },
   ],
 };

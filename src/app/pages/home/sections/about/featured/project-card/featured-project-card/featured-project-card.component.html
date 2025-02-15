@@ -1,0 +1,57 @@
+<div class="w-full group cursor-pointer">
+  <div
+    class="relative h-full w-full text-gray-700 dark:text-gray-300 after:group-hover:opacity-100 after:opacity-0 after:origin-bottom after:transition-all after:duration-500 after:content-[''] after:inset-0 after:absolute after:top-0 after:left-0 after:bg-gray-950/70 after:backdrop-blur-sm after:will-change-['filter'] after:z-20 p-4 rounded-md overflow-hidden bg-slate-900"
+  >
+    <div class="relative bg-white rounded-md overflow-hidden dark:bg-slate-900">
+      <div class="relative">
+        <img
+          [hidden]="loading"
+          (load)="onLoad()"
+          [src]="
+            '../../../../../../assets/featured/' + project.thumbnail_gif_large
+          "
+          [alt]="project.title"
+          class="w-full aspect-auto rounded-md border-[1px] border-gray-800 group-hover:scale-110 origin-center transition-all duration-500"
+        />
+        <div
+          class="absolute top-0 right-0 w-2 h-full bg-slate-950 dark:bg-slate-900"
+        ></div>
+        <div
+          [ngClass]="loading ? 'block' : 'hidden'"
+          class="w-full h-96 bg-gray-400 dark:bg-slate-700 animate-pulse"
+        ></div>
+        <div
+          class="absolute z-30 top-0 right-0 translate-x-1 w-64 aspect-auto group-hover:block hidden"
+        >
+          <img
+            [hidden]="loading"
+            (load)="onLoad()"
+            [src]="
+              '../../../../../../assets/featured/' + project.thumbnail_gif_small
+            "
+            [alt]="project.title"
+            class="w-full aspect-auto rounded-md border-[1px] border-gray-800"
+          />
+        </div>
+      </div>
+      <div
+        class="group-hover:opacity-100 opacity-0 px-10 pb-5 absolute z-30 bottom-0 left-0 w-full text-gray-100"
+      >
+        <p class="font-semibold text-2xl text-white mb-2 mt-3">
+          {{ project.title }}
+        </p>
+        <p class="line-clamp-3">{{ project.description }}</p>
+        <div class="flex items-center justify-end mt-5">
+          <span
+            class="rounded-full inline-block text-sm px-5 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white dark:from-blue-500 dark:to-violet-500 font-semibold dark:hover:border-gray-100 hover:border-orange-600 border dark:border-blue-400 border-orange-400"
+          >
+            View project
+          </span>
+        </div>
+      </div>
+    </div>
+    <p class="font-semibold text-xl text-white p-3m mt-2 text-center">
+      {{ project.title }}
+    </p>
+  </div>
+</div>

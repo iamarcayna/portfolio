@@ -27,6 +27,8 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { ContainerDirective } from './directives/container.directive';
 import { ExperienceComponent } from './pages/home/sections/about/experience/experience.component';
 import { CertificatesComponent } from './pages/home/sections/about/certificates/certificates.component';
+import { FeaturedProjectsComponent } from './pages/home/sections/about/featured/featured-projects.component';
+import { FeaturedProjectCardComponent } from './pages/home/sections/about/featured/project-card/featured-project-card/featured-project-card.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { CertificatesComponent } from './pages/home/sections/about/certificates/
     SnackbarComponent,
     ExperienceComponent,
     CertificatesComponent,
+    FeaturedProjectsComponent,
+    FeaturedProjectCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
