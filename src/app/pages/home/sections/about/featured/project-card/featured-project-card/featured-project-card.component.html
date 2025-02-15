@@ -2,7 +2,7 @@
   <div
     class="relative h-full w-full text-gray-700 dark:text-gray-300 after:group-hover:opacity-100 after:opacity-0 after:origin-bottom after:transition-all after:duration-500 after:content-[''] after:inset-0 after:absolute after:top-0 after:left-0 after:bg-gray-950/70 after:backdrop-blur-sm after:will-change-['filter'] after:z-20 p-4 rounded-md overflow-hidden bg-slate-900"
   >
-    <div class="relative bg-white rounded-md overflow-hidden dark:bg-slate-900">
+    <div class="relative overflow-hidden">
       <div class="relative">
         <img
           [hidden]="loading"
@@ -11,17 +11,15 @@
             '../../../../../../assets/featured/' + project.thumbnail_gif_large
           "
           [alt]="project.title"
-          class="w-full aspect-auto rounded-md border-[1px] border-gray-800 group-hover:scale-110 origin-center transition-all duration-500"
+          class="w-full aspect-auto group-hover:scale-110 origin-center transition-all duration-500"
         />
-        <div
-          class="absolute top-0 right-0 w-2 h-full bg-slate-950 dark:bg-slate-900"
-        ></div>
+        <div class="absolute top-0 right-0 w-2 h-full bg-slate-900"></div>
         <div
           [ngClass]="loading ? 'block' : 'hidden'"
-          class="w-full h-96 bg-gray-400 dark:bg-slate-700 animate-pulse"
+          class="w-full h-40 md:h-48 lg:h-56 xl:h-64 bg-gray-400 dark:bg-slate-700 animate-pulse"
         ></div>
         <div
-          class="absolute z-30 top-0 right-0 translate-x-1 w-64 aspect-auto group-hover:block hidden"
+          class="absolute z-30 top-0 right-0 translate-x-1 w-64 md:w-44 lg:w-64 aspect-auto group-hover:block hidden"
         >
           <img
             [hidden]="loading"
@@ -30,16 +28,18 @@
               '../../../../../../assets/featured/' + project.thumbnail_gif_small
             "
             [alt]="project.title"
-            class="w-full aspect-auto rounded-md border-[1px] border-gray-800"
+            class="w-full aspect-auto"
           />
         </div>
-      </div>
-      <div
-        class="group-hover:opacity-100 opacity-0 px-10 pb-5 absolute z-30 bottom-0 left-0 w-full text-gray-100"
-      >
-        <p class="font-semibold text-2xl text-white mb-2 mt-3">
+        <p
+          class="font-semibold text-xl bg-slate-900 text-white p-3 text-center"
+        >
           {{ project.title }}
         </p>
+      </div>
+      <div
+        class="group-hover:opacity-100 hidden sm:block opacity-0 px-10 md:px-5 lg:px-10 pb-5 absolute z-30 bottom-0 left-0 w-full text-gray-100"
+      >
         <p class="line-clamp-3">{{ project.description }}</p>
         <div class="flex items-center justify-end mt-5">
           <span
@@ -50,8 +50,5 @@
         </div>
       </div>
     </div>
-    <p class="font-semibold text-xl text-white p-3m mt-2 text-center">
-      {{ project.title }}
-    </p>
   </div>
 </div>

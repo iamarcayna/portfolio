@@ -1,0 +1,11 @@
+<dialog
+  [ngClass]="isOpen ? 'block' : 'hidden'"
+  (click)="closeModal()"
+  class="fixed w-full h-screen top-0 left-0 z-50 bg-gray-900/50 origin-center flex items-center justify-center transition-all duration-500"
+>
+  <div
+    class="w-full h-52 bg-white flex items-center justify-center max-w-screen-sm mx-auto"
+  >
+    <p>Modal</p>
+  </div>
+</dialog>

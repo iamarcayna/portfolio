@@ -29,6 +29,7 @@ import { ExperienceComponent } from './pages/home/sections/about/experience/expe
 import { CertificatesComponent } from './pages/home/sections/about/certificates/certificates.component';
 import { FeaturedProjectsComponent } from './pages/home/sections/about/featured/featured-projects.component';
 import { FeaturedProjectCardComponent } from './pages/home/sections/about/featured/project-card/featured-project-card/featured-project-card.component';
+import { ProjectDetailComponent } from './pages/home/sections/about/featured/project-card/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { FeaturedProjectCardComponent } from './pages/home/sections/about/featur
     CertificatesComponent,
     FeaturedProjectsComponent,
     FeaturedProjectCardComponent,
+    ProjectDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
