@@ -17,15 +17,15 @@ I am a **Full-Stack Web Developer** with expertise in **Angular, React, Laravel,
 
 - **Description:** Gallery allow users to browse movies, watch movie trailers and add comments.
 - **Tech Used:** React, Spring Boot, Material UI, MongoDB
-- **Live Demo:** [Link](#https://movie-app-iamarcayna.vercel.app/)
-- **Repo:** [GitHub](#https://github.com/iamarcayna/movie-app)
+- **Live Demo:** [Link](https://movie-app-iamarcayna.vercel.app/)
+- **Repo:** [GitHub](https://github.com/iamarcayna/movie-app)
 
 ### [Personal Project][Shoppers]- E-Commerse App
 
 - **Description:** Shoppers integrates FakeStoreAPI for a complete shopping experience.
 - **Tech Used:** Angular, FakeStoreApi, Tailwind
-- **Live Demo:** [Link](#https://github.com/iamarcayna/e-commerce)
-- **Repo:** [GitHub](#https://e-commerce-iamarcayna.vercel.app/)
+- **Live Demo:** [Link](https://github.com/iamarcayna/e-commerce)
+- **Repo:** [GitHub](https://e-commerce-iamarcayna.vercel.app/)
 
 ## 📌 Features of My Portfolio
 
@@ -37,5 +37,5 @@ I am a **Full-Stack Web Developer** with expertise in **Angular, React, Laravel,
 ## 📬 Contact Me
 
 - **Email:** i.am.arcayna@gmail.com
-- **LinkedIn:** [linkedin.com/in/reymond-arcayna-43819826b](#https://linkedin.com/in/reymond-arcayna-43819826b)
-- **GitHub:** [github.com/iamarcayna](#https://github.com/iamarcayna)
+- **LinkedIn:** [linkedin.com/in/reymond-arcayna-43819826b](https://linkedin.com/in/reymond-arcayna-43819826b)
+- **GitHub:** [github.com/iamarcayna](https://github.com/iamarcayna)
