@@ -24,8 +24,8 @@ I am a **Full-Stack Web Developer** with expertise in **Angular, React, Laravel,
 
 - **Description:** Shoppers integrates FakeStoreAPI for a complete shopping experience.
 - **Tech Used:** Angular, FakeStoreApi, Tailwind
-- **Live Demo:** [Link](https://github.com/iamarcayna/e-commerce)
-- **Repo:** [GitHub](https://e-commerce-iamarcayna.vercel.app/)
+- **Live Demo:** [Link](https://e-commerce-iamarcayna.vercel.app/)
+- **Repo:** [GitHub](https://github.com/iamarcayna/e-commerce)
 
 ## 📌 Features of My Portfolio
 
