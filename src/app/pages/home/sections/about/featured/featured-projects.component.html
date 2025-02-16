@@ -19,8 +19,14 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:mx-5 mt-10">
     <div *ngFor="let project of aboutMe.featuredProjects">
       <app-featured-project-card
+        (openDetail)="setSelectedProject($event)"
         [project]="project"
       ></app-featured-project-card>
     </div>
   </div>
 </section>
+<app-project-detail
+  (close)="closeDetailModal()"
+  [isOpen]="isModalOpen"
+  [selectedProject]="selectedProject"
+></app-project-detail>

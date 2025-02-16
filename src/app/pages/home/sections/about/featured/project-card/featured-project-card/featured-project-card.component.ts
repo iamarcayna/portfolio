@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FeaturedProject } from 'src/app/constants/models';
 
 @Component({
@@ -8,23 +7,15 @@ import { FeaturedProject } from 'src/app/constants/models';
 })
 export class FeaturedProjectCardComponent {
   @Input('project') project!: FeaturedProject;
+  @Output('openDetail') openDetail = new EventEmitter<FeaturedProject>();
 
   loading: boolean = true;
-  isModalOpen = new BehaviorSubject<boolean>(false);
 
   onLoad() {
     this.loading = false;
   }
 
   openDetailModal() {
-    this.isModalOpen.next(true);
-    document.body.classList.remove('overflow-y-auto');
-    document.body.classList.add('overflow-y-hidden');
-  }
-
-  closeDetailModal() {
-    this.isModalOpen.next(false);
-    document.body.classList.remove('overflow-y-hidden');
-    document.body.classList.add('overflow-y-auto');
+    this.openDetail.emit(this.project);
   }
 }

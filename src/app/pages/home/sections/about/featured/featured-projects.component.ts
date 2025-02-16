@@ -22,4 +22,20 @@ interface AboutMe {
 })
 export class FeaturedProjectsComponent {
   aboutMe: AboutMe = aboutMe;
+  selectedProject: FeaturedProject | undefined;
+
+  isModalOpen: boolean = false;
+
+  setSelectedProject(project: FeaturedProject) {
+    this.selectedProject = project;
+    this.isModalOpen = true;
+    document.body.classList.remove('overflow-y-auto');
+    document.body.classList.add('overflow-y-hidden');
+  }
+
+  closeDetailModal() {
+    this.isModalOpen = false;
+    document.body.classList.remove('overflow-y-hidden');
+    document.body.classList.add('overflow-y-auto');
+  }
 }
