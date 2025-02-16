@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 import { FeaturedProject } from 'src/app/constants/models';
 
 @Component({
@@ -11,6 +17,16 @@ export class ProjectDetailComponent {
   @Output() close = new EventEmitter<void>();
 
   selectedThumbnail: string | undefined;
+  loading = true;
+
+  @HostListener('document:keydown.escape')
+  onEscapePress() {
+    this.close.emit();
+  }
+
+  onLoad() {
+    this.loading = false;
+  }
 
   closeModal() {
     this.close.emit();

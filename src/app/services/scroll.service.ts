@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ScrollService {
   activeSection: BehaviorSubject<string> = new BehaviorSubject('hero');
+  isModalActive: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   scrollIntoView(section: string) {
     const sectionToScroll = document.getElementById(section);

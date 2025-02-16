@@ -25,6 +25,7 @@ export interface FeaturedProject {
   thumbnail_desktop: string[];
   thumbnail_gif_large: string;
   thumbnail_gif_small: string;
+  features: string[];
   link?: string;
 }
 

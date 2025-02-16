@@ -166,7 +166,7 @@ export const aboutMe = {
       title: '[Vauldex] - Corporate Portfolio Website',
       description:
         "A modernized portfolio website designed to enhance brand identity, showcase expertise, and align with current industry trends. The redesign improves user experience, visual appeal, and engagement while effectively highlighting the company's strengths.",
-      technologies: ['Vue', 'Nuxt', 'TailwindCSS', 'SendGrid', 'GSAP'],
+      technologies: ['vue.svg', 'tailwind.svg', 'sendgrid.svg', 'gsap.svg'],
       tags: [
         'UI/UX Design',
         'Responsive Design',
@@ -186,6 +186,13 @@ export const aboutMe = {
         'vauldex_5.png',
         'vauldex_6.png',
         'vauldex_7.png',
+      ],
+      features: [
+        'SEO Best Practices - Meta tags, structured data, keyword optimization',
+        'Parallax Scrolling - Smooth depth effects for a dynamic experience.',
+        ' Responsive Design - Optimized for all screen sizes and devices.',
+        'Smooth Animations & Hover Effects - Enhance interaction and visual appeal.',
+        'Google Analytics & Tracking - Monitor user behavior and engagement',
       ],
       thumbnail_gif_large: 'vauldex_1.png',
       thumbnail_gif_small: 'vauldex_2.png',
@@ -289,6 +296,11 @@ export const skills = [
     classification: 'Frontend',
   },
   {
+    name: 'Gsap',
+    icon: 'gsap.svg',
+    classification: 'Frontend',
+  },
+  {
     name: 'Laravel',
     icon: 'laravel.svg',
     classification: 'Backend',
@@ -296,6 +308,11 @@ export const skills = [
   {
     name: 'MySql',
     icon: 'mysql.svg',
+    classification: 'Backend',
+  },
+  {
+    name: 'SendGrid',
+    icon: 'sendgrid.svg',
     classification: 'Backend',
   },
   {
