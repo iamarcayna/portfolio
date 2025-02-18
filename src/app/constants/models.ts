@@ -21,12 +21,12 @@ export interface FeaturedProject {
   description: string;
   technologies: string[];
   tags: string[];
-  thumbnail_mobile: string[];
   thumbnail_desktop: string[];
   thumbnail_gif_large: string;
   thumbnail_gif_small: string;
   features: string[];
   link?: string;
+  nda: boolean;
 }
 
 export interface Experience {

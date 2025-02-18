@@ -15,6 +15,12 @@
       <div
         class="w-full h-full bg-gray-200 dark:bg-slate-800 py-5 md:py-0 px-5 rounded-md flex flex-col items-center justify-center relative overflow-hidden"
       >
+        <div
+          *ngIf="selectedProject.nda"
+          class="absolute top-0.5 left-8 italic text-xs z-10 text-gray-700 dark:text-gray-300"
+        >
+          Images are redacted due to project confidentiality.
+        </div>
         <img
           *ngIf="!selectedThumbnail"
           [src]="
@@ -39,7 +45,7 @@
         <ul class="flex items-center justify-normal mt-6 flex-wrap gap-2">
           <li
             *ngFor="let tag of selectedProject.tags"
-            class="text-xs rounded-md py-1 px-4 border border-yellow-500 dark:border-blue-600 dark:bg-blue-600/30 bg-yellow-400/20 dark:text-blue-100 text-amber-700"
+            class="text-xs rounded-md py-1 px-4 border border-yellow-500 dark:border-blue-600 dark:bg-blue-600/30 bg-yellow-300/10 dark:text-blue-100 text-amber-600"
           >
             {{ tag }}
           </li>
@@ -67,6 +73,7 @@
           [src]="'../../../../../../assets/featured/' + thumbnail"
           [alt]="selectedProject.title + ' Desktop Thumbnail ' + thumbnail"
           class="w-full aspect-auto"
+          loading="lazy"
         />
       </li>
     </ul>
