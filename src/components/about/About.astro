@@ -32,24 +32,27 @@ const config = `export default defineEngineer({
           class="portrait size-24 shrink-0 rounded-lg object-cover object-top"
           loading="lazy"
         />
-        <p class="lede">
-          I didn’t start in software. I was a design engineer for three years, and I kept writing small tools to skip the
-          boring parts of the job. At some point the tools became the job.
-        </p>
+        <blockquote class="about-quote lede">
+          <p>
+            I didn’t start in software. I was a design engineer for three years, and I kept writing small tools to skip
+            the boring parts of the job. At some point <mark>the tools became the job.</mark>
+          </p>
+        </blockquote>
       </div>
 
-      <div class="mt-8 space-y-5 text-[1.0625rem] leading-relaxed text-soft">
+      <div class="prose-hl mt-8 space-y-5 text-[1.0625rem] leading-relaxed text-soft">
         <p>
-          Right now I build voice agents at Pioneer Dev AI. Real phone calls, real bookings. It’s the hardest UI I’ve
-          worked on because there’s no UI, just a conversation, and every second of silence feels like a bug.
+          Right now I build <strong>voice agents at Pioneer Dev AI</strong>. Real phone calls, real bookings. It’s the
+          hardest UI I’ve worked on because there’s no UI, just a conversation,
+          and <mark>every second of silence feels like a bug.</mark>
         </p>
         <p>
-          Before that it was web apps, mostly Vue and Laravel, with some Angular and React. I still do frontend because I
-          like it. If something looks generic I’ll keep redoing it until it doesn’t.
+          Before that it was web apps, mostly <strong>Vue and Laravel</strong>, with some Angular and React. I still do
+          frontend because I like it. If something looks generic <mark>I’ll keep redoing it until it doesn’t.</mark>
         </p>
         <p>
-          I like small teams, straight answers, and shipping. Outside work it’s singing, cooking, games, and hanging out
-          with friends.
+          I like <strong>small teams, straight answers, and shipping.</strong> Outside work it’s singing, cooking, games,
+          and hanging out with friends.
         </p>
       </div>
     </div>
@@ -61,6 +64,22 @@ const config = `export default defineEngineer({
 </section>
 
 <style>
+  .about-quote {
+    position: relative;
+    font-style: italic;
+    color: var(--color-fg);
+  }
+  .about-quote p::before,
+  .about-quote p::after {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+  .about-quote p::before {
+    content: '“';
+  }
+  .about-quote p::after {
+    content: '”';
+  }
   .portrait {
     filter: grayscale(1) contrast(1.1);
     outline: 1px solid var(--color-line);

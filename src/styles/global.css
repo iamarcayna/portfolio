@@ -392,7 +392,7 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: radial-gradient(color-mix(in oklab, var(--color-fg) 13%, transparent) 1px, transparent 1px);
+  background-image: radial-gradient(color-mix(in oklab, var(--color-fg) 8%, transparent) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 html.field-on .backdrop {
@@ -499,9 +499,21 @@ html.motion-ready [data-reveal='fade'] {
   color: var(--color-accent);
   font-family: var(--font-mono);
 }
-.case-body strong {
+/* Emphasis in long copy: strong lifts to full white, mark adds a lime highlighter stroke. */
+.case-body strong,
+.prose-hl strong {
   color: var(--color-fg);
   font-weight: 600;
+}
+mark {
+  color: var(--color-fg);
+  background: linear-gradient(
+      color-mix(in oklab, var(--color-accent) 28%, transparent),
+      color-mix(in oklab, var(--color-accent) 28%, transparent)
+    )
+    0 92% / 100% 0.5em no-repeat;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 .case-body a {
   color: var(--color-fg);
