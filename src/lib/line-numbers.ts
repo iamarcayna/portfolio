@@ -106,6 +106,9 @@ function mount(container: HTMLElement) {
 }
 
 export function initLineNumbers(root: ParentNode = document) {
-  if (!window.matchMedia('(min-width: 768px)').matches) return;
-  root.querySelectorAll<HTMLElement>('[data-lines]').forEach(mount);
+  const wide = window.matchMedia('(min-width: 768px)');
+  const start = () => root.querySelectorAll<HTMLElement>('[data-lines]').forEach(mount);
+  // Narrow screens hide the gutter in CSS; mount once the viewport first gets wide enough.
+  if (wide.matches) start();
+  else wide.addEventListener('change', start, { once: true });
 }
