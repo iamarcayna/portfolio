@@ -27,7 +27,7 @@ const { title, summary, category, role, period, client, technologies, link, link
 const sections = headings.filter((h) => h.depth === 2);
 ---
 
-<BaseLayout title={title} description={summary}>
+<BaseLayout title={title} description={summary} image={`/og-${project.id}.png`} imageAlt={`${title}, a case study by Reymond Arcayna`}>
   <article>
     <header class="wrap pt-[calc(var(--header-h)+clamp(3rem,8vw,6rem))]">
       <a href="/#work" class="mono inline-flex items-center gap-2 text-muted hover:text-fg">
