@@ -118,7 +118,7 @@ const vertexShader = /* glsl */ `
     vWeight = weight;
     vSeed = seed;
     // Dust stays quiet behind text; the portrait is bright.
-    vFade = mix(1.0, 0.3 * seam, m);
+    vFade = mix(1.0, 0.18 * seam, m);
   }
 `;
 
@@ -163,7 +163,7 @@ const gridFragment = /* glsl */ `
     if (r > 0.5) discard;
     float soft = smoothstep(0.5, 0.2, r);
     vec3 color = mix(uDot, uAccent, clamp(vGlow, 0.0, 1.0) * 0.6);
-    float alpha = (0.16 + clamp(vGlow, 0.0, 1.0) * 0.35) * soft;
+    float alpha = (0.09 + clamp(vGlow, 0.0, 1.0) * 0.3) * soft;
     gl_FragColor = vec4(color, alpha);
   }
 `;

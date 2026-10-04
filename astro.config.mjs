@@ -5,8 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  // TODO: replace with the production domain before deploying.
-  site: 'https://reymondarcayna.com',
+  site: 'https://portfolio-iamarcayna.vercel.app',
   integrations: [mdx(), sitemap()],
   prefetch: { prefetchAll: false, defaultStrategy: 'hover' },
   vite: {

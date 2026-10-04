@@ -13,7 +13,7 @@ import { site } from '@/lib/site';
     <span class="text-accent">●</span> <span data-particle-count>9,059</span> particles · move to disturb
   </p>
 
-  <div class="wrap mt-auto pb-[clamp(2rem,5vw,4rem)] pt-[calc(var(--header-h)+2rem)]">
+  <div class="hero-copy wrap mt-auto pb-[clamp(2rem,5vw,4rem)] pt-[calc(var(--header-h)+2rem)]">
     <div class="max-w-[44rem]">
       <p class="mono mb-6 text-muted" data-hero-prompt>
         <span class="text-accent">$</span> <span data-typed="whoami">whoami</span>
@@ -103,7 +103,11 @@ import { site } from '@/lib/site';
       top: calc(var(--header-h) + 0.5rem);
       bottom: auto;
       width: auto;
-      height: 38svh;
+      height: 34svh;
+    }
+    /* Text starts below the portrait so the name never sits on top of it. */
+    .hero-copy {
+      padding-top: calc(var(--header-h) + 34svh + 1.5rem);
     }
   }
 

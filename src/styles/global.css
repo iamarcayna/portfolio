@@ -392,7 +392,7 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: radial-gradient(color-mix(in oklab, var(--color-fg) 13%, transparent) 1px, transparent 1px);
+  background-image: radial-gradient(color-mix(in oklab, var(--color-fg) 8%, transparent) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 html.field-on .backdrop {
@@ -499,9 +499,71 @@ html.motion-ready [data-reveal='fade'] {
   color: var(--color-accent);
   font-family: var(--font-mono);
 }
-.case-body strong {
+/* Emphasis in long copy: strong lifts to full white, mark adds a lime highlighter stroke. */
+.case-body strong,
+.prose-hl strong {
   color: var(--color-fg);
   font-weight: 600;
+}
+mark {
+  background: none;
+  color: var(--color-accent);
+}
+
+/* Editor gutter, after vim: built by lib/line-numbers.ts. Wide screens only. */
+.ln-gutter,
+.ln-band {
+  display: none;
+}
+@media (min-width: 768px) {
+  [data-lines] {
+    position: relative;
+    isolation: isolate;
+    padding-left: 3.25rem;
+  }
+  .ln-gutter {
+    display: block;
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 2rem;
+    margin: 0;
+    pointer-events: none;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: color-mix(in oklab, var(--color-dim) 60%, transparent);
+  }
+  .ln-gutter > span {
+    position: absolute;
+    right: 0;
+  }
+  /* The cursor line's absolute number sits flush left, as in vim. */
+  .ln-gutter > .is-current {
+    right: auto;
+    left: 0;
+    color: var(--color-accent);
+  }
+  .ln-band {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -0.75rem;
+    z-index: -1;
+    margin: 0;
+    border-radius: 3px;
+    pointer-events: none;
+  }
+  .ln-band[hidden] {
+    display: none;
+  }
+  .ln-hover {
+    background: color-mix(in oklab, var(--color-fg) 3%, transparent);
+  }
+  .ln-cursor {
+    background: color-mix(in oklab, var(--color-fg) 5.5%, transparent);
+  }
 }
 .case-body a {
   color: var(--color-fg);

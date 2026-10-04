@@ -9,12 +9,21 @@ import { site } from '@/lib/site';
 interface Props {
   title?: string;
   description?: string;
+  /** Social preview image in /public, 1200×630. */
+  image?: string;
+  imageAlt?: string;
 }
 
-const { title, description = site.description } = Astro.props;
+const {
+  title,
+  description = site.description,
+  image = '/og.png',
+  imageAlt = `${site.name}, ${site.role}`,
+} = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.role}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const isHome = Astro.url.pathname === '/';
+const imageUrl = new URL(image, Astro.site);
 ---
 
 <!doctype html>
@@ -27,15 +36,27 @@ const isHome = Astro.url.pathname === '/';
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#0a0c0f" />
     <meta name="author" content={site.name} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={isHome ? 'website' : 'article'} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
     <script is:inline>
       document.documentElement.classList.add('js');
@@ -58,6 +79,7 @@ const isHome = Astro.url.pathname === '/';
   import { initMotion } from '@/lib/motion';
   import { startSmoothScroll, stopSmoothScroll } from '@/lib/smooth-scroll';
   import { initScrollSpy } from '@/lib/scroll-spy';
+  import { initLineNumbers } from '@/lib/line-numbers';
 
   // Every page is a real document load (cross-document view transitions handle the
   // animation), so each page simply boots once and always starts at the top.
@@ -68,6 +90,7 @@ const isHome = Astro.url.pathname === '/';
     startSmoothScroll();
     initMotion(document.getElementById('main') ?? document);
     initScrollSpy();
+    initLineNumbers();
     document.documentElement.dataset.motionReady = '';
     document.dispatchEvent(new CustomEvent('motion:ready'));
   });
