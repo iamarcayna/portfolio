@@ -1,0 +1,94 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+const companies = Array.from({ length: 12 }, (_, i) => i);
+const highlighted = 5;
+---
+
+<figure class:list={['tenancy', compact ? 'tenancy--compact' : 'case-figure']}>
+  <div
+    class="tenancy-panel glow rounded-[10px] border border-line bg-panel"
+    role="img"
+    aria-label="Tenancy model. Administrators can reach every company record. Each company is a separate tenant whose representatives can edit only their own record. A read-only public index draws from all companies."
+    data-reveal="draw"
+  >
+    <p class="mono mb-8 text-muted">Fig. — Tenancy model</p>
+    <div class="grid grid-cols-[1fr_2.2fr_1fr] items-stretch gap-[clamp(0.75rem,2.5vw,2rem)]" aria-hidden="true">
+      <div class="flex flex-col justify-between border-t border-fg pt-3">
+        <span class="mono">Admin</span>
+        <span class="text-xs leading-snug text-soft">Curates every record</span>
+      </div>
+
+      <div class="grid grid-cols-4 gap-[clamp(4px,0.8vw,10px)]">
+        {
+          companies.map((i) => (
+            <div class:list={['tenant', i === highlighted && 'tenant--active']} data-draw>
+              <i />
+              <i />
+              <i />
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="flex flex-col justify-between border-t border-fg pt-3">
+        <span class="mono">Public</span>
+        <div class="space-y-1.5">
+          {[70, 90, 55, 80, 65].map((w) => <i class="block h-px bg-fg/40" style={`width:${w}%`} data-draw />)}
+        </div>
+        <span class="text-xs leading-snug text-soft">Search &amp; filter, read only</span>
+      </div>
+    </div>
+    <p class="mono mt-6 flex items-center gap-2 text-accent">
+      <span class="inline-block size-2 border border-accent" aria-hidden="true"></span>
+      One tenant — its representatives see nothing else
+    </p>
+  </div>
+  {
+    !compact && (
+      <figcaption class="mono mt-3 text-muted">
+        Three audiences, one database, boundaries enforced at the policy layer.
+      </figcaption>
+    )
+  }
+</figure>
+
+<style>
+  .tenancy-panel {
+    padding: clamp(1.25rem, 4vw, 3.5rem);
+  }
+  .tenancy--compact .tenancy-panel {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .tenant {
+    aspect-ratio: 1;
+    border: 1px solid color-mix(in oklab, var(--color-fg) 30%, transparent);
+    padding: 18% 14%;
+    display: flex;
+    flex-direction: column;
+    gap: 14%;
+    transform-origin: left center;
+  }
+  .tenant i {
+    display: block;
+    height: 1px;
+    background: color-mix(in oklab, var(--color-fg) 35%, transparent);
+  }
+  .tenant i:nth-child(2) {
+    width: 70%;
+  }
+  .tenant i:nth-child(3) {
+    width: 45%;
+  }
+  .tenant--active {
+    border-color: var(--color-accent);
+  }
+  .tenant--active i {
+    background: var(--color-accent);
+  }
+</style>

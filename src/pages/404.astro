@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Not found">
+  <section class="wrap flex min-h-[80svh] flex-col justify-center pt-[var(--header-h)]">
+    <p class="mono text-muted"><span class="text-accent">$</span> cd {Astro.url.pathname}</p>
+    <p class="mono mt-1 text-soft">cd: no such file or directory</p>
+    <h1 class="h-display mt-8 max-w-[14ch]">This page was never built.</h1>
+    <p class="mono mt-8"><a href="/" class="link-draw text-accent">cd ~ →</a></p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+interface Props {
+  /** Path-style label, e.g. "~/work". */
+  path: string;
+  title: string;
+  id: string;
+}
+
+const { path, title, id } = Astro.props;
+---
+
+<header class="mb-[clamp(3rem,6vw,5.5rem)]">
+  <div>
+    <p class="mono mb-4 text-accent" aria-hidden="true">{path}</p>
+    <h2 id={id} class="h-section max-w-[16ch]">{title}</h2>
+    {
+      Astro.slots.has('default') && (
+        <div class="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-muted">
+          <slot />
+        </div>
+      )
+    }
+  </div>
+</header>

@@ -1,0 +1,90 @@
+---
+title: Vauldex
+summary: A corporate site rebuilt as an illustrated, scroll-driven story — without giving up speed or search.
+category: Corporate website
+role: Design & frontend engineering
+period: '2024'
+client: Vauldex Technologies
+technologies: [Vue, Tailwind CSS, GSAP, SendGrid, Google Analytics]
+cover: ../../assets/work/vauldex/vauldex_1.jpg
+coverAlt: The Vauldex home page — an orange illustrated landscape where a large bear carries the company banner up a hill, followed by four smaller bears.
+link: https://vauldex.com/
+linkLabel: vauldex.com
+order: 1
+composition: wide
+snippet:
+  file: composables/useParallaxScene.ts
+  lang: ts
+  note: illustrative
+  code: |
+    export function useParallaxScene(scene: Ref<HTMLElement | null>) {
+      onMounted(() => {
+        const mm = gsap.matchMedia();
+        mm.add('(prefers-reduced-motion: no-preference)', () => {
+          scene.value!.querySelectorAll<HTMLElement>('[data-depth]').forEach((layer) => {
+            gsap.to(layer, {
+              yPercent: -Number(layer.dataset.depth) * 30,
+              ease: 'none',
+              scrollTrigger: { trigger: scene.value, start: 'top top', scrub: true },
+            });
+          });
+        });
+        onUnmounted(() => mm.revert());
+      });
+    }
+coverCaption: Fig. — Home page, vauldex.com. Ridges, sun and characters move on separate planes.
+---
+
+import Figure from '@/components/mdx/Figure.astro';
+import Pair from '@/components/mdx/Pair.astro';
+import imgService from '@/assets/work/vauldex/vauldex_2.jpg';
+import imgSolutions from '@/assets/work/vauldex/vauldex_3.jpg';
+import imgAgile from '@/assets/work/vauldex/vauldex_5.jpg';
+import imgFour from '@/assets/work/vauldex/vauldex_4.jpg';
+import imgSix from '@/assets/work/vauldex/vauldex_6.jpg';
+
+## A first conversation
+
+Vauldex Technologies is a software company in Cebu that builds products for clients in Japan. Its website is the first conversation with prospective clients and engineers, so it has to carry a brand and a fair amount of information: services, delivery process, work, careers and contact. I redesigned and built it, from layout and interaction design to the Vue components, the GSAP animation and the SendGrid contact pipeline.
+
+## Out of the template
+
+The previous site read as a template. It said very little about how the company works and nothing about its character. The brief was to make the site feel like Vauldex (warm, illustrated, a little playful) while staying fast, readable by search engines, and easy for a small team to maintain.
+
+## Scenes, in layers
+
+Each major page opens on an illustrated scene. The illustrations are separated into layers — sky, distant ridges, foreground, characters — and each layer moves at its own rate as the visitor scrolls. The result reads as depth rather than effect.
+
+<Figure src={imgService} alt="The Vauldex service page: a space shuttle launches between dark ridges into an orange sky under the word Service." caption="Service page. Ridges, cloud bank and shuttle sit on separate planes." />
+
+Below the fold, the site switches register: a dark, typographic layout for services and process, where the motion is limited to reveals and a few diagrammatic moments.
+
+<Pair
+  a={{ src: imgSolutions, alt: 'Dark section titled Discover our solutions with a numbered service description.' }}
+  b={{ src: imgAgile, alt: 'Illustrated diagram of the agile cycle — plan, design, develop, test, deploy, review, launch — on a curved screen.' }}
+  caption="Two registers: illustrated scenes for atmosphere, typographic sections for content."
+/>
+
+## Four decisions
+
+- **Transforms only.** Every scroll-linked layer animates `transform` and `opacity`, never layout properties, so the browser can keep scrolling on the compositor.
+- **Motion as enhancement.** Content is fully present in the HTML; animations are layered on after load, and reduced-motion preferences remove them entirely.
+- **SEO in the markup.** Meta tags, structured data and semantic headings are part of the page templates rather than an afterthought.
+- **A boring contact form.** The form posts to a small endpoint that sends through SendGrid. No third-party widget, no tracking embedded in the form.
+
+## Depth without weight
+
+The illustrations are large and the scenes are layered, which is a direct trade against load time. Getting the scenes to feel rich without shipping heavy pages meant careful asset preparation, lazy loading anything below the first scene, and keeping the animation code small enough that it never blocked the first paint.
+
+The other challenge was choreography across breakpoints. A parallax composition tuned for a wide screen falls apart on a phone, so each scene has its own mobile composition rather than a scaled-down version of the desktop one.
+
+<Pair
+  a={{ src: imgFour, alt: 'Our Strengths section: three numbered points connected by a glowing orange curve, each marked by a bear avatar.' }}
+  b={{ src: imgSix, alt: 'System development service panel with an isometric stack of technology blocks beside a description.' }}
+  caption="Strengths and service detail sections."
+/>
+
+## Where it landed
+
+{/* Figures below are approximate. */}
+The rebuilt site is live at [vauldex.com](https://vauldex.com/). Despite the layered illustrations it scores in the mid-90s for Lighthouse performance on desktop and around 85 on mobile, and contact-form enquiries roughly doubled in the first months after launch.

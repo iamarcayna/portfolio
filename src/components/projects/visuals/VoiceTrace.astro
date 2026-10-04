@@ -1,0 +1,196 @@
+---
+/**
+ * Timing diagram of one conversational turn. Positions are illustrative
+ * (percent of the turn), not measurements.
+ */
+interface Props {
+  /** Compact mode for the home index: no caption, tighter padding. */
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+type Bar = { left: number; width: number; label?: string; tone?: 'solid' | 'soft' | 'outline' };
+type Lane = { name: string; bars: Bar[]; ticks?: number[]; cut?: number };
+
+const allLanes: Lane[] = [
+  {
+    name: 'Caller',
+    bars: [
+      { left: 2, width: 36.5, label: 'speaks' },
+      { left: 85, width: 12.5, label: 'barges in' },
+    ],
+  },
+  {
+    name: 'Transcription',
+    ticks: [4.5, 9.1, 13.6, 18.2, 22.7, 27.3, 31.8, 36.4],
+    bars: [{ left: 38.6, width: 3.4, label: 'final' }],
+  },
+  {
+    name: 'Orchestration',
+    bars: [
+      { left: 42, width: 14.8, label: 'decide' },
+      { left: 66, width: 16, label: 'stream reply', tone: 'soft' },
+    ],
+  },
+  { name: 'Tools', bars: [{ left: 56.8, width: 9.1, label: 'availability', tone: 'outline' }] },
+  { name: 'Speech', bars: [{ left: 70.5, width: 15.5, label: 'speaks' }], cut: 86 },
+];
+const lanes = compact ? allLanes.filter((lane) => ['Caller', 'Orchestration', 'Speech'].includes(lane.name)) : allLanes;
+const figTitle = compact ? 'Fig. — Anatomy of a reply' : 'Fig. — One conversational turn';
+---
+
+<figure class:list={['trace', compact ? 'trace--compact' : 'case-figure']}>
+  <div
+    class="trace-panel glow rounded-[10px] border border-line bg-panel"
+    role="img"
+    aria-label="Timing diagram of one conversational turn. The caller speaks while transcription streams partial results. After the final transcript, the orchestrator decides, calls an availability tool, then streams a reply that is spoken aloud. The gap between the caller finishing and the agent starting to speak is highlighted as time to first audio. When the caller barges in, speech is cut off immediately."
+    data-reveal="draw"
+  >
+    <p class="mono mb-8 flex justify-between text-muted">
+      <span>{figTitle}</span>
+      <span class="hidden sm:inline">Time, left to right</span>
+    </p>
+
+    <div class="trace-rows" aria-hidden="true">
+      <div class="trace-row">
+        <span></span>
+        <div class="trace-track trace-track--bare">
+          <div class="trace-bracket" style="left:38.6%;width:31.9%" data-draw>
+            <span class="mono">Time to first audio</span>
+          </div>
+        </div>
+      </div>
+
+      {
+        lanes.map((lane) => (
+          <div class="trace-row">
+            <span class="mono trace-name">{lane.name}</span>
+            <div class="trace-track">
+              {lane.ticks?.map((t) => (
+                <i class="trace-tick" style={`left:${t}%`} data-draw />
+              ))}
+              {lane.bars.map((bar) => (
+                <div class:list={['trace-bar', `trace-bar--${bar.tone ?? 'solid'}`]} style={`left:${bar.left}%;width:${bar.width}%`} data-draw>
+                  {bar.label && <span class="trace-label">{bar.label}</span>}
+                </div>
+              ))}
+              {lane.cut && <i class="trace-cut" style={`left:${lane.cut}%`} data-draw />}
+            </div>
+          </div>
+        ))
+      }
+
+      <div class="trace-barge" style="--x:85%"></div>
+    </div>
+  </div>
+  {
+    !compact && (
+      <figcaption class="mono mt-3 text-muted">
+        Illustrative timing. The highlighted gap is the budget everything else is shaped around.
+      </figcaption>
+    )
+  }
+</figure>
+
+<style>
+  .trace-panel {
+    padding: clamp(1.25rem, 4vw, 3.5rem);
+  }
+  .trace--compact .trace-panel {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .trace-rows {
+    position: relative;
+    --name: 6.5rem;
+  }
+  @media (min-width: 768px) {
+    .trace-rows {
+      --name: 8.5rem;
+    }
+  }
+  .trace-row {
+    display: grid;
+    grid-template-columns: var(--name) 1fr;
+    align-items: end;
+    height: clamp(2.6rem, 5.5vw, 3.75rem);
+  }
+  .trace-name {
+    color: var(--color-muted);
+    padding-bottom: 0.15rem;
+  }
+  .trace-track {
+    position: relative;
+    height: 100%;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .trace-track--bare {
+    border: 0;
+  }
+  .trace-bar,
+  .trace-tick,
+  .trace-cut,
+  .trace-bracket {
+    position: absolute;
+    transform-origin: left center;
+  }
+  .trace-bar {
+    bottom: 0.45rem;
+    height: 5px;
+    background: var(--color-fg);
+  }
+  .trace-bar--soft {
+    background: color-mix(in oklab, var(--color-fg) 40%, transparent);
+  }
+  .trace-bar--outline {
+    background: transparent;
+    outline: 1px solid var(--color-fg);
+    outline-offset: -1px;
+  }
+  .trace-label {
+    position: absolute;
+    bottom: calc(100% + 0.35rem);
+    left: 0;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.02em;
+    color: var(--color-soft);
+  }
+  .trace-tick {
+    bottom: 0.45rem;
+    width: 2px;
+    height: 5px;
+    background: color-mix(in oklab, var(--color-fg) 50%, transparent);
+  }
+  .trace-cut {
+    bottom: 0.1rem;
+    width: 1px;
+    height: 1.1rem;
+    background: var(--color-accent);
+    rotate: 25deg;
+  }
+  .trace-bracket {
+    bottom: 0.4rem;
+    height: 0.6rem;
+    border: 1px solid var(--color-accent);
+    border-bottom: 0;
+    color: var(--color-accent);
+  }
+  .trace-bracket span {
+    position: absolute;
+    bottom: calc(100% + 0.35rem);
+    left: 0;
+    white-space: nowrap;
+  }
+  .trace-barge {
+    position: absolute;
+    top: 2.5rem;
+    bottom: 0;
+    left: calc(var(--name) + (100% - var(--name)) * 0.85);
+    border-left: 1px dashed color-mix(in oklab, var(--color-fg) 35%, transparent);
+  }
+</style>

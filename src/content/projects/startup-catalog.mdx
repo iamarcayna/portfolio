@@ -1,0 +1,74 @@
+---
+title: Startup Health Catalogue
+summary: A multi-tenant catalogue where administrators curate and each company maintains its own profile — with a public index on top.
+category: Multi-tenant web application
+role: Fullstack engineering (team)
+client: Japanese company (NDA)
+period: '2024'
+technologies: [Vue, Laravel, MySQL, Tailwind CSS, SendGrid]
+visual: tenancy
+confidential: true
+order: 3
+composition: left
+snippet:
+  file: app/Policies/CompanyPolicy.php
+  lang: php
+  code: |
+    class CompanyPolicy
+    {
+        public function update(User $user, Company $company): bool
+        {
+            if ($user->isAdmin()) {
+                return true;
+            }
+
+            // Representatives only ever touch their own tenant.
+            return $user->isRepresentative()
+                && $user->company_id === $company->id;
+        }
+    }
+---
+
+import Figure from '@/components/mdx/Figure.astro';
+import Pair from '@/components/mdx/Pair.astro';
+import Tenancy from '@/components/projects/visuals/Tenancy.astro';
+import imgList from '@/assets/work/catalog/nagoya_1.jpg';
+import imgTabs from '@/assets/work/catalog/nagoya_3.jpg';
+
+## Shared data, hard edges
+
+A catalogue of early-stage health companies, built at Vauldex for a Japanese client. Administrators curate it, each company's own representatives keep their profile current, and the public can search and filter every listing. The client and product are under NDA, so the screens below are redacted wireframes.
+
+The catalogue had to be accurate, and accuracy depended on the companies themselves. But giving dozens of outside organisations write access to one database is exactly how data gets corrupted or leaked. I built it end to end alongside a small team of developers, from the data model and tenancy rules in Laravel and MySQL to the portals, the dashboard and the public catalogue in Vue.
+
+## Three audiences, three surfaces
+
+<Tenancy />
+
+There are three audiences, and each gets its own surface:
+
+- **Administrators** create companies, assign representatives, and can edit any profile. Their dashboard surfaces which profiles are incomplete or out of date.
+- **Representatives** sign in through a separate portal and can only ever see and edit their own company. A rich-text editor lets them structure the profile with headings and images.
+- **The public** browses a read-only index with search and filters.
+
+## Where the boundary lives
+
+- **Tenancy enforced in the backend, not the UI.** Every query a representative can trigger is scoped to their company at the policy layer. The interface hiding a button is a convenience, not a security boundary.
+- **Separate login portals.** Distinct entry points for administrators and representatives keep sessions, permissions and mistakes apart.
+- **Sanitised rich text.** Editor output is cleaned on the server before it is stored, so a profile can be expressive without becoming an injection vector.
+- **Responsive data tables.** Administrative tables reflow on small screens instead of scrolling sideways, so the dashboard is usable away from a desk.
+
+<Pair
+  a={{ src: imgList, alt: 'Redacted wireframe of the admin listing: navigation bar, filter options and a data table with row actions.' }}
+  b={{ src: imgTabs, alt: 'Redacted wireframe of a tabbed admin view with a filter panel and data table.' }}
+  caption="Redacted. Admin listing and tabbed record views."
+/>
+
+## The model under every screen
+
+The hard part was not any single screen but the permission model under all of them — making sure that every route, query and file upload respected the same tenant boundary, and testing that it did.
+
+## Handed over
+
+{/* Figures below are approximate. */}
+The catalogue launched with around 60 companies and over 100 representatives keeping their own profiles current. Profile upkeep moved from the client's admin team to the people who know each company best, and the client now has a single maintained source of truth for the companies they support.

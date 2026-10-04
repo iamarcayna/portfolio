@@ -1,0 +1,50 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import { archive } from '@/lib/site';
+---
+
+<div class="mt-[clamp(8rem,14vw,12rem)]">
+  <h3 class="mono mb-5 text-muted"><span class="text-accent">$</span> ls ~/archive</h3>
+  <ul class="border-t border-line">
+    {
+      archive.map((item) => (
+        <li class="archive-row group relative grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-1 border-b border-line px-3 py-5 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)_minmax(0,4fr)_auto]">
+          {/* The whole row opens the repository (stretched link). */}
+          <a href={item.source} target="_blank" rel="noopener" class="row-link text-xl font-semibold tracking-[-0.02em]">
+            {item.title}
+            <span class="sr-only"> — source code on GitHub (opens in new tab)</span>
+          </a>
+          <span class="mono order-last col-span-2 text-muted md:order-none md:col-span-1">{item.kind}</span>
+          <span class="mono order-last col-span-2 text-soft md:order-none md:col-span-1">{item.stack}</span>
+          <span class="mono flex items-center gap-4">
+            <span class="flex items-center gap-1 text-accent" aria-hidden="true">
+              github <ArrowUpRight class="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" stroke-width={2} />
+            </span>
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .archive-row {
+    transition: background-color 0.25s;
+  }
+  .archive-row:hover,
+  .archive-row:focus-within {
+    background: color-mix(in oklab, var(--color-accent) 6%, transparent);
+  }
+  .row-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .row-link:focus-visible {
+    outline: none;
+  }
+  .archive-row:has(.row-link:focus-visible) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+</style>

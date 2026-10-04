@@ -1,0 +1,251 @@
+---
+import { getCollection } from 'astro:content';
+import { site } from '@/lib/site';
+
+interface Command {
+  id: string;
+  group: string;
+  label: string;
+  hint: string;
+  /** Either navigate to href, or run a named action handled in the script. */
+  href?: string;
+  action?: 'copy-email';
+  external?: boolean;
+}
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+const commands: Command[] = [
+  { id: 'work', group: 'Navigate', label: 'Selected work', hint: 'cd ~/work', href: '/#work' },
+  { id: 'about', group: 'Navigate', label: 'About', hint: 'cd ~/about', href: '/#about' },
+  { id: 'experience', group: 'Navigate', label: 'Experience', hint: 'git log', href: '/#experience' },
+  { id: 'contact', group: 'Navigate', label: 'Contact', hint: 'cd ~/contact', href: '/#contact' },
+  ...projects.map((p) => ({
+    id: `p-${p.id}`,
+    group: 'Case studies',
+    label: p.data.title,
+    hint: p.data.category,
+    href: `/work/${p.id}/`,
+  })),
+  { id: 'copy', group: 'Actions', label: 'Copy email address', hint: site.email, action: 'copy-email' },
+  ...site.socials.map((s) => ({
+    id: s.label.toLowerCase(),
+    group: 'Actions',
+    label: `Open ${s.label}`,
+    hint: new URL(s.href).hostname.replace('www.', ''),
+    href: s.href,
+    external: true,
+  })),
+];
+---
+
+<dialog class="palette" aria-label="Command palette" data-palette>
+  <div class="window w-full">
+    <div class="flex items-center gap-3 border-b border-line px-4">
+      <span class="mono text-accent" aria-hidden="true">&gt;</span>
+      <input
+        class="mono h-14 w-full bg-transparent text-[0.9375rem] text-fg placeholder:text-dim focus:outline-none"
+        type="text"
+        placeholder="Type a command or search…"
+        role="combobox"
+        aria-expanded="true"
+        aria-controls="palette-list"
+        aria-autocomplete="list"
+        autocomplete="off"
+        spellcheck="false"
+        data-palette-input
+      />
+      <kbd class="hidden sm:inline">esc</kbd>
+    </div>
+    <ul id="palette-list" role="listbox" aria-label="Commands" class="max-h-[min(60vh,26rem)] overflow-y-auto p-2" data-palette-list>
+      {
+        commands.map((c) => (
+          <li
+            role="option"
+            id={`cmd-${c.id}`}
+            aria-selected="false"
+            class="palette-item"
+            data-group={c.group}
+            data-href={c.href}
+            data-action={c.action}
+            data-external={c.external ? '' : undefined}
+            data-search={`${c.label} ${c.hint} ${c.group}`.toLowerCase()}
+          >
+            <span class="mono w-24 shrink-0 text-dim">{c.group}</span>
+            <span class="truncate text-fg">{c.label}</span>
+            <span class="mono ml-auto hidden truncate text-muted sm:inline">{c.hint}</span>
+          </li>
+        ))
+      }
+      <li class="mono hidden px-3 py-6 text-center text-muted" data-palette-empty>No matches. Try “work” or “email”.</li>
+    </ul>
+    <div class="mono flex gap-4 border-t border-line px-4 py-2.5 text-dim">
+      <span><kbd>↑</kbd> <kbd>↓</kbd> move</span>
+      <span><kbd>↵</kbd> run</span>
+      <span class="ml-auto" role="status" aria-live="polite" data-palette-status></span>
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .palette {
+    margin: 12vh auto auto;
+    width: min(40rem, calc(100vw - 2rem));
+    max-width: none;
+    padding: 0;
+    background: transparent;
+    color: var(--color-fg);
+    overflow: visible;
+  }
+  .palette::backdrop {
+    background: color-mix(in oklab, var(--color-abyss) 70%, transparent);
+    backdrop-filter: blur(2px);
+  }
+  .palette[open] .window {
+    animation: palette-in 0.22s var(--ease-out-quint) both;
+    box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.9);
+  }
+  @keyframes palette-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.98);
+    }
+  }
+  .palette-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9375rem;
+  }
+  .palette-item[aria-selected='true'] {
+    background: var(--color-panel-2);
+    box-shadow: inset 2px 0 0 var(--color-accent);
+  }
+  .palette-item[hidden] {
+    display: none;
+  }
+</style>
+
+<script>
+  import { scrollToTarget } from '@/lib/smooth-scroll';
+
+  const dialog = () => document.querySelector<HTMLDialogElement>('[data-palette]');
+  let active = 0;
+
+  function items() {
+    return [...(dialog()?.querySelectorAll<HTMLLIElement>('.palette-item') ?? [])].filter((li) => !li.hidden);
+  }
+
+  function select(index: number) {
+    const list = items();
+    if (!list.length) return;
+    active = (index + list.length) % list.length;
+    list.forEach((li, i) => li.setAttribute('aria-selected', String(i === active)));
+    const current = list[active];
+    current.scrollIntoView({ block: 'nearest' });
+    dialog()?.querySelector('[data-palette-input]')?.setAttribute('aria-activedescendant', current.id);
+  }
+
+  function filter(query: string) {
+    const q = query.trim().toLowerCase();
+    const all = dialog()?.querySelectorAll<HTMLLIElement>('.palette-item') ?? [];
+    let visible = 0;
+    all.forEach((li) => {
+      const match = !q || q.split(/\s+/).every((term) => li.dataset.search?.includes(term));
+      li.hidden = !match;
+      if (match) visible++;
+    });
+    dialog()?.querySelector<HTMLElement>('[data-palette-empty]')?.classList.toggle('hidden', visible > 0);
+    select(0);
+  }
+
+  function open() {
+    const d = dialog();
+    if (!d || d.open) return;
+    const input = d.querySelector<HTMLInputElement>('[data-palette-input]');
+    if (input) input.value = '';
+    filter('');
+    d.showModal();
+    input?.focus();
+  }
+
+  async function run(li: HTMLLIElement) {
+    const d = dialog();
+    const status = d?.querySelector('[data-palette-status]');
+    if (li.dataset.action === 'copy-email') {
+      const email = li.querySelector('.mono:last-child')?.textContent ?? '';
+      try {
+        await navigator.clipboard.writeText(email);
+        if (status) status.textContent = 'Copied ✓';
+        setTimeout(() => d?.close(), 600);
+      } catch {
+        if (status) status.textContent = email;
+      }
+      return;
+    }
+    const href = li.dataset.href;
+    if (!href) return;
+    d?.close();
+    if (li.dataset.external !== undefined) {
+      window.open(href, '_blank', 'noopener');
+      return;
+    }
+    const url = new URL(href, location.href);
+    if (url.pathname === location.pathname && url.hash) {
+      const target = document.querySelector<HTMLElement>(url.hash);
+      if (target) scrollToTarget(target);
+      return;
+    }
+    location.assign(url);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const d = dialog();
+    const typing = (e.target as HTMLElement)?.closest?.('input, textarea, [contenteditable]');
+    if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) {
+      e.preventDefault();
+      d?.open ? d.close() : open();
+      return;
+    }
+    if (!d?.open) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      select(active + 1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      select(active - 1);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      const li = items()[active];
+      if (li) void run(li);
+    }
+  });
+
+  document.addEventListener('input', (e) => {
+    if ((e.target as Element).matches?.('[data-palette-input]')) filter((e.target as HTMLInputElement).value);
+  });
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as Element;
+    if (target.closest('[data-palette-open]')) {
+      open();
+      return;
+    }
+    const li = target.closest<HTMLLIElement>('.palette-item');
+    if (li) {
+      void run(li);
+      return;
+    }
+    // Click on the backdrop closes.
+    const d = dialog();
+    if (d?.open && target === d) d.close();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    const li = (e.target as Element).closest?.<HTMLLIElement>('.palette-item');
+    if (li && !li.hidden) select(items().indexOf(li));
+  });
+</script>
