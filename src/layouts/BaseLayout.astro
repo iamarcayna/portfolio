@@ -1,0 +1,117 @@
+---
+import '@/styles/global.css';
+import Header from '@/components/navigation/Header.astro';
+import SkipLink from '@/components/navigation/SkipLink.astro';
+import CommandPalette from '@/components/navigation/CommandPalette.astro';
+import ParticleBackground from '@/components/three/ParticleBackground.astro';
+import { site } from '@/lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = site.description } = Astro.props;
+const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.role}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const isHome = Astro.url.pathname === '/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#0a0c0f" />
+    <meta name="author" content={site.name} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true"></div>
+    <ParticleBackground />
+    <SkipLink />
+    <Header isHome={isHome} />
+    <CommandPalette />
+    <main id="main" tabindex="-1" class="outline-none">
+      <slot />
+    </main>
+    <slot name="after" />
+  </body>
+</html>
+
+<script>
+  import { initMotion } from '@/lib/motion';
+  import { startSmoothScroll, stopSmoothScroll } from '@/lib/smooth-scroll';
+  import { initScrollSpy } from '@/lib/scroll-spy';
+
+  // Every page is a real document load (cross-document view transitions handle the
+  // animation), so each page simply boots once and always starts at the top.
+  const fontsReady = () =>
+    Promise.race([document.fonts?.ready ?? Promise.resolve(), new Promise((r) => setTimeout(r, 900))]);
+
+  void fontsReady().then(() => {
+    startSmoothScroll();
+    initMotion(document.getElementById('main') ?? document);
+    initScrollSpy();
+    document.documentElement.dataset.motionReady = '';
+    document.dispatchEvent(new CustomEvent('motion:ready'));
+  });
+
+  // Local time in Cebu, wherever [data-clock] appears.
+  const clock = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Manila', hour: '2-digit', minute: '2-digit' });
+  const tick = () => document.querySelectorAll('[data-clock]').forEach((el) => (el.textContent = `${clock.format(new Date())} PHT`));
+  setInterval(tick, 20_000);
+  tick();
+
+  // Backdrop spotlight follows the pointer (fine pointers only).
+  if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let raf = 0;
+    window.addEventListener(
+      'pointermove',
+      (e) => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          const root = document.documentElement.style;
+          root.setProperty('--mx', `${e.clientX}px`);
+          root.setProperty('--my', `${e.clientY}px`);
+        });
+      },
+      { passive: true },
+    );
+  }
+
+  // Hover glow: track the pointer inside whichever .glow card it is over.
+  document.addEventListener(
+    'pointermove',
+    (e) => {
+      const card = (e.target as Element | null)?.closest?.<HTMLElement>('.glow');
+      if (!card) return;
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--gx', `${e.clientX - r.left}px`);
+      card.style.setProperty('--gy', `${e.clientY - r.top}px`);
+    },
+    { passive: true },
+  );
+
+  // Leaving the page: stop smooth scrolling so a restored (bfcache) page starts clean.
+  window.addEventListener('pagehide', () => stopSmoothScroll());
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) startSmoothScroll();
+  });
+</script>

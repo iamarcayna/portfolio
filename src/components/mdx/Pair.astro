@@ -1,0 +1,46 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Picture } from 'astro:assets';
+
+interface Shot {
+  src: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  a: Shot;
+  b: Shot;
+  caption?: string;
+}
+
+const { a, b, caption } = Astro.props;
+---
+
+<figure class="case-figure">
+  <div class="grid gap-3 md:grid-cols-12 md:gap-4">
+    {
+      [a, b].map((shot, i) => (
+        <div
+          class:list={[
+            'glow overflow-hidden bg-panel',
+            i === 0 ? 'md:col-span-7' : 'md:col-span-5 md:mt-[18%]',
+          ]}
+          data-reveal="clip"
+          data-reveal-delay={i * 0.12}
+        >
+          <Picture
+            src={shot.src}
+            alt={shot.alt}
+            formats={['avif', 'webp']}
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 768px) 45vw, 100vw"
+            class="block h-auto w-full"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ))
+    }
+  </div>
+  {caption && <figcaption class="mono mt-3 text-muted">{caption}</figcaption>}
+</figure>

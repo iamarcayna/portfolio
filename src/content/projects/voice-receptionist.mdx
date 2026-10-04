@@ -1,0 +1,74 @@
+---
+title: Restaurant Voice Receptionist
+summary: A voice receptionist sold to restaurants in the UK and beyond. It takes reservations and answers questions in natural conversation, engineered around latency, interruption and failure.
+category: Conversational system
+role: Voice agent, backend & dashboard
+period: '2025'
+client: Pioneer Dev AI
+technologies: [Node.js, Fastify, Retell, Twilio, OpenAI, Deepgram, ElevenLabs, React Router]
+visual: voice
+order: 2
+composition: right
+snippet:
+  file: tools/create-booking.ts
+  lang: ts
+  note: illustrative
+  code: |
+    export const createBooking = defineTool({
+      name: 'create_booking',
+      description: 'Reserve a table once the caller has confirmed.',
+      input: z.object({
+        partySize: z.number().int().min(1).max(12),
+        startsAt: z.string().datetime(),
+        name: z.string().min(1),
+        phone: z.string().regex(E164),
+      }),
+      async run(input, call) {
+        const slot = await bookings.hold(call.venueId, input);
+        if (!slot.ok) return { status: 'unavailable', alternatives: slot.nearest };
+        await sms.send(input.phone, confirmation(slot.booking));
+        return { status: 'booked', reference: slot.booking.ref };
+      },
+    });
+---
+
+import Trace from '@/components/projects/visuals/VoiceTrace.astro';
+import Pipeline from '@/components/projects/visuals/VoicePipeline.astro';
+
+## The phone at 7:30 on a Friday
+
+Restaurants miss calls at exactly the moments they are busiest. Every missed call is a booking that goes elsewhere, staffing a phone line during service is expensive, and callers hang up on answering machines.
+
+This is a receptionist that answers instead, sold as a product to restaurants in the UK and other countries. It takes and changes reservations against the restaurant's booking system, answers questions about hours, menu and location, and confirms by text message. When a call needs a person, it hands over cleanly. Restaurants manage it from a dashboard: call logs, bookings, opening hours and menu details.
+
+I built most of it: the voice agent and its conversation design, the Node and Fastify backend its tool calls hit, the booking and messaging integrations, and the React Router dashboard. The voice layer runs on Retell over Twilio, with Deepgram for speech-to-text, OpenAI for the model, and ElevenLabs for the voice.
+
+## One turn, end to end
+
+A call is a stream of audio in both directions. Incoming speech is transcribed continuously; when the caller finishes a thought, the orchestrator decides what to do — answer directly, ask a clarifying question, or call a tool — and the response is spoken back as soon as the first words are ready.
+
+<Pipeline />
+
+The language model never talks to the booking system directly. It requests actions through a small set of typed tools — check availability, create a booking, modify a booking, send a confirmation, transfer to staff — and the backend validates every argument before anything is written.
+
+## The model proposes, the backend decides
+
+- **Tools, not free text.** Bookings are created through validated function calls with explicit schemas. The model proposes; the backend decides.
+- **Conversation as a flow, not a single prompt.** The call is structured into stages — greeting, intent, details, confirmation — each with a narrow instruction set. Narrow stages are easier to test and much harder to derail.
+- **Stream everything.** Transcription, generation and speech synthesis all stream, so the system can start speaking before the full response exists.
+- **Confirmation by text.** Spoken details are easy to mishear. Every booking is read back and then confirmed in writing by SMS.
+
+## Silence is a bug
+
+**Latency.** In conversation, a pause reads as confusion. The time between the caller finishing and the agent beginning to speak is spent across transcription, endpointing, generation and synthesis, so the work was in shaving each stage and overlapping them wherever possible.
+
+<Trace />
+
+**Interruption.** People talk over each other. When the caller barges in, the agent has to stop speaking immediately, discard what it was about to say, and listen — without losing track of the booking it was in the middle of.
+
+**Failure.** Booking APIs time out and callers give ambiguous dates. Each tool returns failures the conversation can recover from ("that time is taken, would 8:30 work?") rather than errors, and anything the system cannot resolve becomes a handoff to staff with context attached.
+
+## In service
+
+{/* Figures below are approximate. */}
+The receptionist is live with 40+ restaurants across the UK and beyond, handling several thousand calls a month. Around 70% of calls are resolved end to end (reservations, changes and common questions) without staff. The rest reach a person with a summary of the call attached. The median time from the caller finishing to the agent starting to speak is roughly 800 ms.

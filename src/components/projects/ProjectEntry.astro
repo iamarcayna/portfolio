@@ -1,0 +1,143 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { ArrowUpRight } from '@lucide/astro';
+import CodeWindow from '@/components/ui/CodeWindow.astro';
+import ProjectVisual from './ProjectVisual.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const { title, summary, category, role, period, technologies, snippet, link, linkLabel, confidential } = project.data;
+const href = `/work/${project.id}/`;
+// Alternate sides so consecutive projects never share a composition.
+const flip = index % 2 === 1;
+---
+
+<li class="project" aria-labelledby={`project-${project.id}`}>
+  <article class="grid-12 items-start gap-y-8">
+    <div class:list={['relative order-2 col-span-4 md:col-span-7', flip ? 'md:order-2 md:col-start-6' : 'md:order-1']}>
+      <a href={href} class="project-visual block" tabindex="-1" aria-hidden="true">
+        <ProjectVisual project={project} sizes="(min-width: 768px) 56vw, 94vw" />
+      </a>
+      {
+        snippet && (
+          <CodeWindow
+            file={snippet.file}
+            lang={snippet.lang}
+            code={snippet.code}
+            note={snippet.note}
+            class:list={[
+              'project-code relative z-10 mt-4',
+              project.data.cover
+                ? ['md:absolute md:mt-0 md:w-[72%] md:-bottom-24', flip ? 'md:-left-[10%]' : 'md:-right-[12%]']
+                : ['md:-mt-12 md:w-[86%]', flip ? 'md:mr-auto md:-ml-[6%]' : 'md:ml-auto md:-mr-[6%]'],
+            ]}
+          />
+        )
+      }
+    </div>
+
+    <div class:list={['order-1 col-span-4 md:col-span-4 md:pt-4', flip ? 'md:order-1 md:col-start-1' : 'md:order-2 md:col-start-9']}>
+      <p class="mono flex gap-3 text-muted">
+        <span class="text-accent">{String(index + 1).padStart(2, '0')}</span>
+        <span>{category}</span>
+      </p>
+      <h3 id={`project-${project.id}`} class="h-card mt-3">
+        <a href={href} class="project-title">
+          <span class="link-draw">{title}</span><span class="whitespace-nowrap">&#8288;<ArrowUpRight
+              class="project-arrow ml-[0.1em] inline-block size-[0.6em] align-[0.2em] text-accent"
+              stroke-width={2}
+              aria-hidden="true"
+            /></span>
+        </a>
+      </h3>
+      <p class="mt-5 text-[1.0625rem] leading-relaxed text-soft">{summary}</p>
+
+      <dl class="mono mt-6 grid grid-cols-[4.5rem_1fr] gap-y-1.5 text-muted">
+        <dt>role</dt>
+        <dd class="text-soft">{role}</dd>
+        <dt>year</dt>
+        <dd class="text-soft">{period}{confidential && ' · under NDA'}</dd>
+      </dl>
+
+      <ul class="mt-5 flex flex-wrap gap-1.5" aria-label="Technologies">
+        {technologies.map((t) => <li class="tech">{t}</li>)}
+      </ul>
+
+      <p class="mono mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a href={href} class="case-cta">
+          Read case study <span class="case-cta-arrow" aria-hidden="true">→</span>
+        </a>
+        {
+          link && (
+            <a href={link} target="_blank" rel="noopener" class="link-draw text-muted hover:text-fg">
+              {linkLabel ?? 'live'} ↗<span class="sr-only"> (opens in new tab)</span>
+            </a>
+          )
+        }
+      </p>
+    </div>
+  </article>
+</li>
+
+<style>
+  .tech {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    color: var(--color-soft);
+    background: var(--color-panel);
+  }
+  .project-visual {
+    border-radius: 10px;
+    overflow: hidden;
+    outline: 1px solid var(--color-line);
+    outline-offset: -1px;
+  }
+  .project-visual :global(img) {
+    transition: transform 1s var(--ease-out-quint);
+  }
+  @media (hover: hover) {
+    .project:has(.project-title:hover) .project-visual :global(img),
+    .project-visual:hover :global(img) {
+      transform: scale(1.03);
+    }
+  }
+  .case-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.05rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 6px;
+    color: var(--color-accent);
+    font-weight: 500;
+    transition:
+      background-color 0.25s,
+      color 0.25s,
+      transform 0.25s var(--ease-out-quint);
+  }
+  .case-cta:hover,
+  .case-cta:focus-visible {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+  .case-cta-arrow {
+    transition: transform 0.3s var(--ease-out-quint);
+  }
+  .case-cta:hover .case-cta-arrow {
+    transform: translateX(3px);
+  }
+  .project-arrow {
+    transition: transform 0.4s var(--ease-out-quint);
+  }
+  .project-title:hover .project-arrow,
+  .project-title:focus-visible .project-arrow {
+    transform: translate(0.12em, -0.12em);
+  }
+</style>

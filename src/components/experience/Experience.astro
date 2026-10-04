@@ -1,0 +1,80 @@
+---
+import SectionHeading from '@/components/layout/SectionHeading.astro';
+import { experience } from '@/lib/site';
+
+// Decorative short hash, stable per role, so the list reads as a git log.
+function shortHash(input: string) {
+  let h = 2166136261;
+  for (const c of input) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
+  return (h >>> 0).toString(16).padStart(8, '0').slice(0, 7);
+}
+---
+
+<section id="experience" class="wrap pt-[clamp(8rem,14vw,13rem)]" aria-labelledby="experience-title">
+  <SectionHeading path="$ git log --career" title="Experience" id="experience-title" />
+
+  <ol class="gitlog relative">
+    {
+      experience.map((role, i) => (
+        <li class="gitlog-entry relative grid gap-x-10 gap-y-3 pb-14 pl-9 md:grid-cols-[14rem_1fr] md:pl-12">
+          <span class:list={['gitlog-node', i === 0 && 'is-head']} aria-hidden="true" />
+          <div class="mono space-y-1 text-muted">
+            <p>
+              <span class="text-accent">commit</span> {shortHash(role.company + role.start)}
+              {i === 0 && <span class="ml-1 text-accent">(HEAD)</span>}
+            </p>
+            <p>
+              <time>{role.start}</time> → <time>{role.end}</time>
+            </p>
+            <p>{role.location}</p>
+          </div>
+          <div class="max-w-2xl">
+            <h3 class="text-[clamp(1.4rem,2.2vw,1.9rem)] font-semibold leading-tight tracking-[-0.03em]">{role.title}</h3>
+            <p class="mono mt-1.5 text-[0.9375rem] text-accent">@ {role.company}</p>
+            <p class="mt-3 leading-relaxed text-soft">{role.summary}</p>
+            <p class="mono mt-3 leading-relaxed text-soft">
+              <span class="text-accent">+</span> {role.highlight}
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .gitlog::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0.5rem;
+    bottom: 3rem;
+    width: 1px;
+    background: linear-gradient(var(--color-accent), var(--color-line) 30%, var(--color-line));
+  }
+  @media (min-width: 768px) {
+    .gitlog::before {
+      left: 11px;
+    }
+  }
+  .gitlog-node {
+    position: absolute;
+    left: 2px;
+    top: 0.35rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 2px solid var(--color-line-strong);
+    background: var(--color-canvas);
+  }
+  @media (min-width: 768px) {
+    .gitlog-node {
+      left: 6px;
+    }
+  }
+  .gitlog-node.is-head {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-accent) 20%, transparent);
+  }
+</style>

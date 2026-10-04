@@ -1,0 +1,38 @@
+---
+const stages = [
+  { name: 'Telephony', detail: 'Twilio carries the call audio in both directions.' },
+  { name: 'Speech-to-text', detail: 'Deepgram streams the transcript and detects end of turn.' },
+  { name: 'Orchestrator', detail: 'Retell runs the conversation flow; OpenAI decides each reply.' },
+  { name: 'Text-to-speech', detail: 'ElevenLabs streams the voice back as words are ready.' },
+];
+const tools = ['Check availability', 'Create / modify booking', 'Send SMS confirmation', 'Transfer to staff'];
+---
+
+<figure class="case-figure">
+  <div class="glow rounded-[10px] border border-line bg-panel p-[clamp(1.25rem,4vw,3.5rem)]" data-reveal="draw">
+    <p class="mono mb-8 text-muted">Fig. — System overview</p>
+    <ol class="grid gap-px bg-line md:grid-cols-4" aria-label="Pipeline stages, in order">
+      {
+        stages.map((stage, i) => (
+          <li class="bg-panel p-4 md:p-5">
+            <span class="mono text-muted">{String(i + 1).padStart(2, '0')}</span>
+            <p class="mt-6 text-xl font-medium tracking-[-0.02em]">{stage.name}</p>
+            <p class="mt-2 text-sm leading-snug text-soft">{stage.detail}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <div class="mt-px grid md:grid-cols-4">
+      <div class="hidden md:col-span-2 md:block"></div>
+      <div class="border-l border-accent bg-panel py-4 pl-4 md:col-span-2 md:pl-5" data-draw>
+        <p class="mono text-accent">Typed tools: Node + Fastify backend</p>
+        <ul class="mt-3 grid grid-cols-1 gap-x-6 gap-y-1 text-sm text-soft sm:grid-cols-2">
+          {tools.map((tool) => <li>{tool}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <figcaption class="mono mt-3 text-muted">
+    Audio flows left to right and back. The model only reaches the outside world through tools.
+  </figcaption>
+</figure>

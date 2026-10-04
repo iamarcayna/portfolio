@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeading from '@/components/layout/SectionHeading.astro';
+import ProjectEntry from './ProjectEntry.astro';
+import Archive from './Archive.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="work" class="wrap pt-[clamp(6rem,12vw,11rem)]" aria-labelledby="work-title">
+  <SectionHeading path="~/work" title="Selected work" id="work-title">
+    Production work across product UI, backend systems and real-time voice. Each one opens into a case study on how
+    it was built.
+  </SectionHeading>
+
+  <ol class="space-y-[clamp(6rem,11vw,10rem)]">
+    {projects.map((project, i) => <ProjectEntry project={project} index={i} />)}
+  </ol>
+
+  <Archive />
+</section>

@@ -1,0 +1,285 @@
+---
+import { ArrowUpRight, Copy } from '@lucide/astro';
+import { site, skills } from '@/lib/site';
+
+const year = new Date().getFullYear();
+---
+
+<section id="contact" class="wrap relative pt-[clamp(8rem,14vw,13rem)]" aria-labelledby="contact-title">
+  <div class="grid-12 gap-y-12">
+    <div class="col-span-4 md:col-span-5">
+      <p class="mono mb-4 text-accent" aria-hidden="true">~/contact</p>
+      <h2 id="contact-title" class="h-section">Have something worth building?</h2>
+      <p class="lede mt-6 max-w-md">
+        I’m open to engineering roles, collaborations, and technical problems that are more interesting than they first
+        look.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href={`mailto:${site.email}`} class="btn-accent">
+          <span data-email>{site.email}</span>
+        </a>
+        <button type="button" class="btn-ghost mono" data-copy={site.email}>
+          <Copy class="size-3.5" stroke-width={1.75} aria-hidden="true" />
+          <span data-copy-label>copy</span>
+        </button>
+        <span class="sr-only" role="status" aria-live="polite" data-copy-status></span>
+      </div>
+
+      <ul class="mono mt-8 flex gap-6">
+        {
+          site.socials.map((s) => (
+            <li>
+              <a href={s.href} target="_blank" rel="noopener" class="link-draw inline-flex items-center gap-1 text-soft hover:text-fg">
+                {s.label.toLowerCase()}
+                <ArrowUpRight class="size-3.5" stroke-width={1.75} aria-hidden="true" />
+                <span class="sr-only">(opens in new tab)</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- A real, tiny shell. Everything it does is also available as plain links on the left. -->
+    <div class="col-span-4 md:col-span-6 md:col-start-7">
+      <div class="window terminal" data-terminal>
+        <div class="window-bar">
+          <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="text-soft">reymond@cebu: ~/contact</span>
+          <span class="ml-auto text-dim">zsh</span>
+        </div>
+        <div class="mono h-[22rem] overflow-y-auto p-4 text-[0.8125rem] leading-[1.7]" data-terminal-scroll>
+          <div role="log" aria-live="polite" aria-label="Terminal output" data-terminal-log>
+            <p class="text-muted">Last login: today on ttys001 — type <span class="text-accent">help</span> to see what I can do.</p>
+          </div>
+          <form class="flex items-center gap-2" data-terminal-form>
+            <label for="terminal-input" class="shrink-0 text-accent">❯</label>
+            <input
+              id="terminal-input"
+              class="w-full bg-transparent text-fg placeholder:text-dim focus:outline-none"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              placeholder="try: help"
+              aria-label="Terminal command"
+              data-terminal-input
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mono mt-[clamp(6rem,12vw,10rem)] flex items-center gap-6 border-t border-line py-8 text-dim">
+    <p class="shrink-0">© {year} {site.name}</p>
+    <div class="marquee min-w-0 flex-1" aria-label="Skills">
+      <ul class="sr-only">
+        {skills.map((s) => <li>{s}</li>)}
+      </ul>
+      <div class="marquee-track" aria-hidden="true">
+        {
+          [0, 1].map(() => (
+            <span class="marquee-group">
+              {skills.map((s) => (
+                <span class="marquee-item">
+                  {s}
+                  <span class="text-accent">·</span>
+                </span>
+              ))}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+    <p class="shrink-0"><a href="#main" class="link-draw hover:text-fg" data-to-top>cd ~ ↑</a></p>
+  </footer>
+</section>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 60s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee-group {
+    display: flex;
+    flex-shrink: 0;
+  }
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding-right: 0.9rem;
+    white-space: nowrap;
+    color: var(--color-muted);
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: auto;
+    }
+    .marquee-group + .marquee-group {
+      display: none;
+    }
+  }
+  .terminal {
+    box-shadow: 0 40px 80px -40px rgb(0 0 0 / 0.9);
+  }
+  .terminal :global(.out) {
+    white-space: pre-wrap;
+    margin-bottom: 0.35rem;
+  }
+</style>
+
+<script>
+  import { site, archive } from '@/lib/site';
+  import { scrollToTarget } from '@/lib/smooth-scroll';
+
+  type Line = string | { text: string; tone?: 'accent' | 'muted' | 'fg'; href?: string };
+
+  const commands: Record<string, { help: string; run: () => Line[] | Promise<Line[]> }> = {
+    help: {
+      help: 'list commands',
+      run: () =>
+        Object.entries(commands)
+          .filter(([name]) => !name.startsWith('_'))
+          .map(([name, c]) => ({ text: `${name.padEnd(10)} ${c.help}`, tone: 'fg' as const })),
+    },
+    whoami: { help: 'who is this', run: () => [`${site.name}, ${site.role.toLowerCase()} in ${site.location}.`] },
+    email: {
+      help: 'copy my email',
+      run: async () => {
+        try {
+          await navigator.clipboard.writeText(site.email);
+          return [{ text: `copied ${site.email} ✓`, tone: 'accent' }];
+        } catch {
+          return [{ text: site.email, href: `mailto:${site.email}` }];
+        }
+      },
+    },
+    socials: {
+      help: 'where else to find me',
+      run: () => site.socials.map((s) => ({ text: `${s.label.toLowerCase().padEnd(10)} ${s.href}`, href: s.href })),
+    },
+    projects: {
+      help: 'jump to selected work',
+      run: () => {
+        const target = document.getElementById('work');
+        if (target) setTimeout(() => scrollToTarget(target), 400);
+        return [{ text: 'cd ~/work …', tone: 'muted' }];
+      },
+    },
+    archive: { help: 'older side projects', run: () => archive.map((a) => ({ text: `${a.title.padEnd(10)} ${a.source}`, href: a.source })) },
+    stack: { help: 'what I build with', run: () => ['vue · react · angular · node · laravel · scala · postgres · llm/voice'] },
+    clear: { help: 'clear the screen', run: () => [] },
+    'sudo hire': {
+      help: '',
+      run: () => [{ text: 'permission granted. opening mail client…', tone: 'accent' }],
+    },
+  };
+  // Hidden from help, still works.
+  commands._sudo = commands['sudo hire'];
+  delete (commands as Record<string, unknown>)['sudo hire'];
+
+  function print(log: HTMLElement, lines: Line[]) {
+    for (const line of lines) {
+      const p = document.createElement('p');
+      p.className = 'out';
+      const l = typeof line === 'string' ? { text: line } : line;
+      if (l.href) {
+        const a = document.createElement('a');
+        a.href = l.href;
+        a.textContent = l.text;
+        a.className = 'link-inline';
+        if (!l.href.startsWith('mailto')) {
+          a.target = '_blank';
+          a.rel = 'noopener';
+        }
+        p.append(a);
+      } else {
+        p.textContent = l.text;
+        p.classList.add(l.tone === 'accent' ? 'text-accent' : l.tone === 'fg' ? 'text-fg' : 'text-soft');
+      }
+      log.append(p);
+    }
+  }
+
+  document.addEventListener('submit', async (event) => {
+    const form = (event.target as Element).closest?.('[data-terminal-form]');
+    if (!form) return;
+    event.preventDefault();
+    const term = form.closest('[data-terminal]')!;
+    const input = term.querySelector<HTMLInputElement>('[data-terminal-input]')!;
+    const log = term.querySelector<HTMLElement>('[data-terminal-log]')!;
+    const raw = input.value.trim();
+    input.value = '';
+    if (!raw) return;
+
+    const echo = document.createElement('p');
+    echo.className = 'out text-muted';
+    echo.innerHTML = '<span class="text-accent">❯</span> ';
+    echo.append(raw);
+    log.append(echo);
+
+    const name = raw.toLowerCase();
+    if (name === 'clear') {
+      log.replaceChildren();
+    } else if (name.startsWith('sudo')) {
+      print(log, await commands._sudo.run());
+      setTimeout(() => (location.href = `mailto:${site.email}?subject=Let%E2%80%99s%20build%20something`), 700);
+    } else if (commands[name] && !name.startsWith('_')) {
+      print(log, await commands[name].run());
+    } else {
+      print(log, [`zsh: command not found: ${raw}. try "help"`]);
+    }
+    const scroller = term.querySelector<HTMLElement>('[data-terminal-scroll]');
+    scroller?.scrollTo({ top: scroller.scrollHeight });
+  });
+
+  // Click anywhere in the terminal to focus the prompt.
+  document.addEventListener('click', async (event) => {
+    const target = event.target as Element | null;
+    if (target?.closest('[data-terminal]') && !target.closest('a, input')) {
+      target.closest('[data-terminal]')?.querySelector<HTMLInputElement>('[data-terminal-input]')?.focus({ preventScroll: true });
+    }
+    const copy = target?.closest<HTMLButtonElement>('[data-copy]');
+    if (copy) {
+      const label = copy.querySelector('[data-copy-label]');
+      const status = document.querySelector('[data-copy-status]');
+      try {
+        await navigator.clipboard.writeText(copy.dataset.copy ?? '');
+        if (label) label.textContent = 'copied ✓';
+        if (status) status.textContent = 'Email address copied to clipboard';
+      } catch {
+        const email = document.querySelector('[data-email]');
+        if (email) {
+          const range = document.createRange();
+          range.selectNodeContents(email);
+          window.getSelection()?.removeAllRanges();
+          window.getSelection()?.addRange(range);
+        }
+        if (label) label.textContent = 'selected';
+      }
+      setTimeout(() => label && (label.textContent = 'copy'), 2200);
+    }
+    if (target?.closest('[data-to-top]')) {
+      event.preventDefault();
+      scrollToTarget(0);
+      document.getElementById('main')?.focus({ preventScroll: true });
+    }
+  });
+</script>

@@ -1,0 +1,522 @@
+@import 'tailwindcss';
+
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+/* ------------------------------------------------------------------
+   Tokens — dark, dev-native, one electric accent
+   ------------------------------------------------------------------ */
+@theme {
+  --color-canvas: #0a0c0f;
+  --color-panel: #11141a;
+  --color-panel-2: #171b22;
+  --color-line: #232833;
+  --color-line-strong: #343b48;
+  --color-fg: #eef1f4;
+  --color-soft: #d6dce4;
+  --color-muted: #a7b0bd;
+  --color-dim: #7c8697;
+  --color-accent: #c6ff3d;
+  --color-accent-ink: #0a0c0f;
+  --color-abyss: #060709;
+
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+@layer base {
+  :root {
+    --gutter: clamp(1.25rem, 3.4vw, 3.5rem);
+    --header-h: 4rem;
+    color-scheme: dark;
+  }
+
+  html {
+    background: var(--color-canvas);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: var(--header-h);
+    scrollbar-color: var(--color-line-strong) transparent;
+    scrollbar-width: thin;
+    caret-color: var(--color-accent);
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-canvas);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  kbd {
+    font-family: var(--font-mono);
+    font-size: 0.75em;
+    padding: 0.1em 0.45em;
+    border: 1px solid var(--color-line-strong);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    color: var(--color-soft);
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Components
+   ------------------------------------------------------------------ */
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .grid-12 {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: clamp(1rem, 1.6vw, 2rem);
+    }
+  }
+
+  /* Mono labels: this site's native register (paths, commands, metadata). */
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums slashed-zero;
+  }
+
+  .h-display {
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+    text-wrap: balance;
+    font-size: clamp(3rem, 7vw, 6rem);
+  }
+  .h-section {
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-wrap: balance;
+    font-size: clamp(2.25rem, 4.6vw, 4rem);
+  }
+  .h-card {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    text-wrap: balance;
+    font-size: clamp(1.75rem, 2.8vw, 2.75rem);
+  }
+
+  .lede {
+    font-size: clamp(1.125rem, 1.45vw, 1.3rem);
+    line-height: 1.55;
+    letter-spacing: -0.012em;
+    color: var(--color-soft);
+  }
+
+  /* Underline that draws in on hover / focus / current */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition:
+      background-size 0.45s var(--ease-out-quint),
+      color 0.2s;
+    padding-bottom: 0.08em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible,
+  .link-draw[aria-current] {
+    background-size: 100% 1px;
+  }
+  [data-spy] .link-draw[aria-current] {
+    color: var(--color-accent);
+  }
+
+  .link-inline {
+    color: var(--color-fg);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: color-mix(in oklab, var(--color-accent) 60%, transparent);
+    transition: text-decoration-color 0.2s;
+  }
+  .link-inline:hover {
+    text-decoration-color: var(--color-accent);
+  }
+
+  /* Primary action: the only filled control on the site. */
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.1rem;
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+    font-weight: 600;
+    border-radius: 6px;
+    transition:
+      transform 0.25s var(--ease-out-quint),
+      box-shadow 0.25s;
+  }
+  .btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -10px color-mix(in oklab, var(--color-accent) 70%, transparent);
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 6px;
+    color: var(--color-soft);
+    transition:
+      border-color 0.2s,
+      color 0.2s;
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-fg);
+    color: var(--color-fg);
+  }
+
+  /* Editor-style window used for code and terminal surfaces */
+  .window {
+    background: var(--color-panel);
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .window-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 2.5rem;
+    padding-inline: 0.9rem;
+    border-bottom: 1px solid var(--color-line);
+    background: var(--color-panel-2);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+  .window-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .window-dots i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-line-strong);
+  }
+
+  .sr-only-focusable:not(:focus) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* Hover glow: a soft light inside the card plus a border highlight that is brightest
+   on the edge nearest the pointer (positions set in BaseLayout). */
+@property --glow-o {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+@layer components {
+  .glow {
+    position: relative;
+    isolation: isolate;
+    transition: --glow-o 0.35s;
+  }
+  /* Bordered cards: the border itself is painted, a dim base line plus a lime
+     highlight centred on the pointer. Works under overflow: hidden. */
+  .glow:is(.window, .border) {
+    background-image:
+      linear-gradient(var(--color-panel), var(--color-panel)),
+      radial-gradient(
+        200px circle at var(--gx, 50%) var(--gy, 50%),
+        color-mix(in oklab, var(--color-accent) var(--glow-o), transparent),
+        transparent 70%
+      ),
+      linear-gradient(var(--color-line), var(--color-line));
+    background-clip: padding-box, border-box, border-box;
+    background-origin: border-box;
+  }
+}
+/* Unlayered so it beats the border-line utility; the border colour comes from the layers above. */
+.glow:is(.window, .border) {
+  border-color: transparent;
+}
+/* Borderless image cards: the same highlight as a 1px ring over the edge. */
+.glow:not(.window, .border)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    200px circle at var(--gx, 50%) var(--gy, 50%),
+    color-mix(in oklab, var(--color-accent) var(--glow-o), transparent),
+    transparent 70%
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+.glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s;
+  background: radial-gradient(
+    320px circle at var(--gx, 50%) var(--gy, 50%),
+    color-mix(in oklab, var(--color-accent) 11%, transparent),
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+}
+@media (hover: hover) {
+  .glow:hover::after {
+    opacity: 1;
+  }
+  .glow:hover {
+    --glow-o: 90%;
+  }
+}
+
+/* Project excerpts: compact and height-capped so they never swamp the visual. */
+.project-code pre.astro-code {
+  font-size: 0.75rem;
+  max-height: 19rem;
+}
+
+/* Unlayered on purpose: beats any host/embedding reset (e.g. a light preview skeleton). */
+:root,
+:root body {
+  background: var(--color-canvas) !important;
+  color: var(--color-fg);
+  color-scheme: dark;
+  font-family: var(--font-sans);
+}
+:root body {
+  font-size: 1rem;
+  line-height: 1.6;
+  /* The dark ground lives on <html>; the body stays clear so the fixed particle
+     canvas (negative z-index) shows between the ground and the content. */
+  background: transparent !important;
+}
+
+/* Shiki output inside windows */
+.window pre.astro-code {
+  margin: 0;
+  padding: 1.1rem 1.25rem 1.3rem;
+  background: transparent !important;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+/* Page-wide dot grid with a soft spotlight that follows the pointer (desktop). */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(color-mix(in oklab, var(--color-fg) 13%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+html.field-on .backdrop {
+  background-image: none;
+}
+.backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    560px circle at var(--mx, 70%) var(--my, 30%),
+    color-mix(in oklab, var(--color-accent) 7%, transparent),
+    transparent 60%
+  );
+}
+
+html.motion-ready [data-reveal='fade'] {
+  opacity: 0;
+}
+
+/* ------------------------------------------------------------------
+   View transitions
+   ------------------------------------------------------------------ */
+/* Native cross-document transitions between pages (no client-side router). */
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+::view-transition-old(root) {
+  animation: vt-out 0.3s var(--ease-in-out-quart) both;
+}
+::view-transition-new(root) {
+  animation: vt-in 0.55s var(--ease-out-quint) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Case study body
+   ------------------------------------------------------------------ */
+.case-body {
+  color: var(--color-soft);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.case-body > :where(p, ul, ol, h2, h3) {
+  max-width: 42rem;
+}
+.case-body > * + * {
+  margin-top: 1.25rem;
+}
+.case-body h2 {
+  margin-top: clamp(4rem, 7vw, 6rem);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--color-fg);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+.case-body h2::before {
+  content: '## ';
+  font-family: var(--font-mono);
+  font-weight: 400;
+  color: var(--color-accent);
+  letter-spacing: 0;
+}
+.case-body h2:first-child {
+  margin-top: 0;
+}
+.case-body > ul {
+  padding-left: 0;
+  list-style: none;
+}
+.case-body > ul > li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.case-body > ul > li + li {
+  margin-top: 0.75rem;
+}
+.case-body > ul > li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+}
+.case-body strong {
+  color: var(--color-fg);
+  font-weight: 600;
+}
+.case-body a {
+  color: var(--color-fg);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 0.2em;
+}
+.case-body code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--color-panel-2);
+  color: var(--color-fg);
+}
+.case-body .case-figure {
+  margin-block: clamp(2.5rem, 5vw, 4rem);
+}

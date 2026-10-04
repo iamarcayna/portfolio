@@ -1,0 +1,23 @@
+---
+import { Code } from 'astro:components';
+
+interface Props {
+  file: string;
+  lang: 'ts' | 'js' | 'php' | 'vue' | 'json';
+  code: string;
+  class?: string;
+  /** Caption under the bar, e.g. "illustrative excerpt". */
+  note?: string;
+}
+
+const { file, lang, code, note, class: className } = Astro.props;
+---
+
+<figure class:list={['window glow shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)]', className]}>
+  <figcaption class="window-bar">
+    <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="truncate text-soft">{file}</span>
+    {note && <span class="ml-auto hidden text-dim sm:inline">{note}</span>}
+  </figcaption>
+  <Code code={code.trimEnd()} lang={lang} theme="github-dark-default" />
+</figure>

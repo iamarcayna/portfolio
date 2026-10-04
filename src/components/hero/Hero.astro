@@ -1,0 +1,197 @@
+---
+import { ArrowDown } from '@lucide/astro';
+import { site } from '@/lib/site';
+---
+
+<section class="hero relative isolate flex min-h-[max(100svh,44rem)] flex-col overflow-hidden" aria-labelledby="hero-title" data-hero>
+  <!-- Page-wide particle field (fixed). The face forms inside the anchor box below. -->
+  <div class="hero-anchor pointer-events-none absolute" aria-hidden="true" data-particles="face">
+    <canvas class="absolute inset-0 hidden h-full w-full" data-field-fallback></canvas>
+  </div>
+
+  <p class="hero-caption mono pointer-events-none absolute hidden text-dim lg:block" aria-hidden="true">
+    <span class="text-accent">●</span> <span data-particle-count>9,059</span> particles · move to disturb
+  </p>
+
+  <div class="wrap mt-auto pb-[clamp(2rem,5vw,4rem)] pt-[calc(var(--header-h)+2rem)]">
+    <div class="max-w-[44rem]">
+      <p class="mono mb-6 text-muted" data-hero-prompt>
+        <span class="text-accent">$</span> <span data-typed="whoami">whoami</span>
+      </p>
+
+      <h1 id="hero-title" class="h-display" data-hero-title>
+        <span class="block">Reymond Arcayna</span>
+      </h1>
+      <p class="mt-4 text-[clamp(1.25rem,2.2vw,1.75rem)] font-medium tracking-[-0.02em] text-accent" data-hero-role>
+        {site.role}
+      </p>
+
+      <p class="lede mt-6 max-w-[34rem]" data-hero-statement>
+        I build software end to end: fast interfaces with real craft, the APIs and data behind them, and real-time
+        voice agents that can hold a conversation.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3" data-hero-actions>
+        <a href="#work" class="btn-accent">
+          See the work <ArrowDown class="size-4" stroke-width={2} aria-hidden="true" />
+        </a>
+        <button type="button" class="btn-ghost mono hidden [@media(pointer:fine)]:inline-flex" data-palette-open>
+          or press <kbd data-shortcut>⌘K</kbd>
+        </button>
+      </div>
+    </div>
+
+    <dl class="mono mt-14 flex flex-wrap gap-x-10 gap-y-3 border-t border-line pt-5 text-muted" data-hero-status>
+      <div class="flex items-center gap-2">
+        <dt class="sr-only">Status</dt>
+        <dd class="flex items-center gap-2 text-fg">
+          <span class="pulse" aria-hidden="true"></span> Open to the right role
+        </dd>
+      </div>
+      <div class="flex gap-2">
+        <dt>loc</dt>
+        <dd class="text-soft">{site.location}</dd>
+      </div>
+      <div class="flex gap-2">
+        <dt>now</dt>
+        <dd class="text-soft">voice agents @ Pioneer Dev AI</dd>
+      </div>
+      <div class="flex gap-2">
+        <dt>time</dt>
+        <dd class="text-soft" data-clock>UTC+8</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .hero-anchor {
+    right: var(--gutter);
+    top: calc(var(--header-h) + 3.5rem);
+    bottom: 3rem;
+    width: min(42vw, 40rem);
+  }
+  .hero-caption {
+    right: var(--gutter);
+    top: calc(var(--header-h) + 1.5rem);
+  }
+  .pulse {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+  .pulse::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--color-accent);
+    animation: pulse 2s var(--ease-out-quint) infinite;
+  }
+  @keyframes pulse {
+    to {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+  @media (max-width: 1023px) {
+    .hero-anchor {
+      left: var(--gutter);
+      right: var(--gutter);
+      top: calc(var(--header-h) + 0.5rem);
+      bottom: auto;
+      width: auto;
+      height: 38svh;
+    }
+  }
+
+  /* Hide intro targets until the intro timeline takes over (2.5s failsafe). */
+  :global(html.js) [data-hero-title],
+  :global(html.js) [data-hero-role],
+  :global(html.js) [data-hero-statement],
+  :global(html.js) [data-hero-actions],
+  :global(html.js) [data-hero-status] {
+    visibility: hidden;
+    animation: hero-failsafe 0s 2.5s forwards;
+  }
+  @keyframes hero-failsafe {
+    to {
+      visibility: visible;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, EASE, prefersReducedMotion } from '@/lib/motion';
+
+  function typeOut(el: HTMLElement, text: string) {
+    el.textContent = '';
+    const tl = gsap.timeline();
+    [...text].forEach((ch, i) => tl.call(() => (el.textContent += ch), [], i * 0.07));
+    return tl;
+  }
+
+  function playIntro(hero: HTMLElement, reduced: boolean) {
+    const q = (s: string) => hero.querySelector<HTMLElement>(s);
+    const targets = ['[data-hero-title]', '[data-hero-role]', '[data-hero-statement]', '[data-hero-actions]', '[data-hero-status]']
+      .map(q)
+      .filter(Boolean) as HTMLElement[];
+    gsap.set(targets, { visibility: 'visible', animation: 'none' });
+    if (reduced) return;
+
+    const typed = q('[data-typed]');
+    const title = q('[data-hero-title] > span');
+    const tl = gsap.timeline({ defaults: { ease: EASE.out } });
+    if (typed) tl.add(typeOut(typed, typed.dataset.typed ?? ''), 0.2);
+    if (title) {
+      const mask = title.parentElement!;
+      gsap.set(mask, { overflow: 'clip', paddingBottom: '0.18em', marginBottom: '-0.18em' });
+      tl.from(title, { yPercent: 110, duration: 1.1, onComplete: () => gsap.set(mask, { clearProps: 'overflow' }) }, 0.75);
+    }
+    tl.from(q('[data-hero-role]'), { autoAlpha: 0, y: 12, duration: 0.9 }, 0.95)
+      .from(q('[data-hero-statement]'), { autoAlpha: 0, y: 14, duration: 1 }, 1.05)
+      .from(q('[data-hero-actions]'), { autoAlpha: 0, y: 14, duration: 1 }, 1.15)
+      .from(q('[data-hero-status]'), { autoAlpha: 0, duration: 1.2 }, 1.3);
+  }
+
+  /** 2D fallback: the portrait point cloud drawn once inside the hero anchor. */
+  async function drawFallback(canvas: HTMLCanvasElement) {
+    canvas.classList.remove('hidden');
+    const raw = new Uint16Array(await (await fetch('/face-points.bin')).arrayBuffer());
+    const [w, h, count] = raw;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = canvas.clientWidth * dpr;
+    canvas.height = canvas.clientHeight * dpr;
+    const scale = Math.min(canvas.height / h, canvas.width / w);
+    const ox = (canvas.width - w * scale) / 2;
+    const oy = (canvas.height - h * scale) / 2;
+    for (let i = 0; i < count; i++) {
+      const lum = Math.max(raw[5 + i * 4], raw[6 + i * 4], 77) / 255;
+      ctx.fillStyle = `rgba(182,255,209,${0.15 + lum * 0.75})`;
+      ctx.beginPath();
+      ctx.arc(ox + raw[3 + i * 4] * scale, oy + raw[4 + i * 4] * scale, (0.4 + lum) * dpr, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function boot() {
+    const hero = document.querySelector<HTMLElement>('[data-hero]');
+    if (!hero) return;
+    playIntro(hero, prefersReducedMotion());
+  }
+
+  // No WebGL: draw a still portrait so the hero keeps its artwork.
+  document.addEventListener('field:unsupported', () => {
+    const fallback = document.querySelector<HTMLCanvasElement>('[data-field-fallback]');
+    if (fallback) void drawFallback(fallback);
+  });
+
+  // The layout signals once fonts and motion are ready; it may already have happened.
+  if (document.documentElement.hasAttribute('data-motion-ready')) boot();
+  else document.addEventListener('motion:ready', boot, { once: true });
+
+</script>

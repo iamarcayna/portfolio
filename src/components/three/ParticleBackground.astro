@@ -1,0 +1,52 @@
+---
+// Page-wide particle field. On the home page the particles form the portrait inside
+// the hero's [data-particles="face"] box; on every other page they are the spiral.
+---
+
+<canvas class="pointer-events-none fixed inset-0 -z-10 h-full w-full" aria-hidden="true" data-field-canvas></canvas>
+
+<script>
+  import { prefersReducedMotion } from '@/lib/motion';
+  import type { ParticleField } from '@/components/three/particle-field';
+
+  let field: ParticleField | null = null;
+  let disposed = false;
+
+  function supportsWebGL() {
+    try {
+      const probe = document.createElement('canvas');
+      return !!(probe.getContext('webgl2') || probe.getContext('webgl'));
+    } catch {
+      return false;
+    }
+  }
+
+  async function mount() {
+    const canvas = document.querySelector<HTMLCanvasElement>('[data-field-canvas]');
+    if (!canvas || !supportsWebGL()) {
+      // No WebGL: the hero draws a still portrait on its own; other pages go without.
+      document.dispatchEvent(new CustomEvent('field:unsupported'));
+      return;
+    }
+    const constrained =
+      window.matchMedia('(max-width: 767px), (pointer: coarse)').matches || (navigator.hardwareConcurrency ?? 8) <= 4;
+    const { createParticleField } = await import('@/components/three/particle-field');
+    if (disposed) return;
+    const created = await createParticleField(canvas, { quality: constrained ? 'low' : 'high', reducedMotion: prefersReducedMotion() });
+    if (disposed) created.destroy();
+    else {
+      field = created;
+      document.documentElement.classList.add('field-on');
+    }
+  }
+
+  const idle = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 150));
+  idle(() => void mount(), { timeout: 800 });
+
+  window.addEventListener('pagehide', (e) => {
+    if (e.persisted) return; // kept in bfcache: keep the field alive for an instant back
+    disposed = true;
+    field?.destroy();
+    field = null;
+  });
+</script>

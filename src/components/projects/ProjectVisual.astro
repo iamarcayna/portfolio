@@ -1,0 +1,36 @@
+---
+import { Picture } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import VoiceTrace from './visuals/VoiceTrace.astro';
+import Tenancy from './visuals/Tenancy.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  sizes: string;
+  eager?: boolean;
+}
+
+const { project, sizes, eager = false } = Astro.props;
+const { cover, coverAlt, visual } = project.data;
+---
+
+{
+  cover ? (
+    <div class="glow overflow-hidden bg-panel" data-reveal="clip">
+      <Picture
+        src={cover}
+        alt={coverAlt ?? ''}
+        formats={['avif', 'webp']}
+        widths={[640, 960, 1280, 1600]}
+        sizes={sizes}
+        class="block aspect-[16/10] h-auto w-full object-cover"
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+      />
+    </div>
+  ) : visual === 'voice' ? (
+    <VoiceTrace compact />
+  ) : visual === 'tenancy' ? (
+    <Tenancy compact />
+  ) : null
+}

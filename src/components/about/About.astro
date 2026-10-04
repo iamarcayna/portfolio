@@ -1,0 +1,68 @@
+---
+import { Picture } from 'astro:assets';
+import SectionHeading from '@/components/layout/SectionHeading.astro';
+import CodeWindow from '@/components/ui/CodeWindow.astro';
+import portrait from '@/assets/about/portrait.jpg';
+
+const config = `export default defineEngineer({
+  name: 'Reymond Arcayna',
+  based: 'Cebu, PH (UTC+8)',
+  now: 'voice agents @ Pioneer Dev AI',
+  voice: ['Retell', 'Twilio', 'OpenAI', 'Deepgram', 'ElevenLabs'],
+  frontend: ['React', 'React Router', 'Vue', 'Nuxt', 'Next.js', 'Angular', 'Tailwind', 'GSAP'],
+  backend: ['Node.js', 'Fastify', 'Express', 'Laravel', 'PHP', 'Scala'],
+  data: ['PostgreSQL', 'MySQL', 'MongoDB'],
+  design: ['Figma', 'Illustrator'],
+  offline: ['singing', 'cooking', 'games', 'friends'],
+});`;
+---
+
+<section id="about" class="wrap pt-[clamp(8rem,14vw,13rem)]" aria-labelledby="about-title">
+  <SectionHeading path="~/about" title="I build stuff that works, and I'm picky about how it looks" id="about-title" />
+
+  <div class="grid-12 gap-y-10">
+    <div class="col-span-4 md:col-span-5">
+      <div class="flex items-start gap-5">
+        <Picture
+          src={portrait}
+          alt="Portrait of Reymond Arcayna."
+          formats={['avif', 'webp']}
+          widths={[160, 320]}
+          sizes="96px"
+          class="portrait size-24 shrink-0 rounded-lg object-cover object-top"
+          loading="lazy"
+        />
+        <p class="lede">
+          I didn’t start in software. I was a design engineer for three years, and I kept writing small tools to skip the
+          boring parts of the job. At some point the tools became the job.
+        </p>
+      </div>
+
+      <div class="mt-8 space-y-5 text-[1.0625rem] leading-relaxed text-soft">
+        <p>
+          Right now I build voice agents at Pioneer Dev AI. Real phone calls, real bookings. It’s the hardest UI I’ve
+          worked on because there’s no UI, just a conversation, and every second of silence feels like a bug.
+        </p>
+        <p>
+          Before that it was web apps, mostly Vue and Laravel, with some Angular and React. I still do frontend because I
+          like it. If something looks generic I’ll keep redoing it until it doesn’t.
+        </p>
+        <p>
+          I like small teams, straight answers, and shipping. Outside work it’s singing, cooking, games, and hanging out
+          with friends.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-span-4 md:col-span-6 md:col-start-7">
+      <CodeWindow file="reymond.config.ts" lang="ts" code={config} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .portrait {
+    filter: grayscale(1) contrast(1.1);
+    outline: 1px solid var(--color-line);
+  }
+</style>
