@@ -506,14 +506,38 @@ html.motion-ready [data-reveal='fade'] {
   font-weight: 600;
 }
 mark {
-  color: var(--color-fg);
-  background: linear-gradient(
-      color-mix(in oklab, var(--color-accent) 28%, transparent),
-      color-mix(in oklab, var(--color-accent) 28%, transparent)
-    )
-    0 92% / 100% 0.5em no-repeat;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+  background: none;
+  color: var(--color-accent);
+}
+
+/* Editor gutter: numbers come from data-ln (see lib/line-numbers.ts). Wide screens only. */
+@media (min-width: 768px) {
+  [data-lines] {
+    padding-left: 3.25rem;
+  }
+  [data-ln] {
+    position: relative;
+  }
+  [data-ln]::after {
+    content: attr(data-ln);
+    position: absolute;
+    top: 0;
+    right: calc(100% + 1.5rem);
+    white-space: pre;
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    line-height: var(--ln-lh);
+    color: color-mix(in oklab, var(--color-dim) 60%, transparent);
+    pointer-events: none;
+    transition: color 0.2s;
+  }
+  [data-ln]:hover::after {
+    color: var(--color-accent);
+  }
 }
 .case-body a {
   color: var(--color-fg);

@@ -58,6 +58,7 @@ const isHome = Astro.url.pathname === '/';
   import { initMotion } from '@/lib/motion';
   import { startSmoothScroll, stopSmoothScroll } from '@/lib/smooth-scroll';
   import { initScrollSpy } from '@/lib/scroll-spy';
+  import { initLineNumbers } from '@/lib/line-numbers';
 
   // Every page is a real document load (cross-document view transitions handle the
   // animation), so each page simply boots once and always starts at the top.
@@ -68,6 +69,7 @@ const isHome = Astro.url.pathname === '/';
     startSmoothScroll();
     initMotion(document.getElementById('main') ?? document);
     initScrollSpy();
+    initLineNumbers();
     document.documentElement.dataset.motionReady = '';
     document.dispatchEvent(new CustomEvent('motion:ready'));
   });
