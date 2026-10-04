@@ -510,33 +510,59 @@ mark {
   color: var(--color-accent);
 }
 
-/* Editor gutter: numbers come from data-ln (see lib/line-numbers.ts). Wide screens only. */
+/* Editor gutter, after vim: built by lib/line-numbers.ts. Wide screens only. */
+.ln-gutter,
+.ln-band {
+  display: none;
+}
 @media (min-width: 768px) {
   [data-lines] {
+    position: relative;
+    isolation: isolate;
     padding-left: 3.25rem;
   }
-  [data-ln] {
-    position: relative;
-  }
-  [data-ln]::after {
-    content: attr(data-ln);
+  .ln-gutter {
+    display: block;
     position: absolute;
-    top: 0;
-    right: calc(100% + 1.5rem);
-    white-space: pre;
-    text-align: right;
+    inset: 0 auto 0 0;
+    width: 2rem;
+    margin: 0;
+    pointer-events: none;
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    font-weight: 400;
     font-style: normal;
+    font-weight: 400;
     letter-spacing: 0;
-    line-height: var(--ln-lh);
     color: color-mix(in oklab, var(--color-dim) 60%, transparent);
-    pointer-events: none;
-    transition: color 0.2s;
   }
-  [data-ln]:hover::after {
+  .ln-gutter > span {
+    position: absolute;
+    right: 0;
+  }
+  /* The cursor line's absolute number sits flush left, as in vim. */
+  .ln-gutter > .is-current {
+    right: auto;
+    left: 0;
     color: var(--color-accent);
+  }
+  .ln-band {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -0.75rem;
+    z-index: -1;
+    margin: 0;
+    border-radius: 3px;
+    pointer-events: none;
+  }
+  .ln-band[hidden] {
+    display: none;
+  }
+  .ln-hover {
+    background: color-mix(in oklab, var(--color-fg) 3%, transparent);
+  }
+  .ln-cursor {
+    background: color-mix(in oklab, var(--color-fg) 5.5%, transparent);
   }
 }
 .case-body a {
